@@ -1,9 +1,13 @@
 .onLoad <- function(libname, pkgname) {
 
+  # auth object
   .auth <<- gargle::init_AuthState(
     package     = "rgoogleads",
     auth_active = TRUE
   )
+
+  # where function
+  utils::globalVariables("where")
 
   ## adwords developer token
   if ( Sys.getenv("GADS_DEVELOPER_TOKEN") != "" ) {
@@ -43,13 +47,49 @@
 
   # options
   op <- options()
-  op.gads <- list(gads.developer.token   = developer_token,
-                  gads.api.version       = "v8",
-                  gads.login.customer.id = login_customer_id,
-                  gads.customer.id       = customer_id)
+  op.gads <- list(gads.developer.token      = developer_token,
+                  gads.api.version          = "v8",
+                  gads.login.customer.id    = login_customer_id,
+                  gads.customer.id          = customer_id,
+                  gads.multi.account.verbos = FALSE)
 
   toset <- !(names(op.gads) %in% names(op))
   if (any(toset)) options(op.gads[toset])
 
   invisible()
+}
+
+.onAttach <- function(lib, pkg,...){
+
+  packageStartupMessage(rgoogleadsWelcomeMessage())
+
+}
+
+
+rgoogleadsWelcomeMessage <- function(){
+  # library(utils)
+
+  paste0("\n",
+         "---------------------\n",
+         "Welcome to rgoogleads version ", utils::packageDescription("rgoogleads")$Version, "\n",
+         "\n",
+         "Author:           Alexey Seleznev (Head of analytics dept at Netpeak).\n",
+         "Telegram channel: https://t.me/R4marketing \n",
+         "YouTube channel:  https://www.youtube.com/R4marketing/?sub_confirmation=1 \n",
+         "Email:            selesnow@gmail.com\n",
+         "Site:             https://selesnow.github.io \n",
+         "Blog:             https://alexeyseleznev.wordpress.com \n",
+         "Facebook:         https://facebook.com/selesnown \n",
+         "Linkedin:         https://www.linkedin.com/in/selesnow \n",
+         "\n",
+         "Type ?rgoogleads for the main documentation.\n",
+         "The github page is: https://github.com/selesnow/rgoogleads/\n",
+         "Package site: https://selesnow.github.io/rgoogleads/\n",
+         "\n",
+         "Suggestions and bug-reports can be submitted at: https://github.com/selesnow/rgoogleads/issues\n",
+         "Or contact: <selesnow@gmail.com>\n",
+         "\n",
+         "\tTo suppress this message use:  ", "suppressPackageStartupMessages(library(rgoogleads))\n",
+         "---------------------\n"
+  )
 }

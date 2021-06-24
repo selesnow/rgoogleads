@@ -1,3 +1,12 @@
+#' Helper function for check api answer on error
+#'
+#' @param out API answer
+#' @param client_id Google Ads Customer id
+#' @param verbose Console output
+#' @param request_id Api request id
+#'
+#' @return stop the function when api request faild
+#'
 gads_check_errors <- function(out, client_id, verbose, request_id) {
 
   # check for empty data
@@ -12,6 +21,7 @@ gads_check_errors <- function(out, client_id, verbose, request_id) {
     msg <- ifelse(is.null(out[[1]]$error$details[[1]]$errors[[1]]$message), out[[1]]$error$message, paste(out[[1]]$error$message, out[[1]]$error$details[[1]]$errors[[1]]$message, sep = ": "))
     cli_alert_danger(c(client_id, ": ", msg))
     cli_alert_danger(c("Request ID: ", request_id))
+    cli_alert_danger("You can use gads_last_request_ids() for get last request id, if you want send ticket to google ads api support.")
     stop(paste(client_id, msg))
   }
 

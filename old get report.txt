@@ -12,7 +12,6 @@
 #' @param login_customer_id Google Ads manager customer id
 #' @param include_resource_name Get resource names fields in report
 #' @param verbose Console log output
-#' @param cl A cluster object created by makeCluster, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).
 #'
 #' @return tibble with the Google Ads Data.
 #' @export
@@ -58,7 +57,7 @@
 #' )
 #' }
 gads_get_report <- function(
-  resource              = 'campaign',
+  resource = 'campaign',
   fields = c('campaign.id',
              'campaign.name',
              'customer.id',
@@ -73,17 +72,17 @@ gads_get_report <- function(
              'metrics.interaction_rate',
              'metrics.interactions',
              'metrics.invalid_clicks'),
-  where                 = NULL,
-  order_by              = NULL,
-  limit                 = NULL,
-  parameters            = NULL,
-  date_from             = Sys.Date() - 15,
-  date_to               = Sys.Date() - 1,
-  customer_id           = getOption('gads.customer.id'),
-  login_customer_id     = getOption('gads.login.customer.id'),
+  where = NULL,
+  order_by = NULL,
+  limit = NULL,
+  parameters = NULL,
+  date_from = Sys.Date() - 15,
+  date_to = Sys.Date() - 1,
+  customer_id       = getOption('gads.customer.id'),
+  login_customer_id = getOption('gads.login.customer.id'),
   include_resource_name = FALSE,
-  cl                    = NULL,
-  verbose               = TRUE
+  cl      = NULL,
+  verbose = TRUE
 ) {
 
   # check token
@@ -94,42 +93,32 @@ gads_get_report <- function(
 
     # if only one account use gads_get_report
     res <- gads_get_report_helper(
-      resource              = resource,
-      fields                = fields,
-      where                 = where,
-      order_by              = order_by,
-      limit                 = limit,
-      parameters            = parameters,
-      date_from             = date_from,
-      date_to               = date_to,
-      customer_id           = customer_id,
-      login_customer_id     = login_customer_id,
+      resource = resource,
+      fields = fields,
+      where = where,
+      order_by = order_by,
+      limit = limit,
+      parameters = parameters,
+      date_from = date_from,
+      date_to = date_to,
+      customer_id = customer_id,
+      login_customer_id = login_customer_id,
       include_resource_name = include_resource_name,
-      verbose               = verbose)
+      verbose = verbose)
 
   } else {
 
     cli_alert_info('Multi account request')
 
-    # check parallel
-    if (!is.null(cl)) {
-      # optins
-      oldpar <- options('gads.multi.account.verbos')
-      on.exit(options(oldpar))
-      cli_alert_info('Verbose mode is deactive because you run loading in parallel mode!')
-      options('gads.multi.account.verbos' = FALSE)
-    }
-
     # define apply function
     if (getOption('gads.multi.account.verbos')) {
-
       cli_alert_info('Verbose mode is active for multi account loading!')
       cli_alert_info('start------------------------------------------->')
 
-      mfun    <- 'lapply'
-      verbose <- TRUE
+      verbose         <- TRUE
 
-      mfun_args <- list(
+      # loading
+      res <- lapply(
         customer_id,
         safely(
           function(x) {
@@ -147,16 +136,17 @@ gads_get_report <- function(
               include_resource_name = include_resource_name,
               verbose = verbose)
           }
-        )
+          )
       )
 
 
     } else {
 
-      mfun    <- 'pblapply'
-      verbose <- FALSE
+      verbose         <- FALSE
 
-      mfun_args <- list(
+      # loading
+      # if parallel loading use pbapply
+      res <- pblapply(
         customer_id,
         safely(
           function(x) {
@@ -178,9 +168,6 @@ gads_get_report <- function(
       )
 
     }
-
-    # run function
-    res <- do.call(mfun, mfun_args)
 
     # get res and errors
     res <- transpose(res)
