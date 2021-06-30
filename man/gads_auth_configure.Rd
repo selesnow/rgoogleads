@@ -2,13 +2,19 @@
 % Please edit documentation in R/gads_auth.R
 \name{gads_auth_configure}
 \alias{gads_auth_configure}
+\alias{gads_auth_cache_path}
 \alias{gads_api_key}
+\alias{gads_developer_token}
 \alias{gads_oauth_app}
 \title{Edit and view auth configuration}
 \usage{
 gads_auth_configure(app, path, api_key)
 
+gads_auth_cache_path()
+
 gads_api_key()
+
+gads_developer_token()
 
 gads_oauth_app()
 }

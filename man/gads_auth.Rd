@@ -2,7 +2,6 @@
 % Please edit documentation in R/gads_auth.R
 \name{gads_auth}
 \alias{gads_auth}
-\alias{gads_developer_token}
 \title{Authorization in Google Ads API}
 \usage{
 gads_auth(
@@ -10,11 +9,9 @@ gads_auth(
   path = NULL,
   cache = gargle::gargle_oauth_cache(),
   use_oob = gargle::gargle_oob_default(),
-  developer_token = options("gads.developer.token"),
+  developer_token = getOption("gads.developer.token"),
   token = NULL
 )
-
-gads_developer_token()
 }
 \arguments{
 \item{email}{Optional. Allows user to target a specific Google identity.}

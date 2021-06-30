@@ -2,8 +2,12 @@
 # авторизация
 library(rgoogleads)
 # auth --------------------------------------------------------------------
-gads_auth('alsey.netpeak@gmail.com')
-
+gads_auth(email = 'alsey.netpeak@gmail.com')
+gads_deauth()
+gads_user()
+gads_oauth_app()
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth_cache_path()
 # set accounts ------------------------------------------------------------
 # установка основного логина
 gads_set_login_customer_id('1754107253')

@@ -56,7 +56,7 @@ gads_auth <- function(
   path            = NULL,
   cache           = gargle::gargle_oauth_cache(),
   use_oob         = gargle::gargle_oob_default(),
-  developer_token = options('gads.developer.token'),
+  developer_token = getOption('gads.developer.token'),
   token           = NULL) {
 
   if ( is.null(gads_oauth_app()) )
@@ -196,6 +196,18 @@ gads_auth_configure <- function(app, path, api_key) {
   invisible(.auth)
 }
 
+#' @export
+#' @rdname gads_auth_configure
+gads_auth_cache_path <- function() {
+
+  if ( gads_has_token() ) {
+    .auth$cred$cache_path
+  } else {
+    cli_alert_warning("You need to log in to google account")
+  }
+
+}
+
 # gads abort
 gads_abort <- function(message, ..., .envir = parent.frame()) {
   cli::cli_div(theme = gads_theme())
@@ -250,7 +262,7 @@ quote_if_no_color <- function(x, quote = "'") {
 gads_api_key <- function() .auth$api_key
 
 #' @export
-#' @rdname gads_auth
+#' @rdname gads_auth_configure
 gads_developer_token <- function() .auth$cred$params$user_params$developer_token
 
 

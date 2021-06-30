@@ -22,6 +22,8 @@ This is a basic example which shows you how to solve a common problem:
 library(rgoogleads)
 
 # auth
+# your google app
+gads_
 gads_auth(email = 'myname@gmail.com')
 
 # set manager customer id, if your login over MCC
