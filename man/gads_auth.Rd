@@ -86,7 +86,9 @@ gads_auth(email = NA)
 gads_auth(path = "foofy-83ee9e7c9c48.json")
 }
 }
-\concept{auth functions
-httr's class \code{request}, i.e. a token that has been prepared with
-\code{\link[httr:config]{httr::config()}} and has a \link[httr:Token-class]{Token2.0} in the
-\code{auth_token} component.}
+\seealso{
+Other auth functions: 
+\code{\link{gads_auth_configure}()},
+\code{\link{gads_deauth}()}
+}
+\concept{auth functions}

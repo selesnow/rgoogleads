@@ -1,5 +1,5 @@
 Package: rgoogleads
-Title: Loading Data From 'Google Ads API'
+Title: Loading Data from 'Google Ads API'
 Version: 0.1.0
 Authors@R: 
     person(given  = "Alexey",
@@ -7,9 +7,9 @@ Authors@R:
            role   = c("aut", "cre"),
            email  = "selesnow@gmail.com",
            comment = c(ORCID = "0000-0003-0410-7385"))
-Description: Inteface for loading data from 'Google Ads API', 
+Description: Interface for loading data from 'Google Ads API', 
     see <https://developers.google.com/google-ads/api/docs/start>. 
-    Package provide function for authorization and loadig reports.
+    Package provide function for authorization and loading reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: gargle, 

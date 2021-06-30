@@ -4,7 +4,7 @@
 \alias{gads_check_errors}
 \title{Helper function for check api answer on error}
 \usage{
-gads_check_errors(out, client_id, verbose, request_id)
+gads_check_errors(out, client_id = NULL, verbose = FALSE, request_id)
 }
 \arguments{
 \item{out}{API answer}

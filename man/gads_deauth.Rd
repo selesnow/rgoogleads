@@ -22,6 +22,7 @@ In the absence of a user-configured key, a built-in default key is used.
 }
 \seealso{
 Other auth functions: 
-\code{\link{gads_auth_configure}()}
+\code{\link{gads_auth_configure}()},
+\code{\link{gads_auth}()}
 }
 \concept{auth functions}

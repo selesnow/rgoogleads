@@ -28,9 +28,6 @@ gargle_lookup_table <- list(
 #' @eval gargle:::PREFIX_auth_details(gargle_lookup_table)
 #' @eval gargle:::PREFIX_auth_params()
 #' @family auth functions
-#' httr's class \code{request}, i.e. a token that has been prepared with
-#' \code{\link[httr:config]{httr::config()}} and has a \link[httr:Token-class]{Token2.0} in the
-#' \code{auth_token} component.
 #'
 #' @return \link[httr:Token-class]{Token2.0}
 #' @export
