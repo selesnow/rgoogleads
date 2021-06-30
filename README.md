@@ -1,5 +1,5 @@
 
-# rgoogleads: R пакет для работы с Google Ads API <a href='https://selesnow.github.io/rgoogleads'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
+# rgoogleads: R пакет для работы с Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
