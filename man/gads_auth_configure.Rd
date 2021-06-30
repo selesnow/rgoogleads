@@ -85,4 +85,8 @@ if (require(httr)) {
 gs4_auth_configure(app = original_app, api_key = original_api_key)
 }
 }
+\seealso{
+Other auth functions: 
+\code{\link{gads_deauth}()}
+}
 \concept{auth functions}

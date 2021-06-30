@@ -13,3 +13,8 @@ Logical.
 Reports whether rgoogleads has stored a token, ready for use in downstream
 requests.
 }
+\seealso{
+Other low-level API functions: 
+\code{\link{gads_token}()}
+}
+\concept{low-level API functions}

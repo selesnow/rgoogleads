@@ -19,3 +19,8 @@ initiate OAuth2.0 flow.
 If auth has been deactivated via \code{\link[=gads_deauth]{gads_deauth()}}, \code{gads_token()}
 returns \code{NULL}.
 }
+\seealso{
+Other low-level API functions: 
+\code{\link{gads_has_token}()}
+}
+\concept{low-level API functions}

@@ -20,3 +20,8 @@ via \code{\link[=gads_auth_configure]{gads_auth_configure()}} and retrieve that 
 \code{\link[=gads_api_key]{gads_api_key()}}.
 In the absence of a user-configured key, a built-in default key is used.
 }
+\seealso{
+Other auth functions: 
+\code{\link{gads_auth_configure}()}
+}
+\concept{auth functions}

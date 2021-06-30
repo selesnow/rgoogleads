@@ -27,6 +27,7 @@ gargle_lookup_table <- list(
 #' @eval gargle:::PREFIX_auth_description(gargle_lookup_table)
 #' @eval gargle:::PREFIX_auth_details(gargle_lookup_table)
 #' @eval gargle:::PREFIX_auth_params()
+#' @family auth functions
 #' httr's class \code{request}, i.e. a token that has been prepared with
 #' \code{\link[httr:config]{httr::config()}} and has a \link[httr:Token-class]{Token2.0} in the
 #' \code{auth_token} component.
@@ -88,6 +89,7 @@ gads_auth <- function(
 
 #' Suspend authorization
 #' @eval gargle:::PREFIX_deauth_description_with_api_key(gargle_lookup_table)
+#' @family auth functions
 #' @return only suspend authorization
 #' @export
 gads_deauth <- function() {
@@ -101,6 +103,7 @@ gads_deauth <- function() {
 #'
 #' @eval gargle:::PREFIX_token_description(gargle_lookup_table)
 #' @eval gargle:::PREFIX_token_return()
+#' @family low-level API functions
 #' @export
 gads_token <- function() {
   if (isFALSE(.auth$auth_active)) {
@@ -117,6 +120,7 @@ gads_token <- function() {
 #'
 #' @eval gargle:::PREFIX_has_token_description(gargle_lookup_table)
 #' @eval gargle:::PREFIX_has_token_return()
+#' @family low-level API functions
 #' @export
 gads_has_token <- function() {
   inherits(.auth$cred, "Token2.0")
