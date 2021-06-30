@@ -1,13 +1,18 @@
 # полноценный тест
 # авторизация
 library(rgoogleads)
+
 # auth --------------------------------------------------------------------
-gads_auth(email = 'alsey.netpeak@gmail.com')
+gads_auth_configure(app = gads_default_ouath_app())
+gads_auth(email = 'alsey.netpeak@gmail.com', developer_token = "EBkkx-znu2cZcEY7e74smg")
 gads_deauth()
 gads_user()
+gads_developer_token()
 gads_oauth_app()
 gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth_configure(app = gads_default_ouath_app())
 gads_auth_cache_path()
+
 # set accounts ------------------------------------------------------------
 # установка основного логина
 gads_set_login_customer_id('1754107253')
@@ -16,12 +21,9 @@ gads_set_login_customer_id('1754107253')
 gads_set_customer_id('6766427440')
 
 
-
 # load account hierarchy --------------------------------------------------
 # загрузка списка аккаунтов
 accounts_main <- gads_get_account_hierarchy(manager_customer_id = '175-410-7253')
-
-
 
 # load reports ------------------------------------------------------------
 # загрузка статистики
@@ -131,3 +133,25 @@ myads <- gads_get_ads(customer_id = acs)
 
 # keywords ----------------------------------------------------------------
 kw <- gads_get_ad_group_criterions(customer_id = acs[c(4,5)])
+
+
+
+# simple client account ---------------------------------------------------
+library(rgoogleads)
+
+# set your app from google console
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+
+# set email and developer token
+gads_auth(email = 'selesnow@gmail.com',
+          developer_token = "3gTgJr6Xi3Uqdt-hiDNaIg")
+
+# get your top level accounts
+accounts <- gads_get_accessible_customers()
+
+# get statistic
+multi_rep <- gads_get_report(
+  date_from = as.Date('2020-01-01'),
+  date_to = as.Date('2021-06-30'),
+  customer_id = '471-277-1282', login_customer_id = '471-277-1282'
+)
