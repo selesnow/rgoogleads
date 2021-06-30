@@ -4,6 +4,16 @@
 # initialization happens in .onLoad
 .auth <- NULL
 
+## The roxygen comments for these functions are mostly generated from data
+## in this list and template text maintained in gargle.
+gargle_lookup_table <- list(
+  PACKAGE     = "rgoogleads",
+  YOUR_STUFF  = "your Google Ads Account",
+  PRODUCT     = "Google Ads",
+  API         = "Google Ads API",
+  PREFIX      = "gads"
+)
+
 # main oauth function
 #' Authorization in Google Ads API
 #'
@@ -14,6 +24,9 @@
 #' @param use_oob Whether to prefer "out of band" authentication.
 #' @param developer_token Your Google Ads Developer Token.
 #' @param token A token with class \link[httr:Token-class]{Token2.0} or an object of
+#' @eval gargle:::PREFIX_auth_description(gargle_lookup_table)
+#' @eval gargle:::PREFIX_auth_details(gargle_lookup_table)
+#' @eval gargle:::PREFIX_auth_params()
 #' httr's class \code{request}, i.e. a token that has been prepared with
 #' \code{\link[httr:config]{httr::config()}} and has a \link[httr:Token-class]{Token2.0} in the
 #' \code{auth_token} component.
@@ -73,7 +86,10 @@ gads_auth <- function(
   invisible()
 }
 
-# deauth
+#' Suspend authorization
+#' @eval gargle:::PREFIX_deauth_description_with_api_key(gargle_lookup_table)
+#' @return only suspend authorization
+#' @export
 gads_deauth <- function() {
   .auth$set_auth_active(FALSE)
   .auth$clear_cred()
@@ -81,7 +97,11 @@ gads_deauth <- function() {
   invisible()
 }
 
-# token
+#' Produce configured token
+#'
+#' @eval gargle:::PREFIX_token_description(gargle_lookup_table)
+#' @eval gargle:::PREFIX_token_return()
+#' @export
 gads_token <- function() {
   if (isFALSE(.auth$auth_active)) {
     return(NULL)
@@ -93,11 +113,62 @@ gads_token <- function() {
 }
 
 # has token
+#' Is there a token on hand?
+#'
+#' @eval gargle:::PREFIX_has_token_description(gargle_lookup_table)
+#' @eval gargle:::PREFIX_has_token_return()
+#' @export
 gads_has_token <- function() {
   inherits(.auth$cred, "Token2.0")
 }
 
 # auth config
+#' Edit and view auth configuration
+#'
+#' @eval gargle:::PREFIX_auth_configure_description(gargle_lookup_table)
+#' @eval gargle:::PREFIX_auth_configure_params()
+#' @eval gargle:::PREFIX_auth_configure_return(gargle_lookup_table)
+#'
+#' @family auth functions
+#' @export
+#' @examples
+#' \dontrun{
+#' # see and store the current user-configured OAuth app (probaby `NULL`)
+#' (original_app <- gads_oauth_app())
+#'
+#' # see and store the current user-configured API key (probaby `NULL`)
+#' (original_api_key <- gads_api_key())
+#'
+#' if (require(httr)) {
+#'   # bring your own app via client id (aka key) and secret
+#'   google_app <- httr::oauth_app(
+#'     "my-awesome-google-api-wrapping-package",
+#'     key = "YOUR_CLIENT_ID_GOES_HERE",
+#'     secret = "YOUR_SECRET_GOES_HERE"
+#'   )
+#'   google_key <- "YOUR_API_KEY"
+#'   gads_auth_configure(app = google_app, api_key = google_key)
+#'
+#'   # confirm the changes
+#'   gads_oauth_app()
+#'   gads_api_key()
+#'
+#'   # bring your own app via JSON downloaded from Google Developers Console
+#'   # this file has the same structure as the JSON from Google
+#'   app_path <- system.file(
+#'     "extdata", "fake-oauth-client-id-and-secret.json",
+#'     package = "googlesheets4"
+#'   )
+#'   gads_auth_configure(path = app_path)
+#'
+#'   # confirm the changes
+#'   gads_oauth_app()
+#' }
+#'
+#' # restore original auth config
+#' gs4_auth_configure(app = original_app, api_key = original_api_key)
+#' }
+#' @export
 gads_auth_configure <- function(app, path, api_key) {
   if (!missing(app) && !missing(path)) {
     gads_abort("Must supply exactly one of {.arg app} or {.arg path}, not both")
@@ -170,11 +241,34 @@ quote_if_no_color <- function(x, quote = "'") {
 }
 
 # getters
+#' @export
+#' @rdname gads_auth_configure
 gads_api_key <- function() .auth$api_key
+
+#' @export
+#' @rdname gads_auth
 gads_developer_token <- function() .auth$cred$params$user_params$developer_token
+
+
+#' @export
+#' @rdname gads_auth_configure
 gads_oauth_app <- function() .auth$app
 
-# setters
+#' Get info on current user
+#'
+#' @eval gargle:::PREFIX_user_description()
+#' @eval gargle:::PREFIX_user_seealso()
+#' @eval gargle:::PREFIX_user_return()
+#'
+#' @export
+gads_user <- function() {
+  if (gads_has_token()) {
+    gargle::token_email(gads_token())
+  } else {
+    cli_alert_info("Not logged in as any specific Google user")
+    invisible()
+  }
+}
 
 
 # default app

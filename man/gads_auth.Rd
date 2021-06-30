@@ -2,6 +2,7 @@
 % Please edit documentation in R/gads_auth.R
 \name{gads_auth}
 \alias{gads_auth}
+\alias{gads_developer_token}
 \title{Authorization in Google Ads API}
 \usage{
 gads_auth(
@@ -12,6 +13,8 @@ gads_auth(
   developer_token = options("gads.developer.token"),
   token = NULL
 )
+
+gads_developer_token()
 }
 \arguments{
 \item{email}{Optional. Allows user to target a specific Google identity.}
@@ -24,16 +27,50 @@ gads_auth(
 
 \item{developer_token}{Your Google Ads Developer Token.}
 
-\item{token}{A token with class \link[httr:Token-class]{Token2.0} or an object of
-httr's class \code{request}, i.e. a token that has been prepared with
-\code{\link[httr:config]{httr::config()}} and has a \link[httr:Token-class]{Token2.0} in the
-\code{auth_token} component.}
+\item{token}{A token with class \link[httr:Token-class]{Token2.0} or an object of}
 }
 \value{
 \link[httr:Token-class]{Token2.0}
 }
 \description{
-Authorization in Google Ads API
+Authorize rgoogleads to view and manage your Google Ads Account. This function is a
+wrapper around \code{\link[gargle:token_fetch]{gargle::token_fetch()}}.
+
+By default, you are directed to a web browser, asked to sign in to your
+Google account, and to grant rgoogleads permission to operate on your
+behalf with Google Ads. By default, these user credentials are cached in a
+folder below your home directory, \verb{~/.R/gargle/gargle-oauth}, from where
+they can be automatically refreshed, as necessary. Storage at the user
+level means the same token can be used across multiple projects and
+tokens are less likely to be synced to the cloud by accident.
+
+If you are interacting with R from a web-based platform, like RStudio
+Server or Cloud, you need to use a variant of this flow, known as
+out-of-band auth ("oob"). If this does not happen automatically, you
+can request it yourself with \code{use_oob = TRUE} or, more persistently, by
+setting an option via \code{options(gargle_oob_default = TRUE)}.
+}
+\details{
+Most users, most of the time, do not need to call \code{gads_auth()}
+explicitly -- it is triggered by the first action that requires
+authorization. Even when called, the default arguments often suffice.
+However, when necessary, this function allows the user to explicitly:
+\itemize{
+\item Declare which Google identity to use, via an email address. If there
+are multiple cached tokens, this can clarify which one to use. It can
+also force rgoogleads to switch from one identity to another. If
+there's no cached token for the email, this triggers a return to the
+browser to choose the identity and give consent.
+\item Use a service account token.
+\item Bring their own \link[httr:Token-class]{Token2.0}.
+\item Specify non-default behavior re: token caching and out-of-bound
+authentication.
+}
+
+For details on the many ways to find a token, see
+\code{\link[gargle:token_fetch]{gargle::token_fetch()}}. For deeper control over auth, use
+\code{\link[=gads_auth_configure]{gads_auth_configure()}} to bring your own OAuth app or API key.
+Read more about gargle options, see \link[gargle:gargle_options]{gargle::gargle_options}.
 }
 \examples{
 \dontrun{
