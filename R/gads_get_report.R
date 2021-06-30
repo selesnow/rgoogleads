@@ -12,7 +12,7 @@
 #' @param login_customer_id Google Ads manager customer id
 #' @param include_resource_name Get resource names fields in report
 #' @param verbose Console log output
-#' @param cl A cluster object created by makeCluster, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).
+#' @param cl A cluster object created by \code{\link{makeCluster}}, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).
 #'
 #' @return tibble with the Google Ads Data.
 #' @export

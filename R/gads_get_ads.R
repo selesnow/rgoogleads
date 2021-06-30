@@ -113,6 +113,7 @@ gads_get_ads <- function(
   customer_id           = getOption('gads.customer.id'),
   login_customer_id     = getOption('gads.login.customer.id'),
   include_resource_name = FALSE,
+  cl                    = NULL,
   verbose               = TRUE
 ) {
 
@@ -128,7 +129,8 @@ gads_get_ads <- function(
     login_customer_id = login_customer_id,
     verbose           = verbose,
     date_from         = NULL,
-    date_to           = NULL
+    date_to           = NULL,
+    cl                = cl
   )
 
   # fix names

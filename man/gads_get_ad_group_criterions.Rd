@@ -31,31 +31,30 @@ gads_get_ad_group_criterions(
     "ad_group_criterion.keyword.text", "ad_group_criterion.labels",
     "ad_group_criterion.listing_group.case_value.hotel_city.city_criterion",
     "ad_group_criterion.listing_group.case_value.hotel_class.value",
-    "ad_group_criterion.listing_group.case_value.hotel_country_region.country_region_criterion",
-         "ad_group_criterion.listing_group.case_value.hotel_id.value",
+    "ad_group_criterion.listing_group.case_value.hotel_id.value",     
     "ad_group_criterion.listing_group.case_value.hotel_state.state_criterion",
     "ad_group_criterion.listing_group.case_value.product_bidding_category.country_code",
     "ad_group_criterion.listing_group.case_value.product_bidding_category.id",
     "ad_group_criterion.listing_group.case_value.product_bidding_category.level",
     "ad_group_criterion.listing_group.case_value.product_brand.value",
-    "ad_group_criterion.listing_group.case_value.product_channel.channel",     
-    "ad_group_criterion.listing_group.case_value.product_condition.condition",
+    "ad_group_criterion.listing_group.case_value.product_channel.channel",
+    "ad_group_criterion.listing_group.case_value.product_condition.condition",     
     "ad_group_criterion.listing_group.case_value.product_custom_attribute.index",
     "ad_group_criterion.listing_group.case_value.product_custom_attribute.value",
     "ad_group_criterion.listing_group.case_value.product_type.level",
     "ad_group_criterion.listing_group.case_value.product_item_id.value",
     "ad_group_criterion.listing_group.case_value.product_type.value",
     "ad_group_criterion.listing_group.parent_ad_group_criterion",
-    "ad_group_criterion.listing_group.type",     
-    "ad_group_criterion.mobile_app_category.mobile_app_category_constant",
+    "ad_group_criterion.listing_group.type",
+    "ad_group_criterion.mobile_app_category.mobile_app_category_constant",     
     "ad_group_criterion.mobile_application.app_id",
     "ad_group_criterion.mobile_application.name", "ad_group_criterion.negative",
     "ad_group_criterion.parental_status.type",
     "ad_group_criterion.percent_cpc_bid_micros", "ad_group_criterion.placement.url",
     "ad_group_criterion.position_estimates.estimated_add_cost_at_first_position_cpc",
     "ad_group_criterion.position_estimates.estimated_add_clicks_at_first_position_cpc",
-    "ad_group_criterion.position_estimates.first_page_cpc_micros",     
-    "ad_group_criterion.position_estimates.first_position_cpc_micros",
+    "ad_group_criterion.position_estimates.first_page_cpc_micros",
+    "ad_group_criterion.position_estimates.first_position_cpc_micros",     
     "ad_group_criterion.position_estimates.top_of_page_cpc_micros",
     "ad_group_criterion.quality_info.creative_quality_score",
     "ad_group_criterion.quality_info.post_click_quality_score",
@@ -63,8 +62,8 @@ gads_get_ad_group_criterions(
     "ad_group_criterion.quality_info.search_predicted_ctr",
     "ad_group_criterion.resource_name", "ad_group_criterion.status",
     "ad_group_criterion.system_serving_status", "ad_group_criterion.topic.path",
-    "ad_group_criterion.topic.topic_constant",     
-    "ad_group_criterion.tracking_url_template", "ad_group_criterion.type",
+    "ad_group_criterion.topic.topic_constant",
+    "ad_group_criterion.tracking_url_template",      "ad_group_criterion.type",
     "ad_group_criterion.url_custom_parameters",
     "ad_group_criterion.user_interest.user_interest_category",
     "ad_group_criterion.user_list.user_list", "ad_group_criterion.webpage.conditions",
@@ -79,6 +78,7 @@ gads_get_ad_group_criterions(
   parameters = NULL,
   login_customer_id = getOption("gads.login.customer.id"),
   include_resource_name = FALSE,
+  cl = NULL,
   verbose = TRUE
 )
 }
@@ -98,6 +98,8 @@ gads_get_ad_group_criterions(
 \item{login_customer_id}{Google Ads manager customer id}
 
 \item{include_resource_name}{Get resource names fields in report}
+
+\item{cl}{A cluster object created by \code{\link{makeCluster}}, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).}
 
 \item{verbose}{Console log output}
 }

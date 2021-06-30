@@ -19,6 +19,7 @@ gads_get_ad_groups(
   parameters = NULL,
   login_customer_id = getOption("gads.login.customer.id"),
   include_resource_name = FALSE,
+  cl = NULL,
   verbose = TRUE
 )
 }
@@ -38,6 +39,8 @@ gads_get_ad_groups(
 \item{login_customer_id}{Google Ads manager customer id}
 
 \item{include_resource_name}{Get resource names fields in report}
+
+\item{cl}{A cluster object created by \code{\link{makeCluster}}, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).}
 
 \item{verbose}{Console log output}
 }
