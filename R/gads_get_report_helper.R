@@ -32,7 +32,7 @@ gads_get_report_helper <- function(
   login_customer_id <- str_replace_all(login_customer_id, '-', '')
 
   # manager_customer id
-  login_customer_id <- ifelse(is.null(login_customer_id), customer_id, login_customer_id)
+  login_customer_id <- ifelse(length(login_customer_id) == 0, customer_id, login_customer_id)
 
   # info
   if (verbose) cli_alert_info(c('Loading data: ', str_replace(customer_id, '(\\d{3})(\\d{3})(\\d{4})', '\\1-\\2-\\3')))

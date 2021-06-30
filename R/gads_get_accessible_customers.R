@@ -27,8 +27,11 @@ gads_get_accessible_customers <- function()
   # get result
   rawres <- content(ans)
 
+  rq_ids <- unique(ans$headers$`request-id`)
+  rgoogleads$last_request_id <- rq_ids
+
   # check for error
-  gads_check_errors(rawres)
+  gads_check_errors(out = rawres, request_id = rq_ids)
 
   # processing result
   unlist(rawres$resourceNames) %>%

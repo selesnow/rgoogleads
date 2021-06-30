@@ -59,7 +59,7 @@ gads_auth <- function(
   developer_token = getOption('gads.developer.token'),
   token           = NULL) {
 
-  if ( is.null(gads_oauth_app()) )
+  #if ( is.null(gads_oauth_app()) )
 
   cred <- gargle::token_fetch(
     scopes = 'https://www.googleapis.com/auth/adwords',
@@ -292,8 +292,8 @@ gads_default_ouath_app <- function() {
 
   app <- httr::oauth_app(
     'rgoogleads',
-    '2288143445-af03i872746r73fnslk8k2q5msa1umao.apps.googleusercontent.com',
-    '9Jh5Ax9rE4HnhNM8YHIXqTae'
+    '302158242268-eqkksdns6gbdl7qf0v59639pder9knql.apps.googleusercontent.com',
+    'l5_BBLUcd-LFkWHdnjuS9ACt'
     )
 
   return(app)

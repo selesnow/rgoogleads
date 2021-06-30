@@ -77,7 +77,7 @@ gads_get_account_hierarchy <- function(
   out <- content(ans)
 
   # check for error
-  gads_check_errors(out)
+  gads_check_errors(out,request_id =  headers(ans)$`request-id`)
 
   # parse answer
   tibble(data = out) %>%
