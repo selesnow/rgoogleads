@@ -1,3 +1,5 @@
+# rgoogleads 0.1.2
+
 # rgoogleads 0.1.1
 
 * Доработал README
