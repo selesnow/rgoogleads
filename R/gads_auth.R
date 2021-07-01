@@ -56,11 +56,17 @@ gads_auth <- function(
   developer_token = getOption('gads.developer.token'),
   token           = NULL) {
 
-  #if ( is.null(gads_oauth_app()) )
+  # check default app
+  app <- gads_oauth_app() %||% gads_default_ouath_app()
+
+  #
+  if ( app$secret == "302158242268-eqkksdns6gbdl7qf0v59639pder9knql.apps.googleusercontent.com" & developer_token != "EBkkx-znu2cZcEY7e74smg" ) {
+    gads_abort("You can`t use default oauth app with own developer token, please create default app and set it by gads_auth_configure()")
+  }
 
   cred <- gargle::token_fetch(
     scopes = 'https://www.googleapis.com/auth/adwords',
-    app = gads_oauth_app() %||% gads_default_ouath_app(),
+    app = app,
     email = email,
     path = path,
     package = "rgoogleads",

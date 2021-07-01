@@ -17,100 +17,110 @@ devtools::install_github('selesnow/rgoogleads')
 
 ## Что вам необходимо для начала работы
 
-* Токен разработчика (Developer token), в пакете есть вшитый токен разработчика который вы можете использовать, но при большом колличестве пользователей пакета, вы можете столкнуться с лимитами. 
+### Токен разработчика (Developer token)
 
-    * Подать заявку на получение токена разработчика можно в интерфейсе управляющего аккаунта Google Ads (Инструменты -> Центр API). Если у вас нет управляющего аккаунта создайте его перейдя по [ссылке](https://ads.google.com/intl/ru_ru/home/tools/manager-accounts/). Важно, что если к вашему Google аккаунту уже привязан какой либо Google Ads аккаунт, вы не смоэете создать под ним управляющий аккаунт, в таком случае сначала понадобится завести ещё один Google аккаунт.
-    
-    * Далее идём Инструменты -> Центр API, и заполняем нужные поля
+В `rgoogleads` есть вшитый токен разработчика который вы можете использовать, но при большом колличестве пользователей пакета, есть вероятность столбкнуться с существующими лимитами, т.к. на данный момент вшитый токен имеет базовый уровень доступа к API.
 
-    <Br>
+Получить товен можно следующим образом:
+
+1. Подать заявку на получение токена разработчика можно в интерфейсе управляющего аккаунта Google Ads (Инструменты -> Центр API). Если у вас нет управляющего аккаунта создайте его перейдя по [ссылке](https://ads.google.com/intl/ru_ru/home/tools/manager-accounts/). Важно, что если к вашему Google аккаунту уже привязан какой либо Google Ads аккаунт, вы не смоэете создать под ним управляющий аккаунт, в таком случае сначала понадобится завести ещё один Google аккаунт.
     
-    <center><img src='man/figures/developtoken1.png' align="middle" /></center>
+2. Далее идём Инструменты -> Центр API, и заполняем нужные поля
+
+<center><img src='man/figures/developtoken1.png' align="middle" /></center>
+
+<Br>
+
+3. Таким образом вы получите тестовый токен, с помощью которого можно работать только с тестовыми аккаунтами, поэтому сразу можете подавать заявку на базовый доступ к API.
     
-    <Br>
+<Br>
     
-    * Таким образом вы получите тестовый токен, с помощью которого можно работать только с тестовыми аккаунтами, поэтому сразу можете подавать заявку на базовый доступ к API/
-    
-    <Br>
-    
-    <center><img src='man/figures/zayavka.png' align="middle" /></center>
+<center><img src='man/figures/zayavka.png' align="middle" /></center>
         
-    <Br>
+<Br>
 
-* Проект в Google Cloud с созданными учётными данными и включённым Google Ads API. 
-    <Br>
+### Проект в Google Cloud с OAuth клиентом
+
+Помимо токена разработчика вам необходимо создать проект в Google Cloud, в нём создать OAuth клиент, и активировать Google Ads API. 
+
+1. Для создания проекта перейдите в [Google Cloud Console](https://console.cloud.google.com/home/) и нажмите на меню выбора проекта, далее жмите create project.
     
-    * Для создания проекта перейдите в [Google Cloud Console](https://console.cloud.google.com/home/) и нажмите на меню выбора проекта, далее жмите create project.
+<Br>
     
-    <Br>
+<center><img src='man/figures/createproj.png' align="middle" /></center>
     
-    <center><img src='man/figures/createproj.png' align="middle" /></center>
+<Br>
     
-    <Br>
+2. Далее в основном меню перейдите в раздел APIs & Services > Oauth consent screen.
     
-    * Далее в основном меню перейдите в раздел APIs & Services > Oauth consent screen.
+<Br>
     
-    <Br>
+<center><img src='man/figures/createscreen.png' align="middle" /></center>
     
-    <center><img src='man/figures/createscreen.png' align="middle" /></center>
+<Br>
     
-    <Br>
+3. Заполните все необхоимые поля, и перейдите в меню Credentials > Create credentials > OAuth client ID
     
-    * Заполните все необхоимые поля, и перейдите в меню Credentials > Create credentials > OAuth client ID
+<Br>
     
-    <Br>
+<center><img src='man/figures/createapp.png' align="middle" /></center>
     
-    <center><img src='man/figures/createapp.png' align="middle" /></center>
+<Br>
     
-    <Br>
+4. Из выпадающего меню выбираем Desktop app, вводим название приложение и жмём create
     
-    * Из выпадающего меню выбираем Desktop app, вводим название приложение и жмём create
-    
-    <Br>
+<Br>
         
-    <center><img src='man/figures/createapp2.png' align="middle" /></center>
+<center><img src='man/figures/createapp2.png' align="middle" /></center>
     
-    <Br>
+<Br>
     
-    * На этом настройка приложения закончена жмём ОК
+5. На этом настройка приложения закончена жмём ОК
     
-    <Br>
+<Br>
     
-    <center><img src='man/figures/createapp3.png' align="centre" /></center>
+<center><img src='man/figures/createapp3.png' align="centre" /></center>
     
-    <Br>
+<Br>
     
-    * Теперь, для удобства созданное приложение можно сохранить на ПК, название файла при сохранении может быть произвольным, допустим что мы сохранили его с именем app.json по ардесу C:/auth.
+6. Теперь, для удобства созданное приложение можно сохранить на ПК, название файла при сохранении может быть произвольным, допустим что мы сохранили его с именем app.json по ардесу C:/auth.
     
-    <Br>
+<Br>
     
-    <center><img src='man/figures/createapp4.png' align="middle" /></center>
+<center><img src='man/figures/createapp4.png' align="middle" /></center>
     
-    <Br>
+<Br>
     
-    * Последнем шагом настройки проекта в Google Cloud необходимо включить Google Ads API, переходим в раздел library
+7. Последнем шагом настройки проекта в Google Cloud необходимо включить Google Ads API, переходим в раздел library
     
-    <Br>
+<Br>
     
-    <center><img src='man/figures/library1.png' align="middle" /></center>
+<center><img src='man/figures/library1.png' align="middle" /></center>
     
-    <Br>
+<Br>
     
-    * В поиске пишем Google Ads
+8. В поиске пишем Google Ads
     
-    <Br>
+<Br>
     
-    <center><img src='man/figures/library2.png' align="middle" /></center>
+<center><img src='man/figures/library2.png' align="middle" /></center>
     
-    <Br>
+<Br>
     
-    * Включаем в проекте Google Ads API
+9. Включаем в проекте Google Ads API
     
-    <Br>
+<Br>
     
-    <center><img src='man/figures/library3.png' align="centre" /></center>
+<center><img src='man/figures/library3.png' align="centre" /></center>
     
-    <Br>
+<Br>
+
+### Важная информация о совместном использовании токена разработчика и OAuth клиента приложения
+
+* У компании, т.е. юр. лица должен быть только один токен разработчика.
+* При первом использовании OAuth клиент из проекта Google Cloud с токеном разработчика, идентификатор клиента привязывается к токену разработчика и не может использоваться с другим токеном разработчика. Другими словами:
+    * Токен разработчика можно использовать с несколькими идентификаторами клиентов.
+    * Однако идентификатор Oauth клиента можно использовать только с одним токеном разработчика.
     
 ## Пример использования пакета
 
