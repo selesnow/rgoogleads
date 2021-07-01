@@ -17,10 +17,25 @@ devtools::install_github('selesnow/rgoogleads')
 
 ## Что вам необходимо для начала работы
 
-* Токен разработчика (Developer token), в пакете есть вшитый токен разработчика который вы можете использовать, но при большом колличестве пользователей пакета, вы можете столкнуться с лимитами, подать заявку на получение токена разработчика можно в интерфейсе центра клиентов Google Ads (Инструменты -> Центр API)
+* Токен разработчика (Developer token), в пакете есть вшитый токен разработчика который вы можете использовать, но при большом колличестве пользователей пакета, вы можете столкнуться с лимитами. 
 
-<img src='man/figures/developtoken1.png' align="centr" />
-<img src='man/figures/developtoken2.png' align="centr" />
+    * Подать заявку на получение токена разработчика можно в интерфейсе управляющего аккаунта Google Ads (Инструменты -> Центр API). Если у вас нет управляющего аккаунта создайте его перейдя по [ссылке](https://ads.google.com/intl/ru_ru/home/tools/manager-accounts/). Важно, что если к вашему Google аккаунту уже привязан какой либо Google Ads аккаунт, вы не смоэете создать под ним управляющий аккаунт, в таком случае сначала понадобится завести ещё один Google аккаунт.
+    
+    * Далее идём Инструменты -> Центр API, и заполняем нужные поля
+
+    <Br>
+    
+    <center><img src='man/figures/developtoken1.png' align="middle" /></center>
+    
+    <Br>
+    
+    * Таким образом вы получите тестовый токен, с помощью которого можно работать только с тестовыми аккаунтами, поэтому сразу можете подавать заявку на базовый доступ к API/
+    
+    <Br>
+    
+    <center><img src='man/figures/zayavka.png' align="middle" /></center>
+        
+    <Br>
 
 * Проект в Google Cloud с созданными учётными данными и включённым Google Ads API. 
     <Br>
@@ -29,7 +44,7 @@ devtools::install_github('selesnow/rgoogleads')
     
     <Br>
     
-    <img src='man/figures/createproj.png' align="centre" />
+    <center><img src='man/figures/createproj.png' align="middle" /></center>
     
     <Br>
     
@@ -37,7 +52,7 @@ devtools::install_github('selesnow/rgoogleads')
     
     <Br>
     
-    <img src='man/figures/createscreen.png' align="centre" />
+    <center><img src='man/figures/createscreen.png' align="middle" /></center>
     
     <Br>
     
@@ -45,7 +60,7 @@ devtools::install_github('selesnow/rgoogleads')
     
     <Br>
     
-    <img src='man/figures/createapp.png' align="centre" />
+    <center><img src='man/figures/createapp.png' align="middle" /></center>
     
     <Br>
     
@@ -53,16 +68,49 @@ devtools::install_github('selesnow/rgoogleads')
     
     <Br>
         
-    <img src='man/figures/createapp2.png' align="centre" />
+    <center><img src='man/figures/createapp2.png' align="middle" /></center>
+    
+    <Br>
     
     * На этом настройка приложения закончена жмём ОК
     
-    <img src='man/figures/createapp3.png' align="centre" />
+    <Br>
+    
+    <center><img src='man/figures/createapp3.png' align="centre" /></center>
+    
+    <Br>
     
     * Теперь, для удобства созданное приложение можно сохранить на ПК, название файла при сохранении может быть произвольным, допустим что мы сохранили его с именем app.json по ардесу C:/auth.
     
-    <img src='man/figures/createapp4.png' align="centre" />
+    <Br>
     
+    <center><img src='man/figures/createapp4.png' align="middle" /></center>
+    
+    <Br>
+    
+    * Последнем шагом настройки проекта в Google Cloud необходимо включить Google Ads API, переходим в раздел library
+    
+    <Br>
+    
+    <center><img src='man/figures/library1.png' align="middle" /></center>
+    
+    <Br>
+    
+    * В поиске пишем Google Ads
+    
+    <Br>
+    
+    <center><img src='man/figures/library2.png' align="middle" /></center>
+    
+    <Br>
+    
+    * Включаем в проекте Google Ads API
+    
+    <Br>
+    
+    <center><img src='man/figures/library3.png' align="centre" /></center>
+    
+    <Br>
     
 ## Пример использования пакета
 

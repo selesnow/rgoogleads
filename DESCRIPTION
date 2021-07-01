@@ -2,11 +2,13 @@ Package: rgoogleads
 Title: Loading Data from 'Google Ads API'
 Version: 0.1.0
 Authors@R: 
-    person(given  = "Alexey",
-           family = "Seleznev",
-           role   = c("aut", "cre"),
-           email  = "selesnow@gmail.com",
-           comment = c(ORCID = "0000-0003-0410-7385"))
+    c(person(given  = "Alexey",
+             family = "Seleznev",
+             role   = c("aut", "cre"),
+             email  = "selesnow@gmail.com",
+             comment = c(ORCID = "0000-0003-0410-7385")),
+      person(given = "Netpeak",
+             role = c("cph")))
 Description: Interface for loading data from 'Google Ads API', 
     see <https://developers.google.com/google-ads/api/docs/start>. 
     Package provide function for authorization and loading reports.

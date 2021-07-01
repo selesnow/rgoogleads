@@ -4,7 +4,7 @@ library(rgoogleads)
 
 # auth --------------------------------------------------------------------
 gads_auth_configure(app = gads_default_ouath_app())
-gads_auth(email = 'alsey.netpeak@gmail.com', developer_token = "EBkkx-znu2cZcEY7e74smg")
+gads_auth(email = 'alsey.netpeak@gmail.com')
 gads_deauth()
 gads_user()
 gads_developer_token()
@@ -140,11 +140,10 @@ kw <- gads_get_ad_group_criterions(customer_id = acs[c(4,5)])
 library(rgoogleads)
 
 # set your app from google console
-gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth_configure(path = 'D:/ga_auth/testapp.json')
 
 # set email and developer token
-gads_auth(email = 'selesnow@gmail.com',
-          developer_token = "3gTgJr6Xi3Uqdt-hiDNaIg")
+gads_auth(email = 'selesnow@gmail.com')
 
 # get your top level accounts
 accounts <- gads_get_accessible_customers()
@@ -153,5 +152,9 @@ accounts <- gads_get_accessible_customers()
 multi_rep <- gads_get_report(
   date_from = as.Date('2020-01-01'),
   date_to = as.Date('2021-06-30'),
-  customer_id = '471-277-1282', login_customer_id = '471-277-1282'
+  customer_id = '471-277-1282',
+  login_customer_id = '471-277-1282'
 )
+
+
+gads_auth(email = 'r.for.marketing@gmail.com')
