@@ -1,18 +1,20 @@
 # полноценный тест
+devtools::install_github('selesnow/rgoogleads')
 # авторизация
 library(rgoogleads)
 
 # auth --------------------------------------------------------------------
-gads_auth_configure(app = gads_default_ouath_app())
+
 gads_auth(email = 'alsey.netpeak@gmail.com')
-gads_deauth()
+
 gads_user()
+
 gads_developer_token()
 gads_oauth_app()
 gads_auth_configure(path = 'D:/ga_auth/app.json')
 gads_auth_configure(app = gads_default_ouath_app())
 gads_auth_cache_path()
-
+accounts <- gads_get_accessible_customers()
 # set accounts ------------------------------------------------------------
 # установка основного логина
 gads_set_login_customer_id('1754107253')

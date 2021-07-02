@@ -2,18 +2,18 @@
 # rgoogleads: R пакет для работы с Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
+[![](https://cranlogs.r-pkg.org/badges/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
 <!-- badges: end -->
 
 Пакет `rgoogleads` предназначен для работы с [Google Ads API v8](https://developers.google.com/google-ads/api/docs/start) на языке R.
 
 ## Установка
 
-На данный момент пакет доступен для установки только из [GitHub](https://github.com), используйте команду:
-```r
-devtools::install_github('selesnow/rgoogleads')
-```
+Последнюю стабильную версию пакета вы можете установить из CRAN: `install.packages('rgoogleads')`
 
-В ближайшее время пакет будет доступен для скачивания с CRAN.
+Наиболее актуальную версию можно установить из GitHub: `devtools::install_github('selesnow/rgoogleads')`
+
+
 
 ## Политика конфиденциальности
 
