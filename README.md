@@ -15,7 +15,13 @@ devtools::install_github('selesnow/rgoogleads')
 
 В ближайшее время пакет будет доступен для скачивания с CRAN.
 
-## Политика конфиденциальности
+## Privacy Policy (en)
+
+The `rgoogleads` package for authorization uses the [gargle](https://gargle.r-lib.org/) package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the `gads_auth_cache_path()` function.
+
+The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.
+
+## Политика конфиденциальности (ru)
 
 Пакет `rgoogleads` для авторизации использует пакет [gargle](https://gargle.r-lib.org/), полученные при автризации учётные данные хранятся исключительно на вашем локальном ПК, узнать папку в которую кешируются учтные данные можно функцией `gads_auth_cache_path()`.
 
