@@ -18,6 +18,7 @@ export(gads_get_campaigns)
 export(gads_get_ad_groups)
 export(gads_get_ads)
 export(gads_get_ad_group_criterions)
+export(gads_get_fields)
 export(gads_last_request_ids)
 
 # import

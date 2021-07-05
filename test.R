@@ -160,3 +160,10 @@ multi_rep <- gads_get_report(
 
 
 gads_auth(email = 'r.for.marketing@gmail.com')
+
+
+# инфа по ресурсам --------------------------------------------------------
+res_info <- gads_get_fields('campaign')
+mtr_info <- gads_get_fields('metrics.clicks')
+seg_info <- gads_get_fields('segments.day_of_week')
+
