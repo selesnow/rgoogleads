@@ -208,3 +208,5 @@ gads_auth_configure(path = 'D:/ga_auth/app.json')
 gads_auth(path = 'C:/ga_auth/gads_sk.json')
 accounts <- gads_get_accessible_customers()
 gads_developer_token()
+
+geo_dict <- gads_get_geo_targets()

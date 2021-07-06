@@ -79,14 +79,14 @@ if (require(httr)) {
 
   # bring your own app via JSON downloaded from Google Developers Console
   # this file has the same structure as the JSON from Google
-  app_path <- system.file(
-    "extdata", "fake-oauth-client-id-and-secret.json",
-    package = "googlesheets4"
-  )
   gads_auth_configure(path = app_path)
 
   # confirm the changes
   gads_oauth_app()
+
+  # use own developer token
+  gads_auth_configure(developer_token = 'Your developer token')
+
 }
 
 # restore original auth config

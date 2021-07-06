@@ -19,6 +19,7 @@ export(gads_get_ad_groups)
 export(gads_get_ads)
 export(gads_get_ad_group_criterions)
 export(gads_get_fields)
+export(gads_get_geo_targets)
 export(gads_last_request_ids)
 
 # import
@@ -35,5 +36,6 @@ importFrom(snakecase, to_snake_case, to_any_case)
 importFrom(cli, cli_alert_info, cli_alert_success, cli_alert_danger, cli_alert_warning, cli_div, cli_abort)
 importFrom(pbapply, pblapply)
 importFrom(rlist, list.filter)
+importFrom(rvest, read_html, html_element, html_attr)
 
 
