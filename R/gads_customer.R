@@ -36,14 +36,7 @@ gads_customer <- function(
   rgoogleads$last_request_id <- rq_ids
 
   # check for error
-  # gads_check_errors(out = data, client_id = '', request_id = rq_ids, verbose = FALSE)
-  if ( "error" %in% names(data) ) {
-    msg <- ifelse(is.null(data$error$details[[1]]$errors[[1]]$message), data$error$message, paste(data$error$message, data$error$details[[1]]$errors[[1]]$message, sep = ": "))
-    if(verbose) cli_alert_danger(c(customer_id, ": ", msg))
-    if(verbose) cli_alert_danger(c("Request ID: ", rq_ids))
-    if(verbose) cli_alert_danger("You can use gads_last_request_ids() for get last request id, if you want send ticket to google ads api support.")
-    stop(paste(customer_id, ": ", msg, " Request ID: ", rq_ids))
-  }
+  gads_check_errors(out = data, client_id = customer_id, request_id = rq_ids, verbose = FALSE)
 
   # return the data
   return(data)
