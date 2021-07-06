@@ -16,27 +16,32 @@ gads_customer <- function(
   verbose = TRUE
 ) {
 
-  # check token
-  gargle::token_tokeninfo(gads_token())
-
-  # delete _
+  # delete - in customer id
   customer_id <- str_replace_all(customer_id, '-', '')
 
-  # send query
-  ans <- GET(str_glue('https://googleads.googleapis.com/v8/customers/{customer_id}/'),
-             add_headers(Authorization = str_glue("Bearer {gads_token()$auth_token$credentials$access_token}"),
-                         `developer-token`= gads_developer_token())
+  # to env
+  gads_customer_id_to_env(customer_id)
+
+  # build query
+  out <- request_build(
+    method = "GET",
+    path   = str_glue('v8/customers/{customer_id}/'),
+    token = gads_token(),
+    base_url = 'https://googleads.googleapis.com/'
   )
 
-  # get result
-  data <- content(ans)
+  # send request
+  ans <- request_make(
+    out,
+    add_headers(`developer-token`= gads_developer_token())
+    )
 
   # request id
   rq_ids <- headers(ans)$`request-id`
   rgoogleads$last_request_id <- rq_ids
 
-  # check for error
-  gads_check_errors(out = data, client_id = customer_id, request_id = rq_ids, verbose = FALSE)
+  # pars result
+  data <- response_process(ans, error_message = gads_check_errors2)
 
   # return the data
   return(data)
