@@ -199,3 +199,12 @@ gads_get_campaigns()
 gads_get_ad_groups()
 gads_get_ads()
 gads_get_ad_group_criterions()
+
+
+library(rgoogleads)
+
+# авторизация
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth(path = 'C:/ga_auth/gads_sk.json')
+accounts <- gads_get_accessible_customers()
+gads_developer_token()

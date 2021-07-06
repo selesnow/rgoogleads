@@ -135,6 +135,7 @@ gads_has_token <- function() {
 #' @eval gargle:::PREFIX_auth_configure_description(gargle_lookup_table)
 #' @eval gargle:::PREFIX_auth_configure_params()
 #' @eval gargle:::PREFIX_auth_configure_return(gargle_lookup_table)
+#' @param developer_token Your Google Ads Developer Token.
 #'
 #' @family auth functions
 #' @export
@@ -162,21 +163,21 @@ gads_has_token <- function() {
 #'
 #'   # bring your own app via JSON downloaded from Google Developers Console
 #'   # this file has the same structure as the JSON from Google
-#'   app_path <- system.file(
-#'     "extdata", "fake-oauth-client-id-and-secret.json",
-#'     package = "googlesheets4"
-#'   )
 #'   gads_auth_configure(path = app_path)
 #'
 #'   # confirm the changes
 #'   gads_oauth_app()
+#'
+#'   # use own developer token
+#'   gads_auth_configure(developer_token = 'Your developer token')
+#'
 #' }
 #'
 #' # restore original auth config
 #' gs4_auth_configure(app = original_app, api_key = original_api_key)
 #' }
 #' @export
-gads_auth_configure <- function(app, path, api_key) {
+gads_auth_configure <- function(app, path, api_key, developer_token) {
   if (!missing(app) && !missing(path)) {
     gads_abort("Must supply exactly one of {.arg app} or {.arg path}, not both")
   }
@@ -194,6 +195,10 @@ gads_auth_configure <- function(app, path, api_key) {
 
   if (!missing(api_key)) {
     .auth$set_api_key(api_key)
+  }
+
+  if (!missing(developer_token)) {
+    options('gads.developer.token' = developer_token)
   }
 
   invisible(.auth)
@@ -266,7 +271,17 @@ gads_api_key <- function() .auth$api_key
 
 #' @export
 #' @rdname gads_auth_configure
-gads_developer_token <- function() .auth$cred$params$user_params$developer_token
+gads_developer_token <- function() {
+
+  dev_token <- .auth$cred$params$user_params$developer_token
+
+  if ( is.null(dev_token) ) {
+    dev_token <- getOption('gads.developer.token')
+  }
+
+  return(dev_token)
+
+}
 
 
 #' @export

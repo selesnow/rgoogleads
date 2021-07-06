@@ -8,7 +8,7 @@
 \alias{gads_oauth_app}
 \title{Edit and view auth configuration}
 \usage{
-gads_auth_configure(app, path, api_key)
+gads_auth_configure(app, path, api_key, developer_token)
 
 gads_auth_cache_path()
 
@@ -26,6 +26,8 @@ client id (aka key) and secret, in one of the forms supported for the \code{txt}
 argument of \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} (typically, a file path or JSON string).}
 
 \item{api_key}{API key.}
+
+\item{developer_token}{Your Google Ads Developer Token.}
 }
 \value{
 \itemize{
