@@ -1,17 +1,41 @@
 # полноценный тест
 devtools::install_github('selesnow/rgoogleads')
-# авторизация
+
+# установка пакета
+install.packages('rgoogleads')
+# подключение
 library(rgoogleads)
 
-# auth --------------------------------------------------------------------
+# авторизация
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth(email = 'me@gmail.com')
 
-gads_auth(email = 'alsey.netpeak@gmail.com')
+# опции#
+## установка основного логина
+gads_set_login_customer_id('111-111-1111')
+## установка клиентского логина
+gads_set_customer_id('222-333-4444')
+
+# запрос статистики
+group_report <- gads_get_report(
+  resource    = "ad_group",
+  fields = c("ad_group.campaign",
+             "ad_group.id",
+             "ad_group.name",
+             "ad_group.status",
+             "metrics.clicks",
+             "metrics.cost_micros"),
+  date_from   = "2021-06-02",
+  date_to     = Sys.Date() - 1,
+  where       = "ad_group.status = 'ENABLED'",
+  order_by    = c("metrics.clicks DESC", "metrics.cost_micros"),
+)
 
 gads_user()
 
 gads_developer_token()
 gads_oauth_app()
-gads_auth_configure(path = 'D:/ga_auth/app.json')
+
 gads_auth_configure(app = gads_default_ouath_app())
 gads_auth_cache_path()
 accounts <- gads_get_accessible_customers()
@@ -167,3 +191,11 @@ res_info <- gads_get_fields('campaign')
 mtr_info <- gads_get_fields('metrics.clicks')
 seg_info <- gads_get_fields('segments.day_of_week')
 
+
+gads_set_customer_id()
+gads_set_login_customer_id()
+
+gads_get_campaigns()
+gads_get_ad_groups()
+gads_get_ads()
+gads_get_ad_group_criterions()
