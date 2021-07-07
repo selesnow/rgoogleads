@@ -97,7 +97,8 @@ gads_get_metadata <- function(
   res <- tibble(data = data$results) %>%
          unnest_wider(data) %>%
          rowwise() %>%
-         mutate( across( where(is.list), function(col) if_else(is.null(col), list(col), list(unlist(col))) ) )
+         mutate( across( where(is.list), function(col) if_else(is.null(col), list(col), list(unlist(col))) ) ) %>%
+         rename_with( to_snake_case )
 
   # success msg
   cli_alert_success('Success! Loaded {nrow(res)} rows!')
