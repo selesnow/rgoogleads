@@ -75,6 +75,41 @@ gads_auth_configure(path = 'D:/ga_auth/app.json')
 gads_auth('me@gmail.com')
 ```
 
+## Example of use rgoogleads
+
+```r
+library(rgoogleads)
+
+# set own oauth app
+gads_auth_configure(path = 'C:/auth/app.json')
+# set your developer token if needed, or use default developer token
+gads_auth(email = 'me@gmail.com', developer_token = "own developer token")
+
+# get list of accessible accounts
+my_accounts <- gads_get_accessible_customers()
+
+# set manager account id
+gads_set_login_customer_id('xxx-xxx-xxxx')
+
+# set client account id
+gads_set_customer_id('xxx-xxx-xxxx')
+
+# load report data
+ad_group_report <- gads_get_report(
+  resource    = "ad_group",
+  fields = c("ad_group.campaign",
+             "ad_group.id",
+             "ad_group.name",
+             "ad_group.status",
+             "metrics.clicks",
+             "metrics.cost_micros"),
+  date_from   = "2021-06-10",
+  date_to     = "2021-06-17",
+  where       = "ad_group.status = 'ENABLED'",
+  order_by    = c("metrics.clicks DESC", "metrics.cost_micros")
+)
+```
+
 ## Политика конфиденциальности (ru)
 
 Пакет `rgoogleads` для авторизации использует пакет [gargle](https://gargle.r-lib.org/), полученные при автризации учётные данные хранятся исключительно на вашем локальном ПК, узнать папку в которую кешируются учтные данные можно функцией `gads_auth_cache_path()`.
