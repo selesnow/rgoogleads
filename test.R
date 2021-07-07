@@ -10,6 +10,9 @@ library(rgoogleads)
 gads_auth_configure(path = 'D:/ga_auth/app.json')
 gads_auth(email = 'alsey.netpeak@gmail.com')
 
+
+gads_auth(email = 'selesnow.netpeak@gmail.com')
+
 # опции#
 # установка основного логина
 gads_set_login_customer_id('1754107253')
@@ -192,8 +195,18 @@ res_info <- gads_get_fields(object_name = 'campaign')
 mtr_info <- gads_get_fields('metrics.clicks')
 seg_info <- gads_get_fields('segments.day_of_week')
 
-resources <- gads_get_metadata('RESOURCE')
+resources <- gads_get_metadata('RESOURCE', fields = c("name", "category", "data_type"))
 metadata  <- gads_get_metadata('ALL')
+
+gads_unlist <- function(col) {
+  if_else(is.null(col), list(col), list(unlist(col)))
+}
+
+resources %>%
+
+
+resources[5,]$metrics %>% unlist
+
 
 gads_set_customer_id()
 gads_set_login_customer_id()
