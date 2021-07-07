@@ -1,25 +1,68 @@
 
-# rgoogleads: R пакет для работы с Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
+# rgoogleads: R package for work with Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
 
 Пакет `rgoogleads` предназначен для работы с [Google Ads API v8](https://developers.google.com/google-ads/api/docs/start) на языке R.
 
-## Установка
+## Install
 
-На данный момент пакет доступен для установки только из [GitHub](https://github.com), используйте команду:
+You can instal `rgoogleads` from [CRAN](https://cran.r-project.org/package=rgoogleads) or [GitHub](https://github.com), используйте команду:
+
 ```r
+# install from CRAN
+install.packages('rgoogleads')
+```
+
+```r
+# install from github
 devtools::install_github('selesnow/rgoogleads')
 ```
 
-В ближайшее время пакет будет доступен для скачивания с CRAN.
+## Ьain goal and and capabilities of rgoogleads
 
 ## Privacy Policy (en)
 
 The `rgoogleads` package for authorization uses the [gargle](https://gargle.r-lib.org/) package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the `gads_auth_cache_path()` function.
 
 The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.
+
+For more details, I recommend that you read the following articles from the official documentation of the gargle package:
+
+* [Stewarding the cache of user tokens](https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/)
+* [Auth when using R in the browser](https://cran.r-project.org/web/packages/gargle/vignettes/auth-from-web.html)
+* [How gargle gets tokens](https://cran.r-project.org/web/packages/gargle/vignettes/how-gargle-gets-tokens.html)
+
+### Authorization process
+
+You run `gads_auth('me@gmail.cpm')` and 
+
+![Typical OAuth dance in the browser, when initiated from within R](http://img.netpeak.ua/alsey/1OE9JZ2.png)
+
+Upon success, you see this message in the browser:
+
+`Authentication complete. Please close this page and return to R.`
+
+And you credentials cached locally on your PC in the form of RDS files.
+
+### Key points
+* By default, gargle caches user tokens centrally, at the user level, and their keys or labels also convey which Google identity is associated with each token.
+* Token storage relies on serialized R objects. That is, tokens are stored locally on your PC in the form of RDS files.
+
+### Use own OAuth client
+You can use own OAuth app:
+
+```r
+app <- httr::oauth_app(appname = "app name", key = "app id", secret = "app secret")
+gads_auth_configure(app = app)
+
+# or from json file 
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+
+# run authorization
+gads_auth('me@gmail.com')
+```
 
 ## Политика конфиденциальности (ru)
 
