@@ -48,7 +48,7 @@ For more details, I recommend that you read the following articles from the offi
 
 ### Authorization process
 
-You run `gads_auth('me@gmail.cpm')` and 
+You run `gads_auth('me@gmail.cpm')` and start [OAuth Dance](https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10) in the browser:
 
 ![Typical OAuth dance in the browser, when initiated from within R](http://img.netpeak.ua/alsey/1OE9JZ2.png)
 
