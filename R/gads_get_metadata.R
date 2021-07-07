@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @seealso \href{https://ads-developers.googleblog.com/2021/04/the-query-builder-blog-series-part-3.html}{The Query Builder Blog Series: Part 3 - Creating a Resource Schema}
-#' \href{https://developers.google.com/google-ads/api/docs/concepts/field-service}{Resource Metadata API documentation}
+#' and \href{https://developers.google.com/google-ads/api/docs/concepts/field-service}{Resource Metadata API documentation}
 #'
 #' @examples
 #' \dontrun{
