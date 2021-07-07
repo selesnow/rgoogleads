@@ -3,7 +3,7 @@
 #' @param doc_page Link to Google Ads API Reference page
 #' @param file_link Link to csv file, default is 'auto'
 #'
-#' @return
+#' @return data.frame with geo targets dictionary
 #' @export
 #' @seealso \href{https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en}{Google Ads Geo Targets document page}
 #'
@@ -12,7 +12,7 @@
 #' geo_dict <- gads_get_geo_targets()
 #' }
 gads_get_geo_targets <- function(
-  doc_page  = 'https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en',
+  doc_page  = 'https://developers.google.com/google-ads/api/reference/data/geotargets',
   file_link = 'auto'
   ) {
 

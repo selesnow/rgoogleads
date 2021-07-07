@@ -51,7 +51,8 @@
                   gads.api.version          = "v8",
                   gads.login.customer.id    = login_customer_id,
                   gads.customer.id          = customer_id,
-                  gads.multi.account.verbos = FALSE)
+                  gads.multi.account.verbos = FALSE,
+                  gads.base.url             = 'https://googleads.googleapis.com/')
 
   toset <- !(names(op.gads) %in% names(op))
   if (any(toset)) options(op.gads[toset])

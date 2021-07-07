@@ -35,17 +35,18 @@ wrapper around \code{\link[gargle:token_fetch]{gargle::token_fetch()}}.
 
 By default, you are directed to a web browser, asked to sign in to your
 Google account, and to grant rgoogleads permission to operate on your
-behalf with Google Ads. By default, these user credentials are cached in a
-folder below your home directory, \verb{~/.R/gargle/gargle-oauth}, from where
+behalf with Google Ads. By default, with your permission, these user
+credentials are cached in a folder below your home directory, from where
 they can be automatically refreshed, as necessary. Storage at the user
 level means the same token can be used across multiple projects and
 tokens are less likely to be synced to the cloud by accident.
 
-If you are interacting with R from a web-based platform, like RStudio
-Server or Cloud, you need to use a variant of this flow, known as
-out-of-band auth ("oob"). If this does not happen automatically, you
-can request it yourself with \code{use_oob = TRUE} or, more persistently, by
-setting an option via \code{options(gargle_oob_default = TRUE)}.
+If you are interacting with R within a browser (applies to RStudio Server,
+RStudio Workbench, and RStudio Cloud), you need a variant of this flow,
+known as out-of-band auth ("oob"). If this does not happen
+automatically, you can request it yourself with \code{use_oob = TRUE} or,
+more persistently, by setting an option via
+\code{options(gargle_oob_default = TRUE)}.
 }
 \details{
 Most users, most of the time, do not need to call \code{gads_auth()}
@@ -57,11 +58,16 @@ However, when necessary, this function allows the user to explicitly:
 are multiple cached tokens, this can clarify which one to use. It can
 also force rgoogleads to switch from one identity to another. If
 there's no cached token for the email, this triggers a return to the
-browser to choose the identity and give consent.
-\item Use a service account token.
+browser to choose the identity and give consent. You can specify just
+the domain by using a glob pattern. This means that a script
+containing \code{email = "*@example.com"} can be run without further
+tweaks on the machine of either \code{alice@example.com} or
+\code{bob@example.com}.
+\item Use a service account token or workload identity federation.
 \item Bring their own \link[httr:Token-class]{Token2.0}.
 \item Specify non-default behavior re: token caching and out-of-bound
 authentication.
+\item Customize scopes.
 }
 
 For details on the many ways to find a token, see

@@ -17,9 +17,8 @@ gads_last_request_ids <- function() {
 }
 
 #' Write customer id for error message
-#'
+#' @param customer_id Your client customer id
 #' @return only set customer id into env
-#'
 gads_customer_id_to_env <- function(customer_id) {
   customer_id <- str_replace_all(customer_id, "-", "") %>%
                  str_replace('(\\d{3})(\\d{3})(\\d{4})', '\\1-\\2-\\3')

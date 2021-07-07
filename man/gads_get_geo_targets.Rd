@@ -5,8 +5,7 @@
 \title{Download CSV of geo targets}
 \usage{
 gads_get_geo_targets(
- 
-    doc_page = "https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en",
+  doc_page = "https://developers.google.com/google-ads/api/reference/data/geotargets",
   file_link = "auto"
 )
 }
@@ -16,7 +15,7 @@ gads_get_geo_targets(
 \item{file_link}{Link to csv file, default is 'auto'}
 }
 \value{
-
+data.frame with geo targets dictionary
 }
 \description{
 Download CSV of geo targets

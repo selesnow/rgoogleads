@@ -14,7 +14,7 @@ Description: Interface for loading data from 'Google Ads API',
     Package provide function for authorization and loading reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: gargle (>= 1.1.0), 
+Imports: gargle (>= 1.2.0), 
          httr, 
          stringr, 
          rlang,

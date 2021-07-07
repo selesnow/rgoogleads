@@ -192,6 +192,8 @@ res_info <- gads_get_fields(object_name = 'campaign')
 mtr_info <- gads_get_fields('metrics.clicks')
 seg_info <- gads_get_fields('segments.day_of_week')
 
+resources <- gads_get_metadata('RESOURCE')
+metadata  <- gads_get_metadata('ALL')
 
 gads_set_customer_id()
 gads_set_login_customer_id()

@@ -25,13 +25,13 @@ gads_customer <- function(
   # build query
   out <- request_build(
     method = "GET",
-    path   = str_glue('v8/customers/{customer_id}/'),
+    path   = str_glue('{options("gads.api.version")}/customers/{customer_id}/'),
     token = gads_token(),
-    base_url = 'https://googleads.googleapis.com/'
+    base_url = getOption('gads.base.url')
   )
 
   # send request
-  ans <- request_make(
+  ans <- request_retry(
     out,
     add_headers(`developer-token`= gads_developer_token())
     )
