@@ -25,9 +25,9 @@ gads_get_report(
 )
 }
 \arguments{
-\item{resource}{Report type, for more information see \href{https://developers.google.com/google-ads/api/fields/v8/overview#list-of-all-resources}{link with list of all resources}}
+\item{resource}{Report type, you can get list of all acessible resource using \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v8/overview#list-of-all-resources}{link with list of all resources}}
 
-\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v8/campaign}{see field list of campaign report}.}
+\item{fields}{character vector, list of report fields, all report has own fields list. You can get list of accesible resource fields using \code{\link{gads_get_fields}} for example \href{https://developers.google.com/google-ads/api/fields/v8/campaign}{see field list of campaign report}.}
 
 \item{where}{Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.}
 
@@ -80,6 +80,7 @@ multi_rep <- gads_get_report(
     customer_id = accounts
 )
 
+# ------------------
 # using more arguments for other reports
 group_report <- gads_get_report(
 customer_id = 4732519773,
@@ -96,5 +97,32 @@ where       = "ad_group.status = 'ENABLED'",
 order_by    = c("metrics.clicks DESC", "metrics.cost_micros"),
 limit       = 30000
 )
+
+# ------------------
+# parallel loading mode
+# note: you must using login_customer_id agrument in parallel mode
+# because oprions gads_set_login_customer_id() does't work in parallel mode loading
+library(parallel)
+
+# make core cluster
+cl <- makeCluster(4)
+
+multi_rep <- gads_get_report(
+  date_from         = as.Date('2021-06-10'),
+  date_to           = as.Date('2021-06-17'),
+  customer_id       = c('111-111-1111',
+                        '222-222-2222',
+                        '333-333-3333',
+                        '444-444-4444',
+                        '555-555-5555'),
+  login_customer_id = "999-999-9999",
+  cl                = cl
+)
+}
+}
+\seealso{
+\itemize{
+\item \href{https://developers.google.com/google-ads/api/fields/v8/overview}{Oficial Google Ads API Reports documantation}
+\item \href{https://developers.google.com/google-ads/api/fields/v8/overview_query_builder}{Google Ads Query Builder}
 }
 }

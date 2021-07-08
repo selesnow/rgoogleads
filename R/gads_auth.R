@@ -45,8 +45,18 @@ gargle_lookup_table <- list(
 #' ## choose to get a new one
 #' gads_auth(email = NA)
 #'
-#' ## use a service account token
-#' gads_auth(path = "foofy-83ee9e7c9c48.json")
+#' ## use own developer token
+#' gads_auth(
+#'     email = "yourname@example.com",
+#'     developer_token = "your developer token"
+#' )
+#'
+#' ## use own OAuth client app
+#' gads_auth_configure(
+#'     path = "path/to/your/oauth_client.json"
+#' )
+#'
+#' gads_auth(email = "yourname@example.com")
 #' }
 gads_auth <- function(
   email           = gargle::gargle_oauth_email(),
@@ -59,7 +69,7 @@ gads_auth <- function(
   # check default app
   app <- gads_oauth_app() %||% gads_default_ouath_app()
 
-  #
+  # check link between app_secret and developer token
   if ( app$secret == "302158242268-eqkksdns6gbdl7qf0v59639pder9knql.apps.googleusercontent.com" & developer_token != "EBkkx-znu2cZcEY7e74smg" ) {
     gads_abort("You can`t use default oauth app with own developer token, please create default app and set it by gads_auth_configure()")
   }
