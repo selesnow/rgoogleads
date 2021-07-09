@@ -65,6 +65,8 @@ Capabilities of `rgoogleads`:
 
 The `rgoogleads` package for authorization uses the [gargle](https://gargle.r-lib.org/) package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the `gads_auth_cache_path()` function.
 
+For loading data from Google Ads Account `rgoogleads` needs https://www.googleapis.com/auth/adwords scope (Manage Your Google AdWords Campaigns), see [official Google Ads API documentation](https://developers.google.com/google-ads/api/docs/oauth/internals#scope). 
+
 The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.
 
 For more details, I recommend that you read the following articles from the official documentation of the gargle package:
@@ -147,6 +149,12 @@ For obtain own developer token and OAuth client read the following documentation
 
 * [Obtain Your Developer Token](https://developers.google.com/google-ads/api/docs/first-call/dev-token)
 * [Configure a Google API Console Project for the Google Ads API](https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project)
+
+## Package chage log, news and updates
+You can follow the package updates at the [link](https://github.com/selesnow/rgoogleads/blob/master/NEWS.md)
+
+## Bug report and support
+If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a problem using the [link](https://github.com/selesnow/rgoogleads/issues).
 
 ### Author
 Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net)
