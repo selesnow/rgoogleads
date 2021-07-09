@@ -48,7 +48,7 @@ install.packages('rgoogleads')
 devtools::install_github('selesnow/rgoogleads')
 ```
 
-## Main goal and and capabilities of rgoogleads
+## Main goal and capabilities of rgoogleads
 
 `rgoogleads` is R client for work with Google Ads API v8. Main goal of `rgoogleads` - load report data from Google Ads client account into R for analisys and visualizations.
 
