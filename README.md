@@ -65,7 +65,7 @@ Capabilities of `rgoogleads`:
 
 The `rgoogleads` package for authorization uses the [gargle](https://gargle.r-lib.org/) package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the `gads_auth_cache_path()` function.
 
-For loading data from Google Ads Account `rgoogleads` needs https://www.googleapis.com/auth/adwords scope (Manage Your Google AdWords Campaigns), see [official Google Ads API documentation](https://developers.google.com/google-ads/api/docs/oauth/internals#scope). 
+For loading data from Google Ads Account `rgoogleads` needs `https://www.googleapis.com/auth/adwords` scope (Manage Your Google AdWords Campaigns), see [official Google Ads API documentation](https://developers.google.com/google-ads/api/docs/oauth/internals#scope). 
 
 The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.
 
