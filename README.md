@@ -140,7 +140,7 @@ gads_auth(email = 'me@gmail.com', developer_token = "own developer token")
 # get list of accessible accounts
 my_accounts <- gads_get_accessible_customers()
 
-# set manager account id
+# set manager account id (options)
 gads_set_login_customer_id('xxx-xxx-xxxx')
 
 # set client account id
