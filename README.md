@@ -149,12 +149,12 @@ gads_set_customer_id('xxx-xxx-xxxx')
 # load report data
 ad_group_report <- gads_get_report(
   resource    = "ad_group",
-  fields = c("ad_group.campaign",
-             "ad_group.id",
-             "ad_group.name",
-             "ad_group.status",
-             "metrics.clicks",
-             "metrics.cost_micros"),
+  fields      = c("ad_group.campaign",
+                  "ad_group.id",
+                  "ad_group.name",
+                  "ad_group.status",
+                  "metrics.clicks",
+                  "metrics.cost_micros"),
   date_from   = "2021-06-10",
   date_to     = "2021-06-17",
   where       = "ad_group.status = 'ENABLED'",
