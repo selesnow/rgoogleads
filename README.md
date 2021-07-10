@@ -162,7 +162,7 @@ You can follow the package updates at the [link](https://github.com/selesnow/rgo
 ## Bug report and support
 If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a problem using the [link](https://github.com/selesnow/rgoogleads/issues).
 
-### Author
+## Author
 Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net)
 <Br>Telegram Channel: [R4marketing](https://t.me/R4marketing)
 <Br>email: selesnow@gmail.com
