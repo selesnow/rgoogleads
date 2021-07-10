@@ -34,6 +34,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 status](https://www.r-pkg.org/badges/version/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
 <!-- badges: end -->
 
+## Content
+
++ [Install](#install)
++ [Attach rgoogleads](#attach-rgoogleads)
++ [Main goal and capabilities of rgoogleads](#main-goal-and-capabilities-of-rgoogleads)
+    + [Authorization process](#authorization-process)
+    + [Key points](#key-points)
+    + [Use own OAuth client](#use-own-oauth-client)
++ [Privacy Policy](#privacy-policy)
++ [Example of use rgoogleads](#example-of-use-rgoogleads)
++ [Package help](#package-help)
++ [Obtain Own Developer Token and create own OAuth client](#obtain-own-developer-token-and-create-own-oauth-client)
++ [Package chage log, news and updates](#package-chage-log-news-and-updates)
++ [Bug report and support](#bug-report-and-support)
++ [Author](#author)
+
 ## Install
 
 You can instal `rgoogleads` from [CRAN](https://cran.r-project.org/package=rgoogleads) or [GitHub](https://github.com):
@@ -67,7 +83,7 @@ Capabilities of `rgoogleads`:
 * Loading statistics from Google Ads client account
 * Loading resource metadata, resource fields, segments and metrics
 
-## Privacy Policy (en)
+## Privacy Policy
 
 The `rgoogleads` package for authorization uses the [gargle](https://gargle.r-lib.org/) package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the `gads_auth_cache_path()` function.
 
