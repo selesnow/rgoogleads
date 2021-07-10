@@ -13,6 +13,8 @@ Description: Interface for loading data from 'Google Ads API',
     see <https://developers.google.com/google-ads/api/docs/start>. 
     Package provide function for authorization and loading reports.
 License: MIT + file LICENSE
+BugReports: https://github.com/selesnow/rgoogleads/issues
+URL: https://selesnow.github.io/rgoogleads, https://github.com/selesnow/rgoogleads
 Encoding: UTF-8
 Imports: gargle (>= 1.2.0), 
          httr, 
