@@ -5,6 +5,7 @@
 [![](https://cranlogs.r-pkg.org/badges/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
+[![R-CMD-check](https://github.com/selesnow/rgoogleads/workflows/R-CMD-check/badge.svg)](https://github.com/selesnow/rgoogleads/actions)
 <!-- badges: end -->
 
 Пакет `rgoogleads` предназначен для работы с [Google Ads API v8](https://developers.google.com/google-ads/api/docs/start) на языке R.

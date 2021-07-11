@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 ^R/test\.R$
 ^test\.R$
+^\.github$
