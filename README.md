@@ -34,6 +34,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 [![](https://cranlogs.r-pkg.org/badges/last-week/rgoogleads?color=lightgrey)](https://cran.r-project.org/package=rgoogleads)
 [![CRAN
 status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
+[![R-CMD-check](https://github.com/selesnow/rgoogleads/workflows/R-CMD-check/badge.svg)](https://github.com/selesnow/rgoogleads/actions)
 <!-- badges: end -->
 
 ## Content
