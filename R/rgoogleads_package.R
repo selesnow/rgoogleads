@@ -53,8 +53,9 @@
 #' @author Alexey Seleznev
 #' @seealso
 #' \itemize{
-#' \item \href{https://developers.google.com/google-ads/api/docs/start}{Oficial Google Ads API documantation}
-#' \item \href{https://developers.google.com/google-ads/api/fields/v8/overview_query_builder}{Google Ads Query Builder}
+#'   \item \href{https://developers.google.com/google-ads/api/docs/start}{Oficial Google Ads API documantation}
+#'   \item \href{https://developers.google.com/google-ads/api/fields/v8/overview_query_builder}{Google Ads Query Builder}
+#'   \item \href{https://selesnow.github.io/rgoogleads/}{rgoogleads home page}
 #' }
 #'
 #' @docType package
