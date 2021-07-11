@@ -30,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- badges: start -->
 [![](https://cranlogs.r-pkg.org/badges/grand-total/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
-[![](https://cranlogs.r-pkg.org/badges/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
+[![](https://cranlogs.r-pkg.org/badges/rgoogleads?color=lightgrey)](https://cran.r-project.org/package=rgoogleads)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
 <!-- badges: end -->
