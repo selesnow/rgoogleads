@@ -2,9 +2,11 @@
 # rgoogleads: R пакет для работы с Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
-[![](https://cranlogs.r-pkg.org/badges/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
+[![](https://cranlogs.r-pkg.org/badges/rgoogleads?color=lightgrey)](https://cran.r-project.org/package=rgoogleads)
+[![](https://cranlogs.r-pkg.org/badges/last-week/rgoogleads?color=lightgrey)](https://cran.r-project.org/package=rgoogleads)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
+status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
 [![R-CMD-check](https://github.com/selesnow/rgoogleads/workflows/R-CMD-check/badge.svg)](https://github.com/selesnow/rgoogleads/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
