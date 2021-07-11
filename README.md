@@ -35,6 +35,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 [![CRAN
 status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
 [![R-CMD-check](https://github.com/selesnow/rgoogleads/workflows/R-CMD-check/badge.svg)](https://github.com/selesnow/rgoogleads/actions)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 ## Content
