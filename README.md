@@ -29,6 +29,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 # rgoogleads: R package for work with Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
+[![](https://cranlogs.r-pkg.org/badges/grand-total/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
 [![](https://cranlogs.r-pkg.org/badges/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rgoogleads)](https://CRAN.R-project.org/package=rgoogleads)
