@@ -180,7 +180,7 @@ For get help of `rgoogleads` use `?rgoogleads` or `?gads_get_report`.
 You can follow the package updates at the [link](https://github.com/selesnow/rgoogleads/blob/master/NEWS.md)
 
 ## Bug report and support
-If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a problem using the [link](https://github.com/selesnow/rgoogleads/issues).
+If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a issue using the [link](https://github.com/selesnow/rgoogleads/issues).
 
 ## Author
 Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net)
