@@ -131,6 +131,13 @@ gads_auth_configure(path = 'D:/ga_auth/app.json')
 gads_auth('me@gmail.com')
 ```
 
+## Obtain Own Developer Token and create own OAuth client
+
+For obtain own developer token and OAuth client read the following documentation:
+
+* [Obtain Your Developer Token](https://developers.google.com/google-ads/api/docs/first-call/dev-token)
+* [Configure a Google API Console Project for the Google Ads API](https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project)
+
 ## Example of use rgoogleads
 
 ```r
@@ -168,13 +175,6 @@ ad_group_report <- gads_get_report(
 
 ## Package help
 For get help of `rgoogleads` use `?rgoogleads` or `?gads_get_report`.
-
-## Obtain Own Developer Token and create own OAuth client
-
-For obtain own developer token and OAuth client read the following documentation:
-
-* [Obtain Your Developer Token](https://developers.google.com/google-ads/api/docs/first-call/dev-token)
-* [Configure a Google API Console Project for the Google Ads API](https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project)
 
 ## Package chage log, news and updates
 You can follow the package updates at the [link](https://github.com/selesnow/rgoogleads/blob/master/NEWS.md)
