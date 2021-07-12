@@ -17,6 +17,7 @@
     * Начал перевод работы функций с глаголов из `httr` на `глаголы gargle`: `request_build()`, `request_make()`, `response_process()`. В качестве эксперемента пока, что переведена вспомогательная функция `gads_customer_id()`.
     * Новый логотип пакета.
     * В функцию `gads_get_report()` добавлен аргумент during, который позволяет задавать относительный период отчёта, например 'LAST_BUSINESS_WEEK'.
+    * Создал сайт пакета с помощью `pkgdown`, сайт доступен по [ссылке](https://selesnow.github.io/rgoogleads/docs/).
 
 ---
 # rgoogleads 0.1.1
