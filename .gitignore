@@ -5,3 +5,5 @@
 ^R/test\.R$
 ^test\.R$
 ^README\.md$
+docs
+README\.md

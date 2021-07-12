@@ -4,3 +4,6 @@
 ^R/test\.R$
 ^test\.R$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
