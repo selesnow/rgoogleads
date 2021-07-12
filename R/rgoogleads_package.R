@@ -49,7 +49,7 @@
 #'   order_by    = c("metrics.clicks DESC", "metrics.cost_micros")
 #' )
 #' }
-#' @
+#'
 #' @author Alexey Seleznev
 #' @seealso
 #' \itemize{

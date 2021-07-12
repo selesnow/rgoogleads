@@ -17,6 +17,9 @@ gads_get_report(
   parameters = NULL,
   date_from = Sys.Date() - 15,
   date_to = Sys.Date() - 1,
+  during = c(NA, "TODAY", "YESTERDAY", "LAST_7_DAYS", "LAST_BUSINESS_WEEK",
+    "THIS_MONTH", "LAST_MONTH", "LAST_14_DAYS", "LAST_30_DAYS", "THIS_WEEK_SUN_TODAY",
+    "THIS_WEEK_MON_TODAY", "LAST_WEEK_SUN_SAT", "LAST_WEEK_MON_SUN"),
   customer_id = getOption("gads.customer.id"),
   login_customer_id = getOption("gads.login.customer.id"),
   include_resource_name = FALSE,
@@ -40,6 +43,8 @@ gads_get_report(
 \item{date_from}{Beginning of date range. Format: 2018-01-01}
 
 \item{date_to}{End of date rage. Format: 2018-01-10}
+
+\item{during}{Predefined date range. See \href{https://developers.google.com/google-ads/api/docs/query/date-ranges#predefined_date_range}{documentation} for more details.}
 
 \item{customer_id}{Google Ads client customer id, supports a single account id: "xxx-xxx-xxxx" or a vector of ids from the same Google Ads MCC: c("xxx-xxx-xxxx", "xxx-xxx-xxxx")}
 

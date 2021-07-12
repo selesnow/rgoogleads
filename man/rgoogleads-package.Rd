@@ -54,6 +54,7 @@ ad_group_report <- gads_get_report(
   order_by    = c("metrics.clicks DESC", "metrics.cost_micros")
 )
 }
+
 }
 \seealso{
 \itemize{

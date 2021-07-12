@@ -20,6 +20,7 @@ gads_get_report_helper <- function(
   parameters            = NULL,
   date_from             = Sys.Date() - 15,
   date_to               = Sys.Date() - 1,
+  during                = c(NA, "TODAY", "YESTERDAY", "LAST_7_DAYS", "LAST_BUSINESS_WEEK", "THIS_MONTH", "LAST_MONTH", "LAST_14_DAYS", "LAST_30_DAYS", "THIS_WEEK_SUN_TODAY", "THIS_WEEK_MON_TODAY", "LAST_WEEK_SUN_SAT", "LAST_WEEK_MON_SUN"),
   customer_id           = getOption('gads.customer.id'),
   login_customer_id     = getOption('gads.login.customer.id'),
   include_resource_name = FALSE,
@@ -33,6 +34,9 @@ gads_get_report_helper <- function(
 
   # manager_customer id
   login_customer_id <- ifelse(length(login_customer_id) == 0, customer_id, login_customer_id)
+
+  # check args
+  match.arg(during)
 
   # info
   if (verbose) cli_alert_info(c('Loading data: ', str_replace(customer_id, '(\\d{3})(\\d{3})(\\d{4})', '\\1-\\2-\\3')))
@@ -55,6 +59,9 @@ gads_get_report_helper <- function(
 
   if ( any(is.null(date_from), is.null(date_to)) & is.null(where) ) {
     where_clause <- ""
+  } else if ( !is.na(date_to) ) {
+    where <- str_c(where, collapse = " AND ")
+    where_clause <- str_glue("WHERE segments.date DURING '{during}' AND {where}")
   } else if ( any(is.null(date_from), is.null(date_to)) ) {
     where <- str_c(where, collapse = " AND ")
     where_clause <- str_glue("WHERE {where}")
