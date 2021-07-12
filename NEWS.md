@@ -15,6 +15,7 @@
     * В функцию `gads_auth_configure()` добавлен аргумент developer_token.
     * В DESCRIPTION изменил версии некоторых пакетов.
     * Начал перевод работы функций с глаголов из `httr` на `глаголы gargle`: `request_build()`, `request_make()`, `response_process()`. В качестве эксперемента пока, что переведена вспомогательная функция `gads_customer_id()`.
+    * Новый логотип пакета.
 
 ---
 # rgoogleads 0.1.1
