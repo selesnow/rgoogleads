@@ -1,3 +1,70 @@
 template:
   params:
     ganalytics: UA-114798296-1
+  opengraph:
+    image:
+      src: man/figures/rgoogleads.png
+      alt: "Loading data from Google Ads"
+
+reference:
+  - title: Authorization
+    desc: >
+      Managing authorization process
+    contents:
+      - gads_auth_configure
+      - gads_auth
+      - gads_developer_token
+      - gads_api_key
+      - gads_oauth_app
+      - gads_auth_cache_path
+      - gads_deauth
+      - gads_has_token
+      - gads_token
+      - gads_user
+  - title: Options
+    desc: >
+      Package options setters
+    contents:
+      - gads_set_customer_id
+      - gads_set_login_customer_id
+  - title: Accounts data
+    desc: >
+      Loading account hierarchy and metadata
+    contents:
+      - gads_get_accessible_customers
+      - gads_get_account_hierarchy
+  - title: Account objects
+    desc: >
+      Loading account objects list
+    contents:
+      - gads_get_campaigns
+      - gads_get_ad_groups
+      - gads_get_ads
+      - gads_get_ad_group_criterions
+  - title: Reporting
+    desc: >
+      Loading report data
+    contents:
+      - gads_get_metadata
+      - gads_get_fields
+      - gads_get_report
+  - title: Reference data
+    desc: >
+      Loading dictionaries
+    contents:
+      - gads_get_geo_targets
+  - title: Helpers
+    desc: >
+      Helper functions
+    contents:
+      - gads_check_errors
+      - gads_customer
+      - gads_customer_id_from_env
+      - gads_customer_id_to_env
+      - gads_fix_names
+      - gads_last_request_ids
+  - title: Main page
+    desc: >
+      rgoogleads documentation main page
+    contents:
+      - rgoogleads-package
