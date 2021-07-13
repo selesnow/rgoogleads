@@ -52,14 +52,15 @@ gads_get_report_helper <- function(
             str_c(collapse = ', ')
 
   # where block
-  if (resource %in% c('ad_group_criterion')) {
+  if (resource %in% c('ad_group_criterion', 'keyword_plan', 'keyword_plan_ad_group', 'keyword_plan_ad_group_keyword', 'keyword_plan_campaign', 'keyword_plan_campaign_keyword')) {
     date_from <- NULL
     date_to   <- NULL
+    during    <- NA
   }
 
   if ( any(is.null(date_from), is.null(date_to)) & is.null(where) ) {
     where_clause <- ""
-  } else if ( !is.na(date_to) ) {
+  } else if ( !is.na(during) ) {
     where <- str_c(where, collapse = " AND ")
     where_clause <- str_glue("WHERE segments.date DURING '{during}' AND {where}")
   } else if ( any(is.null(date_from), is.null(date_to)) ) {
@@ -183,10 +184,10 @@ gads_get_report_helper <- function(
          rename_with(to_snake_case)
 
   # fix date
-  if ( any(str_detect(names(res), 'date')) ) {
+  if ( any(str_detect(names(res), 'date'))) {
     if (verbose) cli_alert_info('Fix date fields')
     res <- mutate(res,
-                  across(matches('date'), as.Date))
+                  across(matches('date') & !matches('interval'), as.Date))
   }
 
   # fix cost

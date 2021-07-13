@@ -226,3 +226,19 @@ accounts <- gads_get_accessible_customers()
 gads_developer_token()
 
 geo_dict <- gads_get_geo_targets()
+
+
+
+# план клюевых слов -------------------------------------------------------
+gads_set_customer_id('676-642-7440')
+gads_set_login_customer_id('175-410-7253')
+
+plan_data <- gads_get_report(
+  resource = 'keyword_plan',
+  fields = c("keyword_plan.forecast_period",
+              'keyword_plan.id',
+              'keyword_plan.name',
+              'keyword_plan.resource_name',
+              'customer.id',
+              'customer.descriptive_name')
+)
