@@ -84,12 +84,12 @@ gads_keyword_plan_forecast_timeseries <- function(
          rename_with(to_snake_case)
 
   # fix cost
-  if ( any(str_detect(names(res), 'micros')) ) {
+  if ( any(str_detect(names(res), 'micros|average')) ) {
 
     if (verbose) cli_alert_info('Fix cost fields')
 
     res <- mutate(res,
-                  across(matches('micros'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
+                  across(matches('micros|average'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
            rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
 
   }
