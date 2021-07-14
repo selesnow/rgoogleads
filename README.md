@@ -136,7 +136,7 @@ status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-pro
     
 ## Пример использования пакета
 
-This is a basic example which shows you how to solve a common problem:
+Ниже приведён пример кода, с помощью которого вы можете авторизоваться и получить отчёт по группам объявлений из вашего рекламного аккаунта.
 
 ``` r
 library(rgoogleads)
