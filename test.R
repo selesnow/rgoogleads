@@ -232,13 +232,124 @@ geo_dict <- gads_get_geo_targets()
 # план клюевых слов -------------------------------------------------------
 gads_set_customer_id('676-642-7440')
 gads_set_login_customer_id('175-410-7253')
+gads_set_customer_id('100-245-7292')
+
+plan_data <- gads_get_report(
+  resource = 'keyword_plan_campaign_keyword',
+  fields = c('keyword_plan_campaign_keyword.id',
+             'keyword_plan_campaign_keyword.keyword_plan_campaign',
+             'keyword_plan_campaign_keyword.match_type',
+             'keyword_plan_campaign_keyword.negative',
+             'keyword_plan_campaign_keyword.resource_name',
+             'keyword_plan_campaign_keyword.text',
+             'customer.id',
+             'customer.descriptive_name',
+             'keyword_plan.forecast_period',
+             'keyword_plan.id',
+             'keyword_plan.name',
+             'keyword_plan.resource_name',
+             'keyword_plan_campaign.cpc_bid_micros',
+             'keyword_plan_campaign.geo_targets',
+             #'keyword_plan_campaign.geo_targets.geo_target_constant',
+             'keyword_plan_campaign.id',
+             'keyword_plan_campaign.keyword_plan',
+             'keyword_plan_campaign.keyword_plan_network',
+             'keyword_plan_campaign.language_constants',
+             'keyword_plan_campaign.name',
+             'keyword_plan_campaign.resource_name'),
+  date_from = NULL,
+  date_to = NULL
+)
+
+
 
 plan_data <- gads_get_report(
   resource = 'keyword_plan',
-  fields = c("keyword_plan.forecast_period",
-              'keyword_plan.id',
-              'keyword_plan.name',
-              'keyword_plan.resource_name',
-              'customer.id',
-              'customer.descriptive_name')
+  fields = c('keyword_plan.id')
 )
+
+
+plan_data$keyword_plan_campaign_geo_targets_1
+
+
+plan_data <- gads_get_report(
+  resource = 'keyword_plan_campaign_keyword',
+  fields = c('keyword_plan_campaign_keyword.id',
+             'keyword_plan_campaign_keyword.keyword_plan_campaign',
+             'keyword_plan_campaign_keyword.match_type',
+             'keyword_plan_campaign_keyword.negative',
+             'keyword_plan_campaign_keyword.resource_name',
+             'keyword_plan_campaign_keyword.text',
+             'customer.id',
+             'customer.descriptive_name',
+             'keyword_plan.forecast_period',
+             'keyword_plan.id',
+             'keyword_plan.name',
+             'keyword_plan.resource_name',
+             'keyword_plan_campaign.cpc_bid_micros',
+             'keyword_plan_campaign.geo_targets',
+             'keyword_plan_campaign.id',
+             'keyword_plan_campaign.keyword_plan',
+             'keyword_plan_campaign.keyword_plan_network',
+             'keyword_plan_campaign.language_constants',
+             'keyword_plan_campaign.name',
+             'keyword_plan_campaign.resource_name'),
+  date_from = NULL,
+  date_to = NULL
+)
+
+
+ans <- POST(url = 'https://googleads.googleapis.com/v8/customers/1002457292/keywordPlans/313874210:generateForecastMetrics',
+            add_headers(
+              Authorization       = str_glue("Bearer {gads_token()$auth_token$credentials$access_token}"),
+              `developer-token`   = gads_developer_token(),
+              `login-customer-id` = login_customer_id
+            ))
+
+res <- httr::content(ans)
+
+res %>%
+  tibble()
+
+
+res$campaignForecasts[[1]]$campaignForecast$impressions
+
+
+
+
+ans <- POST(url = 'https://googleads.googleapis.com/v8/customers/1002457292/keywordPlans/313874210:generateHistoricalMetrics',
+            add_headers(
+              Authorization       = str_glue("Bearer {gads_token()$auth_token$credentials$access_token}"),
+              `developer-token`   = gads_developer_token(),
+              `login-customer-id` = login_customer_id
+            ))
+
+res <- httr::content(ans)
+
+map_df(res$metrics, function(x) tibble(
+  search_query         = x$searchQuery,
+  competition          = if_else( is.null(x$keywordMetrics$competition), NA_character_, x$keywordMetrics$competition),
+  avg_monthly_searches = if_else( is.null(x$keywordMetrics$avgMonthlySearches), NA_character_, x$keywordMetrics$avgMonthlySearches),
+  competition_index    = if_else( is.null(x$keywordMetrics$competitionIndex), NA_character_, x$keywordMetrics$competitionIndex),
+  low_top_of_page_bid  = if_else( is.null(x$keywordMetrics$lowTopOfPageBidMicros), NA_character_, x$keywordMetrics$lowTopOfPageBidMicros),
+  high_top_of_page_bid = if_else( is.null(x$keywordMetrics$highTopOfPageBidMicros), NA_character_, x$keywordMetrics$highTopOfPageBidMicros)
+)
+) %>%
+  mutate(
+    low_top_of_page_bid = round(as.integer(low_top_of_page_bid) / 1000000, 2),
+    high_top_of_page_bid = round(as.integer(high_top_of_page_bid) / 1000000, 2)
+  )
+
+
+
+
+lapply(res$metrics, function(x) tibble(
+  search_query = x$searchQuery,
+  competition  = x$keywordMetrics$competition,
+  avg_monthly_searches = x$keywordMetrics$avgMonthlySearches
+))
+
+res$metrics[[3]]$
+
+
+?map_df

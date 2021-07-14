@@ -7,6 +7,11 @@ template:
       alt: "Loading data from Google Ads"
 
 reference:
+  - title: Main page
+    desc: >
+      rgoogleads documentation main page
+    contents:
+      - rgoogleads-package
   - title: Authorization
     desc: >
       Managing authorization process
@@ -48,6 +53,11 @@ reference:
       - gads_get_metadata
       - gads_get_fields
       - gads_get_report
+  - title: Keywords Planing Data
+    desc: >
+      Loading Keyword Plan data
+    contents:
+      - gads_keyword_plan_historical_metrics
   - title: Reference data
     desc: >
       Loading dictionaries
@@ -63,8 +73,4 @@ reference:
       - gads_customer_id_to_env
       - gads_fix_names
       - gads_last_request_ids
-  - title: Main page
-    desc: >
-      rgoogleads documentation main page
-    contents:
-      - rgoogleads-package
+
