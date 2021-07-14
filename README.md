@@ -40,6 +40,7 @@ status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-pro
 
 ## Table of Contents
 
++ [Links](#links)
 + [Install](#install)
 + [Attach rgoogleads](#attach-rgoogleads)
 + [Main goal and capabilities of rgoogleads](#main-goal-and-capabilities-of-rgoogleads)
@@ -53,6 +54,14 @@ status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-pro
 + [Package chage log, news and updates](#package-chage-log-news-and-updates)
 + [Bug report and support](#bug-report-and-support)
 + [Author](#author)
+
+## Links
+
+This section contains links to the package documentation, as well as other useful links that may be useful to the package users.
+
+* [rgoogleads package documentation site](https://selesnow.github.io/rgoogleads/docs/)
+* [CRAN page](https://cran.r-project.org/package=rgoogleads)
+* [Google Ads API documentation](https://developers.google.com/google-ads/api/docs/start)
 
 ## Install
 
