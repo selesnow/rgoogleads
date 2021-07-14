@@ -126,8 +126,3 @@ gads_get_ad_group_criterions <- function(
   return(res)
 
 }
-
-
-
-
-

@@ -36,7 +36,7 @@ gads_get_report_helper <- function(
   login_customer_id <- ifelse(length(login_customer_id) == 0, customer_id, login_customer_id)
 
   # check args
-  match.arg(during)
+  during <- match.arg(during)
 
   # info
   if (verbose) cli_alert_info(c('Loading data: ', str_replace(customer_id, '(\\d{3})(\\d{3})(\\d{4})', '\\1-\\2-\\3')))
@@ -101,21 +101,26 @@ gads_get_report_helper <- function(
   if (verbose) cli_alert_info('Send request')
 
   # send query
-  ans <- POST(
-    url    = str_glue('https://googleads.googleapis.com/v8/customers/{customer_id}/googleAds:searchStream'),
+  out <- request_build(
+    method   = "POST",
+    body     = body,
+    path     = str_glue('{options("gads.api.version")}/customers/{customer_id}/googleAds:searchStream'),
+    token    = gads_token(),
+    base_url = getOption('gads.base.url')
+  )
+
+  # send request
+  ans <- request_retry(
+    out,
     encode = 'json',
-    body   = body,
-    add_headers(
-      Authorization       = str_glue("Bearer {gads_token()$auth_token$credentials$access_token}"),
-      `developer-token`   = gads_developer_token(),
-      `login-customer-id` = login_customer_id
-      )
+    add_headers(`developer-token`= gads_developer_token(),
+                `login-customer-id` = login_customer_id)
   )
 
   # --------------
   # get answer
   if (verbose) cli_alert_info('Get answer query')
-  out <- content(ans)
+  out <- response_process(ans, error_message = gads_check_errors2)
 
   # requests_ids
   if ( !is.null(ans$headers$`request-id`) ) {
@@ -133,10 +138,10 @@ gads_get_report_helper <- function(
   }
 
   # check for errors
-  gads_check_errors(out, customer_id, verbose, rq_ids)
+  #gads_check_errors(out, customer_id, verbose, rq_ids)
 
   # empty answer handler
-  if ( length(out) == 0 ) return(tibble())
+  if ( length(out) == 0 ) return(tibble() )
 
   # --------------
   # parsing answer

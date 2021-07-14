@@ -16,16 +16,21 @@ gads_get_accessible_customers <- function()
   gargle::token_tokeninfo(gads_token())
 
   # send query
-  ans <- GET(
-    url = str_glue('https://googleads.googleapis.com/{options("gads.api.version")}/customers:listAccessibleCustomers'),
-    add_headers(
-      Authorization    = str_glue("Bearer {gads_token()$auth_token$credentials$access_token}"),
-      `developer-token`= gads_developer_token()
-    )
+  out <- request_build(
+    method   = "GET",
+    path     = str_glue('{options("gads.api.version")}/customers:listAccessibleCustomers'),
+    token    = gads_token(),
+    base_url = getOption('gads.base.url')
+  )
+
+  # send request
+  ans <- request_retry(
+    out,
+    add_headers(`developer-token`= gads_developer_token())
   )
 
   # get result
-  rawres <- content(ans)
+  rawres <- response_process(ans, error_message = gads_check_errors2)
 
   rq_ids <- unique(ans$headers$`request-id`)
   rgoogleads$last_request_id <- rq_ids
@@ -36,6 +41,9 @@ gads_get_accessible_customers <- function()
   # processing result
   unlist(rawres$resourceNames) %>%
     str_replace_all('customers/', '') -> account_ids
+
+  # info
+  cli_alert_info(c("Your accessible accounts ids: ", str_replace_all(account_ids, '(\\d{3})(\\d{3})(\\d{4})', '\\1-\\2-\\3') %>% str_c(collapse = ', ')))
 
   # get detail
   customers_data <- pblapply(account_ids, safely(gads_customer), verbose = FALSE)

@@ -351,5 +351,26 @@ lapply(res$metrics, function(x) tibble(
 
 res$metrics[[3]]$
 
+library(rgoogleads)
 
-?map_df
+gads_auth('ваш_имейл@gmail.com')
+
+# идентификатор управляющего аккаунта (если под управляющим работаете)
+gads_set_login_customer_id('175-410-7253')
+# идентификатор рекламного аккаунта
+gads_set_customer_id('100-245-7292')
+
+# запрашиваем список созданных планов ключевиков
+plan_data <- gads_get_report(
+  resource = 'keyword_plan',
+  fields = c('keyword_plan.id')
+)
+
+# запрашиваем детальные данные плана
+historical_plan_data <- gads_keyword_plan_historical_metrics(
+  keyword_plan_id = plan_data$keyword_plan_id
+)
+
+# разделям данные на две таблицы
+data <- historical_plan_data$main_data
+historical_data <- historical_plan_data$historical_data

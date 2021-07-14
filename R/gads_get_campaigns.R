@@ -73,7 +73,7 @@ gads_get_campaigns <- function(
 
   # renaming to snale case
   res <- rename_with(res, function(x) str_remove(x, 'campaign\\_'), matches('campaign') ) %>%
-    rename_with(to_snake_case)
+         rename_with(to_snake_case)
 
   # fix date
   if ( any(str_detect(names(res), 'date')) ) {

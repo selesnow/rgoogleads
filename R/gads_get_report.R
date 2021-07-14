@@ -115,9 +115,6 @@ gads_get_report <- function(
   verbose               = TRUE
 ) {
 
-  # check token
-  gargle::token_tokeninfo(gads_token())
-
   # check how many accounts
   if ( length(customer_id) == 1 ) {
 

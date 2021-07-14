@@ -45,12 +45,14 @@ gargle_lookup_table <- list(
 #' ## choose to get a new one
 #' gads_auth(email = NA)
 #'
+#' ## -----------------------
 #' ## use own developer token
 #' gads_auth(
 #'     email = "yourname@example.com",
 #'     developer_token = "your developer token"
 #' )
 #'
+#' ## -----------------------
 #' ## use own OAuth client app
 #' gads_auth_configure(
 #'     path = "path/to/your/oauth_client.json"
