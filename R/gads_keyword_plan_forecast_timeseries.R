@@ -1,10 +1,11 @@
-#' Returns the requested Keyword Plan historical metrics.
+#' Returns a forecast in the form of a time series for the Keyword Plan over the next 52 weeks.
 #'
 #' @param keyword_plan_id Keyword plan id, you can get list of your keyword plans using \code{\link{gads_get_report}} with recource keyword_plan
 #' @inheritParams gads_get_report
 #'
 #' @return tibble with keyword plan historical metrics
 #' @export
+#' @seealso \href{https://developers.google.com/google-ads/api/docs/keyword-planning/overview?hl=en}{Keyword Planning API Documentation}
 #'
 #' @examples
 #' \dontrun{
@@ -21,16 +22,12 @@
 #' )
 #'
 #' # get keyword historical data
-#' historical_plan_data <- gads_keyword_plan_historical_metrics(
+#' historical_plan_data <- gads_keyword_plan_forecast_timeseries(
 #'  keyword_plan_id = plan_data$keyword_plan_id[1]#'
 #' )
 #'
-#' # main plan data
-#' data <- historical_plan_data$main_data
-#' historical_data <- historical_plan_data$historical_data
-#'
 #' }
-gads_keyword_plan_historical_metrics <- function(
+gads_keyword_plan_forecast_timeseries <- function(
   keyword_plan_id,
   customer_id       = getOption('gads.customer.id'),
   login_customer_id = getOption('gads.login.customer.id'),
@@ -52,7 +49,7 @@ gads_keyword_plan_historical_metrics <- function(
   # build query
   out <- request_build(
     method   = "POST",
-    path     = str_glue('{options("gads.api.version")}/customers/{customer_id}/keywordPlans/{keyword_plan_id}:generateHistoricalMetrics'),
+    path     = str_glue('{options("gads.api.version")}/customers/{customer_id}/keywordPlans/{keyword_plan_id}:generateForecastTimeSeries'),
     token    = gads_token(),
     base_url = getOption('gads.base.url')
   )
@@ -79,12 +76,12 @@ gads_keyword_plan_historical_metrics <- function(
   if (verbose) cli_alert_info('Parsing result')
 
   # main data
-  res <- tibble(data = data$metrics) %>%
-    unnest_wider('data') %>%
-    unnest_wider('keywordMetrics') %>%
-    select(-'monthlySearchVolumes') %>%
-    relocate('searchQuery', .before = everything()) %>%
-    rename_with(to_snake_case)
+  res <- tibble(data = data$weeklyTimeSeriesForecasts) %>%
+         unnest_wider('data') %>%
+         unnest_longer('weeklyForecasts') %>%
+         unnest_wider('weeklyForecasts') %>%
+         unnest_wider('forecast') %>%
+         rename_with(to_snake_case)
 
   # fix cost
   if ( any(str_detect(names(res), 'micros')) ) {
@@ -93,25 +90,12 @@ gads_keyword_plan_historical_metrics <- function(
 
     res <- mutate(res,
                   across(matches('micros'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
-      rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
+           rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
 
   }
 
-  # historical data
-  historical <- tibble(data = data$metrics) %>%
-    unnest_wider('data') %>%
-    unnest_wider('keywordMetrics') %>%
-    select('searchQuery', 'monthlySearchVolumes') %>%
-    unnest_longer('monthlySearchVolumes') %>%
-    unnest_wider('monthlySearchVolumes')%>%
-    rename_with('to_snake_case')
-
   # success msg
   if (verbose) cli_alert_success('Success! Loaded {nrow(res)} rows!')
-  if (verbose) cli_alert_info('For get data use res$main_data and res$historical_data')
-
-  # to list
-  res <- list(main_data = res, historical_data = historical)
 
   # return
   return(res)

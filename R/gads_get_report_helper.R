@@ -196,10 +196,13 @@ gads_get_report_helper <- function(
   }
 
   # fix cost
-  if ( 'cost_micros' %in% names(res) ) {
+  if ( any(str_detect(names(res), 'micros')) ) {
     if (verbose) cli_alert_info('Fix cost fields')
-    res$cost_micros <-  round(as.numeric(res$cost_micros) / 1000000, 2)
-    res <- rename(res, cost = 'cost_micros')
+
+    res <- mutate(res,
+                  across(matches('micros'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
+           rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
+
   }
 
   # remove resource names
@@ -216,4 +219,3 @@ gads_get_report_helper <- function(
   return(res)
 
 }
-

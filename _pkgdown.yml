@@ -58,6 +58,8 @@ reference:
       Loading Keyword Plan data
     contents:
       - gads_keyword_plan_historical_metrics
+      - gads_keyword_plan_forecast_timeseries
+      - gads_keyword_plan_forecast_metrics
   - title: Reference data
     desc: >
       Loading dictionaries

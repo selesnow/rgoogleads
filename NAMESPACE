@@ -22,6 +22,8 @@ export(gads_get_ad_group_criterions)
 export(gads_get_fields)
 export(gads_get_metadata)
 export(gads_keyword_plan_historical_metrics)
+export(gads_keyword_plan_forecast_timeseries)
+export(gads_keyword_plan_forecast_metrics)
 export(gads_get_geo_targets)
 export(gads_last_request_ids)
 
