@@ -89,6 +89,7 @@
 <h2 class="hasAnchor">
 <a href="#table-of-contents" class="anchor"></a>Table of Contents</h2>
 <ul>
+<li><a href="#links">Links</a></li>
 <li><a href="#install">Install</a></li>
 <li><a href="#attach-rgoogleads">Attach rgoogleads</a></li>
 <li><a href="#main-goal-and-capabilities-of-rgoogleads">Main goal and capabilities of rgoogleads</a></li>
@@ -106,6 +107,16 @@
 <li><a href="#package-chage-log-news-and-updates">Package chage log, news and updates</a></li>
 <li><a href="#bug-report-and-support">Bug report and support</a></li>
 <li><a href="#author">Author</a></li>
+</ul>
+</div>
+<div id="links" class="section level2">
+<h2 class="hasAnchor">
+<a href="#links" class="anchor"></a>Links</h2>
+<p>This section contains links to the package documentation, as well as other useful links that may be useful to the package users.</p>
+<ul>
+<li><a href="https://selesnow.github.io/rgoogleads/docs/">rgoogleads package documentation site</a></li>
+<li><a href="https://cran.r-project.org/package=rgoogleads">CRAN page</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API documentation</a></li>
 </ul>
 </div>
 <div id="install" class="section level2">
@@ -154,7 +165,7 @@
 <div id="authorization-process" class="section level3">
 <h3 class="hasAnchor">
 <a href="#authorization-process" class="anchor"></a>Authorization process</h3>
-<p>You run <code><a href="reference/gads_auth.html">gads_auth('me@gmail.cpm')</a></code> and start <a href="https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10">OAuth Dance</a> in the browser:</p>
+<p>You run <code><a href="reference/gads_auth.html">gads_auth('me@gmail.com')</a></code> and start <a href="https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10">OAuth Dance</a> in the browser:</p>
 <p><img src="http://img.netpeak.ua/alsey/1OE9JZ2.png" alt="Typical OAuth dance in the browser, when initiated from within R"></p>
 <p>Upon success, you see this message in the browser:</p>
 <p><code>Authentication complete. Please close this page and return to R.</code></p>
@@ -212,13 +223,6 @@
 <span class="co"># set client account id</span>
 <span class="fu"><a href="reference/gads_set_customer_id.html">gads_set_customer_id</a></span><span class="op">(</span><span class="st">'xxx-xxx-xxxx'</span><span class="op">)</span>
 
-<span class="co"># get accounts object</span>
-<span class="va">camps</span>   <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_campaigns.html">gads_get_campaigns</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">dgroups</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_ad_groups.html">gads_get_ad_groups</a></span><span class="op">(</span>where <span class="op">=</span> <span class="st">"ad_group.status = 'ENABLED'"</span><span class="op">)</span>
-<span class="va">ads</span>     <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_ads.html">gads_get_ads</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">kw</span>      <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_ad_group_criterions.html">gads_get_ad_group_criterions</a></span><span class="op">(</span><span class="op">)</span>
-
-
 <span class="co"># load report data</span>
 <span class="va">ad_group_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_report.html">gads_get_report</a></span><span class="op">(</span>
   resource    <span class="op">=</span> <span class="st">"ad_group"</span>,
@@ -233,24 +237,6 @@
   where       <span class="op">=</span> <span class="st">"ad_group.status = 'ENABLED'"</span>,
   order_by    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"metrics.clicks DESC"</span>, <span class="st">"metrics.cost_micros"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<p>You can use <code>cl</code> argument for loading data in parallel mode.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span>
-
-<span class="co"># make core cluster</span>
-<span class="va">cl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">makeCluster</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
-
-<span class="va">multi_rep</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_report.html">gads_get_report</a></span><span class="op">(</span>
-  date_from         <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">'2021-06-10'</span><span class="op">)</span>,
-  date_to           <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">'2021-06-17'</span><span class="op">)</span>,
-  customer_id       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'111-111-1111'</span>,
-                        <span class="st">'222-222-2222'</span>,
-                        <span class="st">'333-333-3333'</span>,
-                        <span class="st">'444-444-4444'</span>,
-                        <span class="st">'555-555-5555'</span><span class="op">)</span>,
-  login_customer_id <span class="op">=</span> <span class="st">"999-999-9999"</span>,
-  cl                <span class="op">=</span> <span class="va">cl</span>
-<span class="op">)</span></code></pre></div>
 </div>
 <div id="package-help" class="section level2">
 <h2 class="hasAnchor">
@@ -260,7 +246,7 @@
 <div id="package-chage-log-news-and-updates" class="section level2">
 <h2 class="hasAnchor">
 <a href="#package-chage-log-news-and-updates" class="anchor"></a>Package chage log, news and updates</h2>
-<p>You can follow the package updates at the <a href="https://github.com/selesnow/rgoogleads/blob/master/NEWS.md">link</a>.</p>
+<p>You can follow the package updates at the <a href="https://github.com/selesnow/rgoogleads/blob/master/NEWS.md">link</a></p>
 </div>
 <div id="bug-report-and-support" class="section level2">
 <h2 class="hasAnchor">

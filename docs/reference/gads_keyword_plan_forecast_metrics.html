@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Campaigns Dictionary From Google Ads Client Account — gads_get_campaigns • rgoogleads</title>
+<title>Returns the requested Keyword Plan forecasts. — gads_keyword_plan_forecast_metrics • rgoogleads</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get Campaigns Dictionary From Google Ads Client Account — gads_get_campaigns" />
-<meta property="og:description" content="Get Campaigns Dictionary From Google Ads Client Account" />
+<meta property="og:title" content="Returns the requested Keyword Plan forecasts. — gads_keyword_plan_forecast_metrics" />
+<meta property="og:description" content="Returns the requested Keyword Plan forecasts." />
 <meta property="og:image" content="/reference/figures/rgoogleads.png" />
 <meta property="og:image:alt" content="Loading data from Google Ads" />
 
@@ -123,44 +123,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Campaigns Dictionary From Google Ads Client Account</h1>
-    <small class="dont-index">Source: <a href='https://github.com/selesnow/rgoogleads/blob/master/R/gads_get_campaigns.R'><code>R/gads_get_campaigns.R</code></a></small>
-    <div class="hidden name"><code>gads_get_campaigns.Rd</code></div>
+    <h1>Returns the requested Keyword Plan forecasts.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/selesnow/rgoogleads/blob/master/R/gads_keyword_plan_forecast_metrics.R'><code>R/gads_keyword_plan_forecast_metrics.R</code></a></small>
+    <div class="hidden name"><code>gads_keyword_plan_forecast_metrics.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get Campaigns Dictionary From Google Ads Client Account</p>
+    <p>Returns the requested Keyword Plan forecasts.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gads_get_campaigns</span><span class='op'>(</span>
-  fields <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"campaign.id"</span>, <span class='st'>"campaign.name"</span>, <span class='st'>"campaign.accessible_bidding_strategy"</span>,
-    <span class='st'>"campaign.ad_serving_optimization_status"</span>, <span class='st'>"campaign.advertising_channel_sub_type"</span>,
-    <span class='st'>"campaign.advertising_channel_type"</span>, <span class='st'>"campaign.app_campaign_setting.app_id"</span>,
-    <span class='st'>"campaign.app_campaign_setting.app_store"</span>, <span class='st'>"campaign.base_campaign"</span>,
-    <span class='st'>"campaign.bidding_strategy"</span>,
-    <span class='st'>"campaign.app_campaign_setting.bidding_strategy_goal_type"</span>,
-    <span class='st'>"campaign.campaign_budget"</span>, <span class='st'>"campaign.bidding_strategy_type"</span>,
-    <span class='st'>"campaign.dynamic_search_ads_setting.language_code"</span>,      <span class='st'>"campaign.start_date"</span>,
-    <span class='st'>"campaign.end_date"</span>, <span class='st'>"campaign.status"</span>, <span class='st'>"campaign.manual_cpm"</span>, <span class='st'>"campaign.manual_cpv"</span>,
-    <span class='st'>"campaign.maximize_conversion_value.target_roas"</span>,
-    <span class='st'>"campaign.maximize_conversions.target_cpa"</span>,
-    <span class='st'>"campaign.network_settings.target_content_network"</span>,
-    <span class='st'>"campaign.network_settings.target_google_search"</span>,
-    <span class='st'>"campaign.network_settings.target_partner_search_network"</span>,
-    <span class='st'>"campaign.network_settings.target_search_network"</span>,
-    <span class='st'>"campaign.optimization_goal_setting.optimization_goal_types"</span>,
-    <span class='st'>"campaign.optimization_score"</span>,      <span class='st'>"campaign.payment_mode"</span>,
-    <span class='st'>"campaign.serving_status"</span>, <span class='st'>"campaign.shopping_setting.campaign_priority"</span>,
-    <span class='st'>"campaign.shopping_setting.sales_country"</span>, <span class='st'>"campaign.target_roas.target_roas"</span>,
-    <span class='st'>"campaign.tracking_url_template"</span>, <span class='st'>"customer.descriptive_name"</span>, <span class='st'>"customer.id"</span><span class='op'>)</span>,
-  where <span class='op'>=</span> <span class='cn'>NULL</span>,
-  order_by <span class='op'>=</span> <span class='cn'>NULL</span>,
-  limit <span class='op'>=</span> <span class='cn'>NULL</span>,
-  parameters <span class='op'>=</span> <span class='cn'>NULL</span>,
+    <pre class="usage"><span class='fu'>gads_keyword_plan_forecast_metrics</span><span class='op'>(</span>
+  <span class='va'>keyword_plan_id</span>,
   customer_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"gads.customer.id"</span><span class='op'>)</span>,
   login_customer_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"gads.login.customer.id"</span><span class='op'>)</span>,
-  include_resource_name <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  cl <span class='op'>=</span> <span class='cn'>NULL</span>,
   verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
@@ -168,24 +143,8 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fields</th>
-      <td><p>character vector, list of report fields, all report has own fields list, for example <a href='https://developers.google.com/google-ads/api/fields/v8/campaign'>see field list of campaigns report</a>.</p></td>
-    </tr>
-    <tr>
-      <th>where</th>
-      <td><p>Filter, for example you can filter campaigns by status <code>where = "campaign.status = 'ENABLED'"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>order_by</th>
-      <td><p>Sorting, character vectors of fields and sorting directions, for example <code>order_by = c("campaign.name DESC", "metrics.clicks")</code>.</p></td>
-    </tr>
-    <tr>
-      <th>limit</th>
-      <td><p>Maximun rows in report</p></td>
-    </tr>
-    <tr>
-      <th>parameters</th>
-      <td><p>Query parameters, for example <code>parameters = "include_drafts=true"</code>.</p></td>
+      <th>keyword_plan_id</th>
+      <td><p>Keyword plan id, you can get list of your keyword plans using <code><a href='gads_get_report.html'>gads_get_report</a></code> with recource keyword_plan</p></td>
     </tr>
     <tr>
       <th>customer_id</th>
@@ -196,14 +155,6 @@
       <td><p>Google Ads manager customer id</p></td>
     </tr>
     <tr>
-      <th>include_resource_name</th>
-      <td><p>Get resource names fields in report</p></td>
-    </tr>
-    <tr>
-      <th>cl</th>
-      <td><p>A cluster object created by <code>makeCluster</code>, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).</p></td>
-    </tr>
-    <tr>
       <th>verbose</th>
       <td><p>Console log output</p></td>
     </tr>
@@ -211,11 +162,32 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>tibble with campaings dicrionary</p>
+    <p>tibble with keyword plan historical metrics</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://developers.google.com/google-ads/api/fields/v8/campaign_query_builder'>Google Ads Query Builder</a></p></div>
+    <div class='dont-index'><p><a href='https://developers.google.com/google-ads/api/docs/keyword-planning/overview?hl=en'>Keyword Planning API Documentation</a></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># set client id</span>
+<span class='fu'><a href='gads_set_customer_id.html'>gads_set_customer_id</a></span><span class='op'>(</span><span class='st'>'xxx-xxx-xxxx'</span><span class='op'>)</span>
+
+<span class='co'># set manager id</span>
+<span class='fu'><a href='gads_set_login_customer_id.html'>gads_set_login_customer_id</a></span><span class='op'>(</span><span class='st'>'xxx-xxx-xxxx'</span><span class='op'>)</span>
+
+<span class='co'># get list of plan</span>
+<span class='va'>plan_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gads_get_report.html'>gads_get_report</a></span><span class='op'>(</span>
+  resource <span class='op'>=</span> <span class='st'>'keyword_plan'</span>,
+  fields <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'keyword_plan.id'</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='co'># get keyword historical data</span>
+<span class='va'>historical_plan_data</span> <span class='op'>&lt;-</span> <span class='fu'>gads_keyword_plan_forecast_metrics</span><span class='op'>(</span>
+ keyword_plan_id <span class='op'>=</span> <span class='va'>plan_data</span><span class='op'>$</span><span class='va'>keyword_plan_id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='co'>#'</span>
+<span class='op'>)</span>
+
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
