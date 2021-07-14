@@ -67,6 +67,7 @@ Capabilities of `rgoogleads`:
 * Loading list of Google Ads client account objects: campaigns, ad groups, ads, etc.
 * Loading statistics from Google Ads client account
 * Loading resource metadata, resource fields, segments and metrics
+* Loading forecast and historical metrics from Keyword Planning.
 
 ## Privacy Policy
 
