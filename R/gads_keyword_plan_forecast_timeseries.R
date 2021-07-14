@@ -94,6 +94,13 @@ gads_keyword_plan_forecast_timeseries <- function(
 
   }
 
+  # fix date
+  if ( any(str_detect(names(res), 'date'))) {
+    if (verbose) cli_alert_info('Fix date fields')
+    res <- mutate(res,
+                  across(matches('date') & !matches('interval'), as.Date))
+  }
+
   # success msg
   if (verbose) cli_alert_success('Success! Loaded {nrow(res)} rows!')
 
