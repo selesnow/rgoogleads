@@ -1,5 +1,4 @@
-
-# rgoogleads: R пакет для работы с Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
+# rgoogleads: R package for work with Google Ads API <a href='https://selesnow.github.io/rgoogleads/'><img src='man/figures/rgoogleads.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 [![](https://cranlogs.r-pkg.org/badges/grand-total/rgoogleads)](https://cran.r-project.org/package=rgoogleads)
@@ -11,163 +10,141 @@ status](https://www.r-pkg.org/badges/version-ago/rgoogleads)](https://CRAN.R-pro
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-Пакет `rgoogleads` предназначен для работы с [Google Ads API v8](https://developers.google.com/google-ads/api/docs/start) на языке R.
+## Table of Contents
 
-## Установка
++ [Install](#install)
++ [Attach rgoogleads](#attach-rgoogleads)
++ [Main goal and capabilities of rgoogleads](#main-goal-and-capabilities-of-rgoogleads)
++ [Privacy Policy](#privacy-policy)
+    + [Authorization process](#authorization-process)
+    + [Key points](#key-points)
+    + [Use own OAuth client](#use-own-oauth-client)
++ [Obtain Own Developer Token and create own OAuth client](#obtain-own-developer-token-and-create-own-oauth-client)
++ [Example of use rgoogleads](#example-of-use-rgoogleads)
++ [Package help](#package-help)
++ [Package chage log, news and updates](#package-chage-log-news-and-updates)
++ [Bug report and support](#bug-report-and-support)
++ [Author](#author)
 
-Последнюю стабильную версию пакета вы можете установить из CRAN: `install.packages('rgoogleads')`
+## Install
 
-Наиболее актуальную версию можно установить из GitHub: `devtools::install_github('selesnow/rgoogleads')`
+You can instal `rgoogleads` from [CRAN](https://cran.r-project.org/package=rgoogleads) or [GitHub](https://github.com):
 
+```r
+# install from CRAN
+install.packages('rgoogleads')
+```
 
+```r
+# install from github
+devtools::install_github('selesnow/rgoogleads')
+```
 
-## Политика конфиденциальности
+## Attach rgoogleads
 
-Пакет `rgoogleads` для авторизации использует пакет [gargle](https://gargle.r-lib.org/), полученные при автризации учётные данные хранятся исключительно на вашем локальном ПК, узнать папку в которую кешируются учтные данные можно функцией `gads_auth_cache_path()`.
+```r
+library(rgoogleads)
+```
 
-Пакет не передаёт ваши учётные данные, или данные полученные из ваших рекламных аккаунтов третим лицам, тем не менее ответвенность за утечку информации остаётся на стороне пользователя пакета. Автор не несён никакой ответвенности за их сохранность, будьте блительны при передаче кешированных учётных данных третим лицам.
+## Main goal and capabilities of rgoogleads
 
-## Что вам необходимо для начала работы
+`rgoogleads` is R client for work with Google Ads API v8. Main goal of `rgoogleads` - load report data from Google Ads client account into R for analisys and visualizations.
 
-### Токен разработчика (Developer token)
+Capabilities of `rgoogleads`:
 
-В `rgoogleads` есть вшитый токен разработчика который вы можете использовать, но при большом колличестве пользователей пакета, есть вероятность столбкнуться с существующими лимитами, т.к. на данный момент вшитый токен имеет базовый уровень доступа к API.
+* Authorization in the Google Ads API
+* Loading a list of top-level accounts
+* Loading the entire hierarchy of accounts from manager accounts
+* Loading list of Google Ads client account objects: campaigns, ad groups, ads, etc.
+* Loading statistics from Google Ads client account
+* Loading resource metadata, resource fields, segments and metrics
 
-Получить товен можно следующим образом:
+## Privacy Policy
 
-1. Подать заявку на получение токена разработчика можно в интерфейсе управляющего аккаунта Google Ads (Инструменты -> Центр API). Если у вас нет управляющего аккаунта создайте его перейдя по [ссылке](https://ads.google.com/intl/ru_ru/home/tools/manager-accounts/). Важно, что если к вашему Google аккаунту уже привязан какой либо Google Ads аккаунт, вы не смоэете создать под ним управляющий аккаунт, в таком случае сначала понадобится завести ещё один Google аккаунт.
-    
-2. Далее идём Инструменты -> Центр API, и заполняем нужные поля
+The `rgoogleads` package for authorization uses the [gargle](https://gargle.r-lib.org/) package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the `gads_auth_cache_path()` function.
 
-<center><img src='man/figures/developtoken1.png' align="middle" /></center>
+For loading data from Google Ads Account `rgoogleads` needs `https://www.googleapis.com/auth/adwords` scope (Manage Your Google AdWords Campaigns), see [official Google Ads API documentation](https://developers.google.com/google-ads/api/docs/oauth/internals#scope). 
 
-<Br>
+The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.
 
-3. Таким образом вы получите тестовый токен, с помощью которого можно работать только с тестовыми аккаунтами, поэтому сразу можете подавать заявку на базовый доступ к API.
-    
-<Br>
-    
-<center><img src='man/figures/zayavka.png' align="middle" /></center>
-        
-<Br>
+For more details, I recommend that you read the following articles from the official documentation of the gargle package:
 
-### Проект в Google Cloud с OAuth клиентом
+* [Stewarding the cache of user tokens](https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/)
+* [Auth when using R in the browser](https://cran.r-project.org/web/packages/gargle/vignettes/auth-from-web.html)
+* [How gargle gets tokens](https://cran.r-project.org/web/packages/gargle/vignettes/how-gargle-gets-tokens.html)
 
-Помимо токена разработчика вам необходимо создать проект в Google Cloud, в нём создать OAuth клиент, и активировать Google Ads API. 
+### Authorization process
 
-1. Для создания проекта перейдите в [Google Cloud Console](https://console.cloud.google.com/home/) и нажмите на меню выбора проекта, далее жмите create project.
-    
-<Br>
-    
-<center><img src='man/figures/createproj.png' align="middle" /></center>
-    
-<Br>
-    
-2. Далее в основном меню перейдите в раздел APIs & Services > Oauth consent screen.
-    
-<Br>
-    
-<center><img src='man/figures/createscreen.png' align="middle" /></center>
-    
-<Br>
-    
-3. Заполните все необхоимые поля, и перейдите в меню Credentials > Create credentials > OAuth client ID
-    
-<Br>
-    
-<center><img src='man/figures/createapp.png' align="middle" /></center>
-    
-<Br>
-    
-4. Из выпадающего меню выбираем Desktop app, вводим название приложение и жмём create
-    
-<Br>
-        
-<center><img src='man/figures/createapp2.png' align="middle" /></center>
-    
-<Br>
-    
-5. На этом настройка приложения закончена жмём ОК
-    
-<Br>
-    
-<center><img src='man/figures/createapp3.png' align="centre" /></center>
-    
-<Br>
-    
-6. Теперь, для удобства созданное приложение можно сохранить на ПК, название файла при сохранении может быть произвольным, допустим что мы сохранили его с именем app.json по ардесу C:/auth.
-    
-<Br>
-    
-<center><img src='man/figures/createapp4.png' align="middle" /></center>
-    
-<Br>
-    
-7. Последнем шагом настройки проекта в Google Cloud необходимо включить Google Ads API, переходим в раздел library
-    
-<Br>
-    
-<center><img src='man/figures/library1.png' align="middle" /></center>
-    
-<Br>
-    
-8. В поиске пишем Google Ads
-    
-<Br>
-    
-<center><img src='man/figures/library2.png' align="middle" /></center>
-    
-<Br>
-    
-9. Включаем в проекте Google Ads API
-    
-<Br>
-    
-<center><img src='man/figures/library3.png' align="centre" /></center>
-    
-<Br>
+You run `gads_auth('me@gmail.cpm')` and start [OAuth Dance](https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10) in the browser:
 
-### Важная информация о совместном использовании токена разработчика и OAuth клиента приложения
+![Typical OAuth dance in the browser, when initiated from within R](http://img.netpeak.ua/alsey/1OE9JZ2.png)
 
-* У компании, т.е. юр. лица должен быть только один токен разработчика.
-* При первом использовании OAuth клиент из проекта Google Cloud с токеном разработчика, идентификатор клиента привязывается к токену разработчика и не может использоваться с другим токеном разработчика. Другими словами:
-    * Токен разработчика можно использовать с несколькими идентификаторами клиентов.
-    * Однако идентификатор Oauth клиента можно использовать только с одним токеном разработчика.
-    
-## Пример использования пакета
+Upon success, you see this message in the browser:
 
-This is a basic example which shows you how to solve a common problem:
+`Authentication complete. Please close this page and return to R.`
 
-``` r
+And you credentials cached locally on your PC in the form of RDS files.
+
+### Key points
+* By default, gargle caches user tokens centrally, at the user level, and their keys or labels also convey which Google identity is associated with each token.
+* Token storage relies on serialized R objects. That is, tokens are stored locally on your PC in the form of RDS files.
+
+### Use own OAuth client
+You can use own OAuth app:
+
+```r
+app <- httr::oauth_app(appname = "app name", key = "app id", secret = "app secret")
+gads_auth_configure(app = app)
+
+# or from json file 
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+
+# run authorization
+gads_auth('me@gmail.com')
+```
+
+## Obtain Own Developer Token and create own OAuth client
+
+For obtain own developer token and OAuth client read the following documentation:
+
+* [Obtain Your Developer Token](https://developers.google.com/google-ads/api/docs/first-call/dev-token)
+* [Configure a Google API Console Project for the Google Ads API](https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project)
+
+## Example of use rgoogleads
+
+```r
 library(rgoogleads)
 
-# auth
-# установка созданнового вами приложения
+# set own oauth app
 gads_auth_configure(path = 'C:/auth/app.json')
-# логин и токен разработчика
-# если у вас нет токена разработчика можете его не указывать
-gads_auth(email = 'ваша.почта@gmail.com', developer_token = "токен разработчика")
+# set your developer token if needed, or use default developer token
+gads_auth(email = 'me@gmail.com', developer_token = "own developer token")
 
-# Получить список доступных аккаунтов верхнего уровня
-# под авторизованным логином
+# get list of accessible accounts
 my_accounts <- gads_get_accessible_customers()
 
-# Установка MCC для работы с агентским аккаунтом
-# При работе с обычным аккаунтом этот пункт можно упустить
+# set manager account id (options)
 gads_set_login_customer_id('xxx-xxx-xxxx')
 
-# Установка клиенткого аккаунта
+# set client account id
 gads_set_customer_id('xxx-xxx-xxxx')
 
-# Загрузка отчёта
+# get accounts object
+camps   <- gads_get_campaigns()
+dgroups <- gads_get_ad_groups(where = "ad_group.status = 'ENABLED'")
+ads     <- gads_get_ads()
+kw      <- gads_get_ad_group_criterions()
+
+
+# load report data
 ad_group_report <- gads_get_report(
   resource    = "ad_group",
-  fields = c("ad_group.campaign",
-             "ad_group.id",
-             "ad_group.name",
-             "ad_group.status",
-             "metrics.clicks",
-             "metrics.cost_micros"),
+  fields      = c("ad_group.campaign",
+                  "ad_group.id",
+                  "ad_group.name",
+                  "ad_group.status",
+                  "metrics.clicks",
+                  "metrics.cost_micros"),
   date_from   = "2021-06-10",
   date_to     = "2021-06-17",
   where       = "ad_group.status = 'ENABLED'",
@@ -175,12 +152,39 @@ ad_group_report <- gads_get_report(
 )
 ```
 
-## Детальная информация
-Для получения подробной справки на данный момент смотрите справку к функции `?gads_get_report`.
+You can use `cl` argument for loading data in parallel mode. 
 
-### Автор пакета
-Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net)
-<Br>Telegram Channel: R4marketing
+```r
+library(parallel)
+
+# make core cluster
+cl <- makeCluster(4)
+
+multi_rep <- gads_get_report(
+  date_from         = as.Date('2021-06-10'),
+  date_to           = as.Date('2021-06-17'),
+  customer_id       = c('111-111-1111',
+                        '222-222-2222',
+                        '333-333-3333',
+                        '444-444-4444',
+                        '555-555-5555'),
+  login_customer_id = "999-999-9999",
+  cl                = cl
+)
+```
+
+## Package help
+For get help of `rgoogleads` use `?rgoogleads` or `?gads_get_report`.
+
+## Package chage log, news and updates
+You can follow the package updates at the [link](https://github.com/selesnow/rgoogleads/blob/master/NEWS.md).
+
+## Bug report and support
+If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a issue using the [link](https://github.com/selesnow/rgoogleads/issues).
+
+## Author
+Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net)
+<Br>Telegram Channel: [R4marketing](https://t.me/R4marketing)
 <Br>email: selesnow@gmail.com
 <Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
 <Br>blog: [alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)
