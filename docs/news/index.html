@@ -155,10 +155,11 @@
 <h2 class="hasAnchor">
 <a href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D0%B5-%D0%B4%D0%BE%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8" class="anchor"></a>Прочие доработки:</h2>
 <ul>
+<li>OAuth клиент вшитый в пакет прошел верификацию Google, теперь любой пользователь пакета может использовать вшитый в <code>rgoogleads</code> OAuth клиент для авторизации.</li>
 <li>Доработана функция проверки ответа от API на ошибки.</li>
 <li>В функцию <code><a href="../reference/gads_auth_configure.html">gads_auth_configure()</a></code> добавлен аргумент developer_token.</li>
 <li>В DESCRIPTION изменил версии некоторых пакетов.</li>
-<li>Начал перевод работы функций с глаголов из <code>httr</code> на <code>глаголы gargle</code>: <code>request_build()</code>, <code>request_make()</code>, <code>response_process()</code>. В качестве эксперемента пока, что переведена вспомогательная функция <code>gads_customer_id()</code>.</li>
+<li>Все функций пакета, отправляющие POST и GET запросы к API переведены с глаголов из <code>httr</code> на глаголы <code>gargle</code>: <code>request_build()</code>, <code>request_retry()</code>, <code>response_process()</code>. В качестве эксперемента пока, что переведена вспомогательная функция <code>gads_customer_id()</code>.</li>
 <li>Новый логотип пакета.</li>
 <li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент during, который позволяет задавать относительный период отчёта, например ‘LAST_BUSINESS_WEEK’.</li>
 <li>Создал сайт пакета с помощью <code>pkgdown</code>, сайт доступен по <a href="https://selesnow.github.io/rgoogleads/docs/">ссылке</a>.</li>
