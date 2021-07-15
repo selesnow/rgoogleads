@@ -8,6 +8,13 @@
 
 <title>Changelog • rgoogleads</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -158,6 +165,7 @@
 <a href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D0%B5-%D0%B4%D0%BE%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8" class="anchor"></a>Прочие доработки:</h2>
 <ul>
 <li>OAuth клиент вшитый в пакет прошел верификацию Google, теперь любой пользователь пакета может использовать вшитый в <code>rgoogleads</code> OAuth клиент для авторизации.</li>
+<li>Добавлена опция <code>gads.column.name.case.fun</code>, с помощью которой можно передать любую функцию из пакета snakecase, и имена столбцов возвращаемые всеми функциями пакета будут переведены в указанный функцией регистр. По умолчанию используется функция <code>to_snale_case</code>.</li>
 <li>Доработана функция проверки ответа от API на ошибки.</li>
 <li>В функцию <code><a href="../reference/gads_auth_configure.html">gads_auth_configure()</a></code> добавлен аргумент developer_token.</li>
 <li>В DESCRIPTION изменил версии некоторых пакетов.</li>
