@@ -77,14 +77,14 @@ gads_auth <- function(
   }
 
   cred <- gargle::token_fetch(
-    scopes = 'https://www.googleapis.com/auth/adwords',
-    app = app,
-    email = email,
-    path = path,
+    scopes  = 'https://www.googleapis.com/auth/adwords',
+    app     = app,
+    email   = email,
+    path    = path,
     package = "rgoogleads",
-    cache = cache,
+    cache   = cache,
     use_oob = use_oob,
-    token = token,
+    token   = token,
     user_params = list(developer_token = developer_token)
   )
 
