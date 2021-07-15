@@ -63,6 +63,21 @@ tibble with campaings dicrionary
 \description{
 Get Campaigns Dictionary From Google Ads Client Account
 }
+\examples{
+\dontrun{
+# set client customer id
+gads_set_login_customer_id('xxx-xxx-xxxx')
+
+# set manager id if you work under MCC
+gads_set_customer_id('xxx-xxx-xxxx')
+
+# load campaing list
+camps <- gads_get_campaigns(
+    where = "campaign.status = 'ENABLED'"
+)
+
+}
+}
 \seealso{
 \href{https://developers.google.com/google-ads/api/fields/v8/campaign_query_builder}{Google Ads Query Builder}
 }

@@ -14,6 +14,7 @@
 #'   \item Loading list of Google Ads client account objects: campaigns, ad groups, ads, etc.
 #'   \item Loading statistics from Google Ads client account
 #'   \item Loading resource metadata, resource fields, segments and metrics
+#'   \item Loading forecast and historical metrics from Keyword Planning.
 #' }
 #'
 #' @examples

@@ -6,6 +6,24 @@
 #' @seealso \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_ad_query_builder}{Google Ads Query Builder}
 #' @return tibble with ads dicrionary
 #' @export
+#' @examples
+#' \dontrun{
+#' # set client customer id
+#' gads_set_login_customer_id('xxx-xxx-xxxx')
+#'
+#' # set manager id if you work under MCC
+#' gads_set_customer_id('xxx-xxx-xxxx')
+#'
+#' # load ads list
+#' myads <- gads_get_ads(
+#'    fields = c("ad_group_ad.ad.id",
+#'               "customer.descriptive_name",
+#'               "ad_group_ad.ad.call_ad.description1",
+#'               "ad_group_ad.ad.call_ad.description2"),
+#'    where = 'ad_group_ad.status = "ENABLED"'
+#' )
+#'
+#' }
 gads_get_ads <- function(
   fields                = c('ad_group_ad.ad.id',
                             'ad_group_ad.ad.name',
@@ -134,7 +152,7 @@ gads_get_ads <- function(
   )
 
   # fix names
-  res <- rename_with(res, function(x) str_remove(x, 'ad_group_ad\\_'), matches('ad_group_ad_') ) %>%
-         rename_with(to_snake_case)
+  res <- rename_with(res, function(x) str_remove( str_to_lower(x), 'ad_group_ad\\_?'), matches('ad_group_ad', ignore.case = TRUE) ) %>%
+         rename_with(getOption('gads.column.name.case.fun'))
 
 }

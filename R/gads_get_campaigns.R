@@ -8,6 +8,20 @@
 #'
 #' @return tibble with campaings dicrionary
 #' @export
+#' @examples
+#' \dontrun{
+#' # set client customer id
+#' gads_set_login_customer_id('xxx-xxx-xxxx')
+#'
+#' # set manager id if you work under MCC
+#' gads_set_customer_id('xxx-xxx-xxxx')
+#'
+#' # load campaing list
+#' camps <- gads_get_campaigns(
+#'     where = "campaign.status = 'ENABLED'"
+#' )
+#'
+#' }
 gads_get_campaigns <- function(
   fields                = c('campaign.id',
                             'campaign.name',
@@ -72,13 +86,13 @@ gads_get_campaigns <- function(
   )
 
   # renaming to snale case
-  res <- rename_with(res, function(x) str_remove(x, 'campaign\\_'), matches('campaign') ) %>%
-         rename_with(to_snake_case)
+  res <- rename_with(res, function(x) str_remove( str_to_lower(x), 'campaign\\_?'), matches('campaign', ignore.case = TRUE) ) %>%
+         rename_with(getOption('gads.column.name.case.fun'))
 
   # fix date
-  if ( any(str_detect(names(res), 'date')) ) {
+  if ( any(str_detect(str_to_lower(names(res)), 'date')) ) {
     res <- mutate(res,
-                  across(matches('date'), as.Date))
+                  across(matches('date', ignore.case = TRUE), as.Date))
   }
 
 }

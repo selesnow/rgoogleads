@@ -81,24 +81,24 @@ gads_keyword_plan_forecast_timeseries <- function(
          unnest_longer('weeklyForecasts') %>%
          unnest_wider('weeklyForecasts') %>%
          unnest_wider('forecast') %>%
-         rename_with(to_snake_case)
+         rename_with(getOption('gads.column.name.case.fun'))
 
   # fix cost
-  if ( any(str_detect(names(res), 'micros|average')) ) {
+  if ( any( str_detect(str_to_lower(names(res)), 'micros|average') ) ) {
 
     if (verbose) cli_alert_info('Fix cost fields')
 
     res <- mutate(res,
-                  across(matches('micros|average'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
-           rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
+                  across(matches('micros|average', ignore.case = TRUE), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
+           rename_with(gads_fix_names_regexp, matches('micros', ignore.case = TRUE), regexp = "\\_micros|micros")
 
   }
 
   # fix date
-  if ( any(str_detect(names(res), 'date'))) {
+  if ( any( str_detect(str_to_lower(names(res)), 'date')) ) {
     if (verbose) cli_alert_info('Fix date fields')
     res <- mutate(res,
-                  across(matches('date') & !matches('interval'), as.Date))
+                  across(matches('date', ignore.case = TRUE) & !matches('interval', ignore.case = TRUE), as.Date))
   }
 
   # success msg

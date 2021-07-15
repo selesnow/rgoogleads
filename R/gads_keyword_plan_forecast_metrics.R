@@ -79,19 +79,19 @@ gads_keyword_plan_forecast_metrics <- function(
   camp <- tibble(data = data$campaignForecasts) %>%
           unnest_wider('data') %>%
           unnest_wider('campaignForecast') %>%
-          rename_with(to_snake_case)
+          rename_with(getOption('gads.column.name.case.fun'))
 
   # adgroup data
   adgroup <- tibble(data = data$adGroupForecasts) %>%
              unnest_wider('data') %>%
              unnest_wider('adGroupForecast')%>%
-             rename_with(to_snake_case)
+             rename_with(getOption('gads.column.name.case.fun'))
 
   # camp data
   keyw <- tibble(data = data$keywordForecasts) %>%
           unnest_wider('data') %>%
           unnest_wider('keywordForecast')%>%
-          rename_with(to_snake_case)
+          rename_with(getOption('gads.column.name.case.fun'))
 
   # collect plan to one object
   res <- list(
@@ -104,11 +104,11 @@ gads_keyword_plan_forecast_metrics <- function(
   if (verbose) cli_alert_info('Fix cost fields')
   for ( plan in names(res) ) {
 
-    if ( any(str_detect(names(res[[plan]]), 'micros|cpc')) ) {
+    if ( any(str_detect( str_to_lower(names(res[[plan]])), 'micros|cpc')) ) {
 
       res[[plan]] <- mutate(res[[plan]],
-                            across(matches('micros|cpc'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
-                     rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
+                            across(matches('micros|cpc', ignore.case = TRUE), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
+                     rename_with(gads_fix_names_regexp, matches('micros', ignore.case = TRUE), regexp = "\\_micros|micros")
 
     }
 

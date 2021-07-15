@@ -52,7 +52,8 @@
                   gads.login.customer.id    = login_customer_id,
                   gads.customer.id          = customer_id,
                   gads.multi.account.verbos = FALSE,
-                  gads.base.url             = 'https://googleads.googleapis.com/')
+                  gads.base.url             = 'https://googleads.googleapis.com/',
+                  gads.column.name.case.fun = 'to_snake_case')
 
   toset <- !(names(op.gads) %in% names(op))
   if (any(toset)) options(op.gads[toset])
@@ -85,7 +86,7 @@ rgoogleadsWelcomeMessage <- function(){
          "\n",
          "Type ?rgoogleads for the main documentation.\n",
          "The github page is: https://github.com/selesnow/rgoogleads/\n",
-         "Package site: https://selesnow.github.io/rgoogleads/\n",
+         "Package site: https://selesnow.github.io/rgoogleads/docs\n",
          "\n",
          "Suggestions and bug-reports can be submitted at: https://github.com/selesnow/rgoogleads/issues\n",
          "Or contact: <selesnow@gmail.com>\n",

@@ -33,12 +33,12 @@ import(tidyr)
 import(stringr)
 import(purrr)
 import(gargle)
+import(snakecase)
 
 # import from
 importFrom(rlang,"%||%")
 importFrom(httr, GET, POST, content, add_headers, headers)
 importFrom(jsonlite, toJSON, fromJSON)
-importFrom(snakecase, to_snake_case, to_any_case)
 importFrom(cli, cli_alert_info, cli_alert_success, cli_alert_danger, cli_alert_warning, cli_div, cli_abort)
 importFrom(pbapply, pblapply)
 importFrom(rlist, list.filter)

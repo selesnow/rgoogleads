@@ -50,6 +50,21 @@ tibble with ad group dicrionary
 \description{
 Get Ad Groups Dictionary From Google Ads Client Account
 }
+\examples{
+\dontrun{
+# set client customer id
+gads_set_login_customer_id('xxx-xxx-xxxx')
+
+# set manager id if you work under MCC
+gads_set_customer_id('xxx-xxx-xxxx')
+
+# load ad groups list
+adgroups <- gads_get_ad_groups(
+    where = 'ad_group.status = "ENABLED"'
+)
+
+}
+}
 \seealso{
 \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_query_builder}{Google Ads Query Builder}
 }

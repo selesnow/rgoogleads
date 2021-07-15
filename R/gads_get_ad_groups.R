@@ -8,6 +8,20 @@
 #'
 #' @return tibble with ad group dicrionary
 #' @export
+#' @examples
+#' \dontrun{
+#' # set client customer id
+#' gads_set_login_customer_id('xxx-xxx-xxxx')
+#'
+#' # set manager id if you work under MCC
+#' gads_set_customer_id('xxx-xxx-xxxx')
+#'
+#' # load ad groups list
+#' adgroups <- gads_get_ad_groups(
+#'     where = 'ad_group.status = "ENABLED"'
+#' )
+#'
+#' }
 gads_get_ad_groups <- function(
   customer_id           = getOption('gads.customer.id'),
   fields                = c('ad_group.id',
@@ -55,13 +69,16 @@ gads_get_ad_groups <- function(
   )
 
   # renaming to snale case
-  res <- rename_with(res, function(x) str_remove(x, 'ad_group\\_'), matches('ad_group') ) %>%
-    rename_with(to_snake_case)
+  res <- rename_with(res, function(x) str_remove(str_to_lower(x), 'ad\\_?group\\_?'), matches('ad\\_?group', ignore.case = TRUE) ) %>%
+    rename_with(getOption('gads.column.name.case.fun'))
 
   # fix date
-  if ( any(str_detect(names(res), 'date')) ) {
+  if ( any(str_detect( str_to_lower(names(res)), 'date' )) ) {
     res <- mutate(res,
-                  across(matches('date'), as.Date))
+                  across(matches('date', ignore.case = TRUE), as.Date))
   }
+
+  # return
+  return(res)
 
 }

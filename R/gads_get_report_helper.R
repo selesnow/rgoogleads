@@ -184,31 +184,31 @@ gads_get_report_helper <- function(
   }
 
   # renaming to snale case
-  if (verbose) cli_alert_info('Rename columns to snake_case')
-  res <- rename_with(res, gads_fix_names, matches('metrics|segments') ) %>%
-         rename_with(to_snake_case)
+  if (verbose) cli_alert_info('Rename columns to gads.column.name case')
+  res <- rename_with(res, gads_fix_names, matches('metrics|segments', ignore.case = TRUE) ) %>%
+         rename_with(getOption('gads.column.name.case.fun'))
 
   # fix date
-  if ( any(str_detect(names(res), 'date'))) {
+  if ( any(str_detect(str_to_lower(names(res)), 'date')) ) {
     if (verbose) cli_alert_info('Fix date fields')
     res <- mutate(res,
-                  across(matches('date') & !matches('interval'), as.Date))
+                  across(matches('date', ignore.case = TRUE) & !matches('interval', ignore.case = TRUE), as.Date))
   }
 
   # fix cost
-  if ( any(str_detect(names(res), 'micros')) ) {
+  if ( any(str_detect(str_to_lower(names(res)), 'micros')) ) {
     if (verbose) cli_alert_info('Fix cost fields')
 
     res <- mutate(res,
-                  across(matches('micros'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
-           rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
+                  across(matches('micros', ignore.case = TRUE), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
+           rename_with(gads_fix_names_regexp, matches('micros', ignore.case = TRUE), regexp = "\\_micros|micros")
 
   }
 
   # remove resource names
   if ( isFALSE(include_resource_name) ) {
 
-    res <- select(res, -matches('resource_name'))
+    res <- select(res, -matches('resource\\_?name'))
 
   }
 
