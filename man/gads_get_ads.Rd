@@ -120,6 +120,25 @@ tibble with ads dicrionary
 \description{
 Get Ads Dictionary From Google Ads Client Account
 }
+\examples{
+\dontrun{
+# set client customer id
+gads_set_login_customer_id('xxx-xxx-xxxx')
+
+# set manager id if you work under MCC
+gads_set_customer_id('xxx-xxx-xxxx')
+
+# load ads list
+myads <- gads_get_ads(
+   fields = c("ad_group_ad.ad.id",
+              "customer.descriptive_name",
+              "ad_group_ad.ad.call_ad.description1",
+              "ad_group_ad.ad.call_ad.description2"),
+   where = 'ad_group_ad.status = "ENABLED"'
+)
+
+}
+}
 \seealso{
 \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_ad_query_builder}{Google Ads Query Builder}
 }

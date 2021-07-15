@@ -109,6 +109,19 @@ tibble with ad group criterions dicrionary
 \description{
 Get Ad Group Criterions Dictionary From Google Ads Client Account
 }
+\examples{
+\dontrun{
+# set client customer id
+gads_set_login_customer_id('xxx-xxx-xxxx')
+
+# set manager id if you work under MCC
+gads_set_customer_id('xxx-xxx-xxxx')
+
+# load ad groups keywords list
+kw <- gads_get_ad_group_criterions()
+
+}
+}
 \seealso{
 \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_criterion_query_builder}{Google Ads Query Builder}
 }

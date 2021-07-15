@@ -8,6 +8,20 @@
 #'
 #' @return tibble with campaings dicrionary
 #' @export
+#' @examples
+#' \dontrun{
+#' # set client customer id
+#' gads_set_login_customer_id('xxx-xxx-xxxx')
+#'
+#' # set manager id if you work under MCC
+#' gads_set_customer_id('xxx-xxx-xxxx')
+#'
+#' # load campaing list
+#' camps <- gads_get_campaigns(
+#'     where = "campaign.status = 'ENABLED'"
+#' )
+#'
+#' }
 gads_get_campaigns <- function(
   fields                = c('campaign.id',
                             'campaign.name',

@@ -8,6 +8,18 @@
 #'
 #' @return tibble with ad group criterions dicrionary
 #' @export
+#' @examples
+#' \dontrun{
+#' # set client customer id
+#' gads_set_login_customer_id('xxx-xxx-xxxx')
+#'
+#' # set manager id if you work under MCC
+#' gads_set_customer_id('xxx-xxx-xxxx')
+#'
+#' # load ad groups keywords list
+#' kw <- gads_get_ad_group_criterions()
+#'
+#' }
 gads_get_ad_group_criterions <- function(
   customer_id           = getOption('gads.customer.id'),
   fields                = c('ad_group_criterion.ad_group',

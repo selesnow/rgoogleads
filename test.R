@@ -179,16 +179,24 @@ myacs <- gads_get_accessible_customers()
 
 # campaigns ---------------------------------------------------------------
 mycamp <- gads_get_campaigns(customer_id = acs)
-cam <- gads_get_campaigns(customer_id = acs[1])
+cam <- gads_get_campaigns(
+  customer_id = acs[3],
+  where = "campaign.status = 'ENABLED'")
 
 
 # ad groups ---------------------------------------------------------------
-myadgroups <- gads_get_ad_groups(customer_id = acs[1])
+myadgroups <- gads_get_ad_groups(customer_id = acs[1], where = 'ad_group.status = "ENABLED"')
 
 
 
 # ads ---------------------------------------------------------------------
-myads <- gads_get_ads(customer_id = acs[1])
+myads <- gads_get_ads(
+  customer_id = acs[6],
+  fields = c("ad_group_ad.ad.id",
+             "customer.descriptive_name",
+             "ad_group_ad.ad.call_ad.description1",
+             "ad_group_ad.ad.call_ad.description2"),
+  where = 'ad_group_ad.status = "ENABLED"')
 
 
 # keywords ----------------------------------------------------------------
