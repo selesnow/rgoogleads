@@ -55,13 +55,16 @@ gads_get_ad_groups <- function(
   )
 
   # renaming to snale case
-  res <- rename_with(res, function(x) str_remove(x, 'ad_group\\_'), matches('ad_group') ) %>%
-    rename_with(to_snake_case)
+  res <- rename_with(res, function(x) str_remove(str_to_lower(x), 'ad\\_?group\\_?'), matches('ad\\_?group', ignore.case = TRUE) ) %>%
+    rename_with(getOption('gads.column.name.case.fun'))
 
   # fix date
-  if ( any(str_detect(names(res), 'date')) ) {
+  if ( any(str_detect( str_to_lower(names(res)), 'date' )) ) {
     res <- mutate(res,
-                  across(matches('date'), as.Date))
+                  across(matches('date', ignore.case = TRUE), as.Date))
   }
+
+  # return
+  return(res)
 
 }

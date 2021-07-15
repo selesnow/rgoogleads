@@ -120,8 +120,8 @@ gads_get_ad_group_criterions <- function(
   )
 
   # renaming to snale case
-  res <- rename_with(res, function(x) str_remove(x, 'ad_group_criterion\\_'), matches('ad_group_criterion_') ) %>%
-    rename_with(to_snake_case)
+  res <- rename_with(res, function(x) str_remove( str_to_lower(x), 'ad_?group_?criterion\\_?'), matches('ad\\_?group\\_?criterion\\_?', ignore.case = TRUE) ) %>%
+    rename_with(getOption('gads.column.name.case.fun'))
 
   return(res)
 

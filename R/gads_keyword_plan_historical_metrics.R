@@ -84,16 +84,16 @@ gads_keyword_plan_historical_metrics <- function(
     unnest_wider('keywordMetrics') %>%
     select(-'monthlySearchVolumes') %>%
     relocate('searchQuery', .before = everything()) %>%
-    rename_with(to_snake_case)
+    rename_with(getOption('gads.column.name.case.fun'))
 
   # fix cost
-  if ( any(str_detect(names(res), 'micros')) ) {
+  if ( any(  str_detect(str_to_lower(names(res) ), 'micros')) ) {
 
     if (verbose) cli_alert_info('Fix cost fields')
 
     res <- mutate(res,
-                  across(matches('micros'), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
-      rename_with(gads_fix_names_regexp, matches('micros'), regexp = "\\_micros")
+                  across(matches('micros', ignore.case = TRUE), function(x) round(as.numeric(x) / 1000000, 2 )) ) %>%
+      rename_with(gads_fix_names_regexp, matches('micros', ignore.case = TRUE), regexp = "\\_micros|micros")
 
   }
 
@@ -104,7 +104,7 @@ gads_keyword_plan_historical_metrics <- function(
     select('searchQuery', 'monthlySearchVolumes') %>%
     unnest_longer('monthlySearchVolumes') %>%
     unnest_wider('monthlySearchVolumes')%>%
-    rename_with('to_snake_case')
+    rename_with(getOption('gads.column.name.case.fun'))
 
   # success msg
   if (verbose) cli_alert_success('Success! Loaded {nrow(res)} rows!')

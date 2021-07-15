@@ -54,7 +54,7 @@ gads_set_customer_id('6766427440')
 # load account hierarchy --------------------------------------------------
 # загрузка списка аккаунтов
 accounts_main <- gads_get_account_hierarchy(manager_customer_id = '175-410-7253')
-
+client_acs <-  accounts_main$customer_client_id[accounts_main$customer_client_manager == FALSE]
 # load reports ------------------------------------------------------------
 # загрузка статистики
 # с дефорлтными параметрами по кампаниям
@@ -138,6 +138,36 @@ multi_rep <- gads_get_report(
 )
 
 multi_rep <- gads_get_report(
+  customer_id = acs,
+  resource    = 'ad_group_ad',
+  fields      = c("ad_group_ad.ad.id", "ad_group_ad.ad.name", "ad_group_ad.status", "metrics.clicks"),
+  date_from   = '2021-06-10',
+  date_to     = '2021-06-17',
+  login_customer_id = "1754107253",
+  cl         = cl
+)
+
+
+group_report_multi <- gads_get_report(
+  customer_id = acs,
+  resource    = "ad_group",
+  fields = c("ad_group.campaign",
+             "ad_group.id",
+             "ad_group.name",
+             "ad_group.status",
+             "metrics.clicks",
+             "metrics.cost_micros"),
+  date_from   = "2021-06-10",
+  date_to     = "2021-06-17",
+  where       = "ad_group.status = 'ENABLED'",
+  order_by    = c("metrics.clicks DESC", "metrics.cost_micros"),
+  limit       = 3000,
+  login_customer_id = "1754107253",
+  cl         = cl
+)
+
+
+multi_rep <- gads_get_report(
   date_from = as.Date('2021-06-10'),
   date_to = as.Date('2021-06-17'),
   customer_id = acs
@@ -149,16 +179,16 @@ myacs <- gads_get_accessible_customers()
 
 # campaigns ---------------------------------------------------------------
 mycamp <- gads_get_campaigns(customer_id = acs)
-cam <- gads_get_campaigns_helper(customer_id = acs[1])
+cam <- gads_get_campaigns(customer_id = acs[1])
 
 
 # ad groups ---------------------------------------------------------------
-myadgroups <- gads_get_ad_groups(customer_id = acs)
+myadgroups <- gads_get_ad_groups(customer_id = acs[1])
 
 
 
 # ads ---------------------------------------------------------------------
-myads <- gads_get_ads(customer_id = acs)
+myads <- gads_get_ads(customer_id = acs[1])
 
 
 # keywords ----------------------------------------------------------------
@@ -368,9 +398,13 @@ plan_data <- gads_get_report(
 
 # запрашиваем детальные данные плана
 historical_plan_data <- gads_keyword_plan_historical_metrics(
-  keyword_plan_id = plan_data$keyword_plan_id
+  keyword_plan_id = plan_data$keywordPLANid[1]
 )
 
 # разделям данные на две таблицы
 data <- historical_plan_data$main_data
 historical_data <- historical_plan_data$historical_data
+
+
+pl2 <- gads_keyword_plan_forecast_timeseries(pid)
+pl3 <- gads_keyword_plan_forecast_metrics(pid)

@@ -69,7 +69,7 @@ gads_get_accessible_customers <- function()
          unnest_wider('data') %>%
          select(!where(is.list)) %>%
          select(-"resourceName") %>%
-         rename_with(to_snake_case)
+         rename_with(getOption('gads.column.name.case.fun'))
 
   # success msg
   cli_alert_success('Success! Loaded {nrow(res)} rows!')

@@ -134,7 +134,7 @@ gads_get_ads <- function(
   )
 
   # fix names
-  res <- rename_with(res, function(x) str_remove(x, 'ad_group_ad\\_'), matches('ad_group_ad_') ) %>%
-         rename_with(to_snake_case)
+  res <- rename_with(res, function(x) str_remove( str_to_lower(x), 'ad_group_ad\\_?'), matches('ad_group_ad', ignore.case = TRUE) ) %>%
+         rename_with(getOption('gads.column.name.case.fun'))
 
 }

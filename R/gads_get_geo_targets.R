@@ -28,7 +28,7 @@ gads_get_geo_targets <- function(
 
   # read file
   data <- read.csv(file_link) %>%
-          rename_with(to_snake_case)
+          rename_with(getOption('gads.column.name.case.fun'))
 
   # success msg
   cli_alert_success('Success! Loaded {nrow(data)} rows!')

@@ -93,7 +93,7 @@ gads_get_account_hierarchy <- function(
     unnest_wider('results') %>%
     unnest_wider('customer') %>%
     unnest_wider('customerClient', names_sep = "_") %>%
-    rename_with(to_snake_case) -> res
+    rename_with(getOption('gads.column.name.case.fun')) -> res
 
   # success msg
   cli_alert_success('Success! Loaded {nrow(res)} rows!')
