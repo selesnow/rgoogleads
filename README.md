@@ -67,6 +67,7 @@ Capabilities of `rgoogleads`:
 * Loading list of Google Ads client account objects: campaigns, ad groups, ads, etc.
 * Loading statistics from Google Ads client account
 * Loading resource metadata, resource fields, segments and metrics
+* Loading forecast and historical metrics from Keyword Planning.
 
 ## Privacy Policy
 
@@ -158,7 +159,7 @@ ad_group_report <- gads_get_report(
 For get help of `rgoogleads` use `?rgoogleads` or `?gads_get_report`.
 
 ## Package chage log, news and updates
-You can follow the package updates at the [link](https://github.com/selesnow/rgoogleads/blob/master/NEWS.md)
+You can follow the package updates at the [link](https://github.com/selesnow/rgoogleads/blob/master/NEWS.md).
 
 ## Bug report and support
 If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a issue using the [link](https://github.com/selesnow/rgoogleads/issues).
