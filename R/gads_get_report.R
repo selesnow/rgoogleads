@@ -73,6 +73,7 @@
 #' # make core cluster
 #' cl <- makeCluster(4)
 #'
+#' # loading data
 #' multi_rep <- gads_get_report(
 #'   date_from         = as.Date('2021-06-10'),
 #'   date_to           = as.Date('2021-06-17'),
@@ -84,6 +85,9 @@
 #'   login_customer_id = "999-999-9999",
 #'   cl                = cl
 #' )
+#'
+#' # stop cluster
+#' stopCluster(cl)
 #' }
 gads_get_report <- function(
   resource              = 'campaign',
@@ -140,6 +144,10 @@ gads_get_report <- function(
 
     # check parallel
     if (!is.null(cl)) {
+
+      # check
+      if ( is.null(login_customer_id) ) gads_abort('You have enabled multi-threaded loading, and you did not specify the login_customer_id argument, which is required to loading data in multi-threaded mode.')
+
       # optins
       oldpar <- options('gads.multi.account.verbos')
       on.exit(options(oldpar))

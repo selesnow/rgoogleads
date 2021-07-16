@@ -133,7 +133,7 @@ multi_rep <- gads_get_report(
   date_from         = as.Date('2021-06-10'),
   date_to           = as.Date('2021-06-17'),
   customer_id       = acs,
-  login_customer_id = "1754107253",
+  #login_customer_id = "1754107253",
   cl                = cl
 )
 

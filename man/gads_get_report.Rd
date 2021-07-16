@@ -112,6 +112,7 @@ library(parallel)
 # make core cluster
 cl <- makeCluster(4)
 
+# loading data
 multi_rep <- gads_get_report(
   date_from         = as.Date('2021-06-10'),
   date_to           = as.Date('2021-06-17'),
@@ -123,6 +124,9 @@ multi_rep <- gads_get_report(
   login_customer_id = "999-999-9999",
   cl                = cl
 )
+
+# stop cluster
+stopCluster(cl)
 }
 }
 \seealso{

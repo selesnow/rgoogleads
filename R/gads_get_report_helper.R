@@ -38,6 +38,11 @@ gads_get_report_helper <- function(
   # check args
   during <- match.arg(during)
 
+  # check login and custimer ids
+  if ( is.null(customer_id) ) {
+    gads_abort('customer_id is require argument, please set it and retry your request.')
+  }
+
   # info
   if (verbose) cli_alert_info(c('Loading data: ', str_replace(customer_id, '(\\d{3})(\\d{3})(\\d{4})', '\\1-\\2-\\3')))
 
