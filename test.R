@@ -12,7 +12,7 @@ gads_auth(email = 'alsey.netpeak@gmail.com')
 
 
 gads_auth(email = 'selesnow.netpeak@gmail.com')
-
+pt <- gads_auth_cache_path()
 # опции#
 # установка основного логина
 gads_set_login_customer_id('1754107253')

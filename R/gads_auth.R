@@ -141,7 +141,7 @@ gads_has_token <- function() {
   inherits(.auth$cred, "Token2.0")
 }
 
-# auth config
+
 #' Edit and view auth configuration
 #'
 #' @eval gargle:::PREFIX_auth_configure_description(gargle_lookup_table)
@@ -216,12 +216,26 @@ gads_auth_configure <- function(app, path, api_key, developer_token) {
   invisible(.auth)
 }
 
+
 #' @export
 #' @rdname gads_auth_configure
 gads_auth_cache_path <- function() {
 
   if ( gads_has_token() ) {
     .auth$cred$cache_path
+  } else {
+    cli_alert_warning("You need to log in to google account")
+  }
+
+}
+
+#' Open folder with auth cache files
+#' @export
+#' @rdname gads_auth_configure
+gads_open_auth_cache_folder <- function() {
+
+  if ( gads_has_token() ) {
+    shell.exec(.auth$cred$cache_path)
   } else {
     cli_alert_warning("You need to log in to google account")
   }
