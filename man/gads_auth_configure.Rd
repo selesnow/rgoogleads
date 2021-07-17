@@ -3,6 +3,7 @@
 \name{gads_auth_configure}
 \alias{gads_auth_configure}
 \alias{gads_auth_cache_path}
+\alias{gads_open_auth_cache_folder}
 \alias{gads_api_key}
 \alias{gads_developer_token}
 \alias{gads_oauth_app}
@@ -11,6 +12,8 @@
 gads_auth_configure(app, path, api_key, developer_token)
 
 gads_auth_cache_path()
+
+gads_open_auth_cache_folder()
 
 gads_api_key()
 
