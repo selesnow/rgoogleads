@@ -45,5 +45,3 @@ importFrom(pbapply, pblapply)
 importFrom(rlist, list.filter)
 importFrom(rvest, read_html, html_element, html_attr)
 importFrom(utils, read.csv)
-
-
