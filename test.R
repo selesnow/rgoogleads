@@ -8,8 +8,12 @@ library(rgoogleads)
 
 # авторизация
 gads_auth_configure(path = 'D:/ga_auth/app.json')
+<<<<<<< HEAD
 
 gads_auth(email = 'alsey.netpeak@gmail.com')
+=======
+gads_auth(email = 'alsey.netpeak@gmail.com' )
+>>>>>>> cc772b33cca04c461c746fe044bdfcbe88bed306
 
 
 gads_auth(email = 'selesnow.netpeak@gmail.com')
@@ -126,7 +130,7 @@ library(pbapply)
 library(parallel)
 
 options(gads.multi.account.verbos = FALSE)
-cl <- makeCluster(4)
+cl <- makeCluster(5)
 
 gads_set_customer_id(acs)
 
@@ -139,7 +143,7 @@ multi_rep <- gads_get_report(
 )
 
 multi_rep <- gads_get_report(
-  customer_id = acs,
+  customer_id = acs[3:10],
   resource    = 'ad_group_ad',
   fields      = c("ad_group_ad.ad.id", "ad_group_ad.ad.name", "ad_group_ad.status", "metrics.clicks"),
   date_from   = '2021-06-10',
