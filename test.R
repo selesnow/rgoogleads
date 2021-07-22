@@ -8,12 +8,12 @@ library(rgoogleads)
 
 # авторизация
 gads_auth_configure(path = 'D:/ga_auth/app.json')
-<<<<<<< HEAD
+
 
 gads_auth(email = 'alsey.netpeak@gmail.com')
-=======
+
 gads_auth(email = 'alsey.netpeak@gmail.com' )
->>>>>>> cc772b33cca04c461c746fe044bdfcbe88bed306
+
 
 
 gads_auth(email = 'selesnow.netpeak@gmail.com')
