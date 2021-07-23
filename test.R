@@ -141,7 +141,7 @@ library(pbapply)
 library(parallel)
 
 options(gads.multi.account.verbos = FALSE)
-cl <- makeCluster(5)
+cl <- makeCluster(4)
 
 gads_set_customer_id(acs)
 

@@ -27,7 +27,6 @@ export(gads_keyword_plan_forecast_timeseries)
 export(gads_keyword_plan_forecast_metrics)
 export(gads_get_geo_targets)
 export(gads_last_request_ids)
-export(to_snake_case)
 
 # import
 import(dplyr)
