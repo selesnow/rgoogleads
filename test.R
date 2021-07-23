@@ -40,6 +40,17 @@ group_report <- gads_get_report(
   order_by    = c("metrics.clicks DESC", "metrics.cost_micros"),
 )
 
+
+GAds_Data <- gads_get_report(
+  resource =   "campaign",
+  fields   = c("segments.week",
+               "campaign.name",
+               "metrics.conversions_by_conversion_date"),
+  date_from   = "2021-02-22",
+  date_to     = "2021-04-04")
+
+
+
 gads_user()
 
 gads_developer_token()
