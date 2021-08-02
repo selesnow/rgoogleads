@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgoogleads</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -133,10 +133,13 @@
       <small>Source: <a href='https://github.com/selesnow/rgoogleads/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="rgoogleads-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#rgoogleads-development-version" class="anchor"></a>rgoogleads (development version)<small> Unreleased </small>
+    <div id="rgoogleads-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#rgoogleads-020" class="anchor"></a>rgoogleads 0.2.0<small> 2021-08-02 </small>
 </h1>
+<ul>
+<li>Дата релиза: 2021-08-02</li>
+</ul>
 <div id="новые-функции" class="section level2">
 <h2 class="hasAnchor">
 <a href="#%D0%BD%D0%BE%D0%B2%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8" class="anchor"></a>Новые функции:</h2>
@@ -146,7 +149,8 @@
 <li>Добавлена функция <code><a href="../reference/gads_get_metadata.html">gads_get_metadata()</a></code>, которая позволяет получить список всех объектов вместе с их метаданными, т.е. ресурсов, сегментов, метрик и атриутов.</li>
 <li>Добавлена функция <code><a href="../reference/gads_keyword_plan_historical_metrics.html">gads_keyword_plan_historical_metrics()</a></code>, с помощью которой вы можете запрашивать данные по сохраннным планам ключевых слов.</li>
 <li>Добавлена функция <code><a href="../reference/gads_keyword_plan_forecast_timeseries.html">gads_keyword_plan_forecast_timeseries()</a></code>, которая позволяет запросить прогноз в виде временного ряда для плана ключевых слов на следующие 52 недели.</li>
-<li>Добавлена функция <code><a href="../reference/gads_keyword_plan_forecast_metrics.html">gads_keyword_plan_forecast_metrics()</a></code>, которая возвращает запрошенные прогнозы плана ключевых слов</li>
+<li>Добавлена функция <code><a href="../reference/gads_keyword_plan_forecast_metrics.html">gads_keyword_plan_forecast_metrics()</a></code>, которая возвращает запрошенные прогнозы плана ключевых слов.</li>
+<li>Добавлена функция <code><a href="../reference/gads_auth_configure.html">gads_open_auth_cache_folder()</a></code>, с помощью которой можно открыть папаку, в которой хранятся учётные данные.</li>
 </ul>
 </div>
 <div id="документация" class="section level2">
@@ -166,13 +170,15 @@
 <a href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D0%B5-%D0%B4%D0%BE%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8" class="anchor"></a>Прочие доработки:</h2>
 <ul>
 <li>OAuth клиент вшитый в пакет прошел верификацию Google, теперь любой пользователь пакета может использовать вшитый в <code>rgoogleads</code> OAuth клиент для авторизации.</li>
-<li>Добавлена опция <code>gads.column.name.case.fun</code>, с помощью которой можно передать любую функцию из пакета snakecase, и имена столбцов возвращаемые всеми функциями пакета будут переведены в указанный функцией регистр. По умолчанию используется функция <code>to_snale_case</code>.</li>
+<li>Вшитый в пакет токен разработчика получил стандартный уровень доступа к API.</li>
+<li>Добавлена опция <code>gads.column.name.case.fun</code>, с помощью которой можно передать любую функцию для приведения названий столбцов в полученном от API результате в указанный регистр, по умолчанию передаётся функция <code>to_snake_case()</code> из пакета <code>snakecase</code>.</li>
 <li>Доработана функция проверки ответа от API на ошибки.</li>
 <li>В функцию <code><a href="../reference/gads_auth_configure.html">gads_auth_configure()</a></code> добавлен аргумент developer_token.</li>
 <li>В DESCRIPTION изменил версии некоторых пакетов.</li>
 <li>Все функций пакета, отправляющие POST и GET запросы к API переведены с глаголов из <code>httr</code> на глаголы <code>gargle</code>: <code>request_build()</code>, <code>request_retry()</code>, <code>response_process()</code>. В качестве эксперемента пока, что переведена вспомогательная функция <code>gads_customer_id()</code>.</li>
 <li>Новый логотип пакета.</li>
 <li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент during, который позволяет задавать относительный период отчёта, например ‘LAST_BUSINESS_WEEK’.</li>
+<li>Исправил ошибку в функции <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code>, когда поле в названии которого содержится date нельзя перевести в дату.</li>
 <li>Создал сайт пакета с помощью <code>pkgdown</code>, сайт доступен по <a href="https://selesnow.github.io/rgoogleads/docs/">ссылке</a>.</li>
 </ul>
 <hr>
