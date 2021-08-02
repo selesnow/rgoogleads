@@ -1,4 +1,4 @@
-# rgoogleads (development version)
+# rgoogleads 0.2.0
 
 * Дата релиза: 2021-08-02
 
