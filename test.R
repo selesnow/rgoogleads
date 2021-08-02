@@ -8,7 +8,12 @@ library(rgoogleads)
 
 # авторизация
 gads_auth_configure(path = 'D:/ga_auth/app.json')
+
+
+gads_auth(email = 'alsey.netpeak@gmail.com')
+
 gads_auth(email = 'alsey.netpeak@gmail.com' )
+
 
 
 gads_auth(email = 'selesnow.netpeak@gmail.com')
@@ -34,6 +39,17 @@ group_report <- gads_get_report(
   where       = "ad_group.status = 'ENABLED'",
   order_by    = c("metrics.clicks DESC", "metrics.cost_micros"),
 )
+
+
+GAds_Data <- gads_get_report(
+  resource =   "campaign",
+  fields   = c("segments.week",
+               "campaign.name",
+               "metrics.conversions_by_conversion_date"),
+  date_from   = "2021-02-22",
+  date_to     = "2021-04-04")
+
+
 
 gads_user()
 

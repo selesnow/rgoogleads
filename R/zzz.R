@@ -53,7 +53,7 @@
                   gads.customer.id          = customer_id,
                   gads.multi.account.verbos = FALSE,
                   gads.base.url             = 'https://googleads.googleapis.com/',
-                  gads.column.name.case.fun = 'to_snake_case')
+                  gads.column.name.case.fun = snakecase::to_snake_case)
 
   toset <- !(names(op.gads) %in% names(op))
   if (any(toset)) options(op.gads[toset])

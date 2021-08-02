@@ -190,14 +190,18 @@ gads_get_report_helper <- function(
 
   # renaming to snale case
   if (verbose) cli_alert_info('Rename columns to gads.column.name case')
-  res <- rename_with(res, gads_fix_names, matches('metrics|segments', ignore.case = TRUE) ) %>%
-         rename_with(getOption('gads.column.name.case.fun'))
+  res <- rename_with(res, getOption('gads.column.name.case.fun')) %>%
+         rename_with(gads_fix_names, matches('metrics|segments', ignore.case = TRUE) )
+
 
   # fix date
   if ( any(str_detect(str_to_lower(names(res)), 'date')) ) {
     if (verbose) cli_alert_info('Fix date fields')
-    res <- mutate(res,
-                  across(matches('date', ignore.case = TRUE) & !matches('interval', ignore.case = TRUE), as.Date))
+    try( {
+      res <- mutate(res,
+                    across(matches('date', ignore.case = TRUE) & !matches('interval', ignore.case = TRUE), as.Date))
+    },
+    silent = TRUE)
   }
 
   # fix cost
