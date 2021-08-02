@@ -125,7 +125,7 @@ library(pbapply)
 library(parallel)
 
 options(gads.multi.account.verbos = FALSE)
-cl <- makeCluster(5)
+cl <- makeCluster(4)
 
 gads_set_customer_id(acs)
 
@@ -136,6 +136,8 @@ multi_rep <- gads_get_report(
   #login_customer_id = "1754107253",
   cl                = cl
 )
+
+stopCluster(cl)
 
 multi_rep <- gads_get_report(
   customer_id = acs[3:10],
