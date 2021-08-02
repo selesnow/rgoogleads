@@ -1,5 +1,7 @@
 # rgoogleads (development version)
 
+* Дата релиза: 2021-08-02
+
 ## Новые функции:
 * Добавлена функция `gads_get_fields()`, которая позволяет получить подробную информацию по любому ресурсу, полю ресурса, сегмету или метрике.
 * Добавлена функция `gads_get_geo_targets()`, которая загружает наиболее актуальный справочник гео таргетинга из https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en.
