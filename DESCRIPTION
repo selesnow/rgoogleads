@@ -14,7 +14,7 @@ Description: Interface for loading data from 'Google Ads API',
     Package provide function for authorization and loading reports.
 License: MIT + file LICENSE
 BugReports: https://github.com/selesnow/rgoogleads/issues
-URL: https://selesnow.github.io/rgoogleads, https://selesnow.github.io/rgoogleads/docs/, https://github.com/selesnow/rgoogleads
+URL: https://selesnow.github.io/rgoogleads/, https://selesnow.github.io/rgoogleads/docs/, https://github.com/selesnow/rgoogleads
 Encoding: UTF-8
 Imports: gargle (>= 1.2.0), 
          httr, 

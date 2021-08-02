@@ -80,8 +80,8 @@ The package does not transfer your credentials or data obtained from your advert
 For more details, I recommend that you read the following articles from the official documentation of the gargle package:
 
 * [Stewarding the cache of user tokens](https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/)
-* [Auth when using R in the browser](https://cran.r-project.org/web/packages/gargle/vignettes/auth-from-web.html)
-* [How gargle gets tokens](https://cran.r-project.org/web/packages/gargle/vignettes/how-gargle-gets-tokens.html)
+* [Auth when using R in the browser](https://cran.r-project.org/package=gargle/vignettes/auth-from-web.html)
+* [How gargle gets tokens](https://cran.r-project.org/package=gargle/vignettes/how-gargle-gets-tokens.html)
 
 ### Authorization process
 
