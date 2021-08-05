@@ -153,6 +153,8 @@ multi_rep <- gads_get_report(
   cl                = cl
 )
 
+stopCluster(cl)
+
 multi_rep <- gads_get_report(
   customer_id = acs[3:10],
   resource    = 'ad_group_ad',
