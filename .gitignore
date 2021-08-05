@@ -8,3 +8,6 @@
 docs
 README\.md
 README.md
+inst/doc
+/doc/
+/Meta/

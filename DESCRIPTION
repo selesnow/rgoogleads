@@ -29,11 +29,13 @@ Imports: gargle (>= 1.2.0),
          purrr,
          withr,
          rlist,
-         rvest (>= 1.0.0)
+         rvest (>= 1.0.0),
+         magrittr
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    DT
 VignetteBuilder: knitr
