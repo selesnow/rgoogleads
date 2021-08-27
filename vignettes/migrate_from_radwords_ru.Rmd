@@ -1,5 +1,7 @@
 ---
 title: "Миграция с RAdwords на rgoogleads"
+author: "Алексей Селезнёв"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Миграция с RAdwords на rgoogleads}
@@ -151,7 +153,7 @@ data2 <- gads_get_report(
               'metrics.clicks'),
   date_from         = '2021-06-01',
   date_to           = '2021-06-30',
-  customer_id       = '676-642-7440',
+  customer_id       = 'xxx-xxx-xxxx',
   login_customer_id = 'xxx-xxx-xxxx'
 )
 ```

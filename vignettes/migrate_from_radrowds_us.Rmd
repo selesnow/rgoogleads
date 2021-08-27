@@ -1,0 +1,160 @@
+---
+title: "Migrate from RAdwords to rgoogleads"
+output: rmarkdown::html_vignette
+author: "Alexey Seleznev"
+date: "`r Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{migrate_from_radrowds_us}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  eval = FALSE,
+  comment = "#>"
+)
+```
+
+The problem is that the `RAdwords` package is used to work with Google AdWords API v201809. This API has not been updated for a long time and will stop working on 27 April 2022. 
+
+In this vignette, I want to share some information on a new package, rgoogleads, which I started working on in June 2021. The package currently has all the functions needed to request the function data. Next, we will go through the details of how to switch from RAdwords to rgoogleads, so that from April 2022, your scripts will still correctly collect the necessary data from your Google Ads accounts.
+
+# rgoogleads package features
+
+The rgoogleads package currently includes all the functions needed to fetch data from the Google Ads API:
+
+* authorize in Google Ads API;
+* import the list of top-level accounts;
+* import the entire account hierarchy from management accounts;
+* import the ad account objects: campaigns, ad groups, ads, and more;
+* import statistical data from advertising accounts;
+* import resource metadata, resource fields, segments, and metrics;
+* import forecast and historical data from the keyword planner.
+
+# rgoogleads package benefits
+
+Now let's look at the benefits of switching to the new rgoogleads package:
+
+* `rgoogleads` is used to work with Google Ads API v8 (released on 09.06.2021); `RAdwords` is used to work with Google AdWords API v201809. Google AdWords API will sunset on 27.04.2022;
+* `rgoogleads` uses the gargle package for authorization, which gives much more flexibility than the `RAdwords` authorization process;
+* `rgoogleads` has an embedded Google Ads developer token and an OAuth client for authorization. This will save most users from having to request basic access to the Google Ads API from Google support and wasting time creating a project and OAuth client in the Google Cloud Console;
+* most `rgoogleads` functions have a cl argument, which allows for multi-threaded data import;
+* unlike `RAdwords`, `rgoogleads` has a list and account hierarchy import function;
+* `rgoogleads` has separate functions to import the main objects of the advertising accounts, such as advertising campaigns, ad groups, keywords, and ads;
+* since data request is not divided into separate functions, the syntax of `rgoogleads` is more straightforward and concise. In `RAdwords`, you had to initially create `statement()` function and then use it to request the data in the `getData()` function;
+* `rgoogleads` has no problem importing names containing Cyrillic characters;
+* if the API request encounters a server failure (response status 429 or higher), the `rgoogleads` package will automatically pause for 100 seconds and try to request data again. This makes this package more stable and resilient to Google Ads API server failures;
+* `rgoogleads` displays a detailed error message. In comparison, `RAdwords` will not display a message if the user has made a request error;
+* `rgoogleads` allows you to request data from the Keyword Planner.
+
+# Key differences between the Google AdWords API and Google Ads API
+
+Fortunately, there are few key differences between the old and new APIs, and the migration process isn’t that difficult. Let me enumerate the key points of the migration below.
+
+* no need to change auto-ionization data; the developer token, ID, and client secret OAuth can also be used for a new Google Ads API;
+* The AdWords API reporting is a separate service, while Google Ads API reporting is part of the same service. All you need to do is include the necessary metrics fields in your reports;
+* In AdWords API, there were report types such as CAMPAINGN_PERFORMANCE_REPORT. The Google Ads API doesn't have them; instead of report types, it consists of a vast number of resources;
+* AdWords API and Google Ads API have different API response formats;
+* there is no includeZeroImpressions parameter in Google Ads API; instead, you can use the metrics.impressions > 0 filter.
+
+# Migrating from `RAdwords` to `rgoogleads`
+
+```{r, eval = TRUE, results = "asis", echo=FALSE}
+
+migrate_table <- data.frame(
+  operation = c("Authorization", "Metadata request", "Report request"),
+  radwords = c("doAuth()", "reports(), metrics()", "statement() + getData()"),
+  rgoogleads = c("gads_auth_configure() + gads_auth()", "gads_get_metadata(), gads_get_fields()", "gads_get_report()")
+  )
+
+DT::datatable(
+  migrate_table, 
+  colnames = c("Operation", "RAdwords", "rgoogleads"),
+  options = list(pageLength = 5, dom = 'tip'))
+
+
+```
+
+The former report types in Google AdWords have become resources in Google Ads. See the comparison table from the official [help guide](https://developers.google.com/google-ads/api/docs/migration/mapping):
+
+
+```{r, eval = TRUE, results = "asis", echo=FALSE}
+library(magrittr)
+library(rvest)
+# reports_table <- data.frame(
+#   adwords = c("ACCOUNT_PERFORMANCE_REPORT", "AD_PERFORMANCE_REPORT", "ADGROUP_PERFORMANCE_REPORT", "AGE_RANGE_PERFORMANCE_REPORT",
+#               "AUDIENCE_PERFORMANCE_REPORT", "AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT", "BID_GOAL_PERFORMANCE_REPORT", "BUDGET_PERFORMANCE_REPORT",
+#               "CALL_METRICS_CALL_DETAILS_REPORT", "CAMPAIGN_AD_SCHEDULE_TARGET_REPORT", "CAMPAIGN_CRITERIA_REPORT", "CAMPAIGN_PERFORMANCE_REPORT",
+#               "CAMPAIGN_SHARED_SET_REPORT", "CAMPAIGN_LOCATION_TARGET_REPORT", "CLICK_PERFORMANCE_REPORT", "DISPLAY_KEYWORD_PERFORMANCE_REPORT"), 
+#   ads     = c("customer", "ad_group_ad", "ad_group", "age_range_view",
+#               "campaign_audience_view, ad_group_audience_view", "group_placement_view", "bidding_strategy", "campaign_budget",
+#               "call_view", "ad_schedule_view", "campaign_criterion", "campaign",
+#               "campaign_shared_set", "location_view", "click_view", "display_keyword_view"))
+  
+reports <- read_html("https://developers.google.com/google-ads/api/docs/migration/mapping") %>% 
+           html_element(css = ".responsive") %>% 
+           html_table(header = TRUE)
+
+DT::datatable(
+  reports, 
+  colnames = c("Тип отчёта в Google AdWords API", "Ресурс в Google Ads API"),
+  options = list(pageLength = 20)
+  )
+
+```
+
+See the [official help](https://developers.google.com/google-ads/api/docs/migration/mapping#field_mappings_for_reports) guide for the correspondence between the "Report" and the resource fields. The table is large, so there’s no need to duplicate it here.
+
+See the example of requesting a campaign performance report with the same set of fields, using the `RAdwords` package and `rgoogleads` below.
+
+## The request of ad campaign performance report using RAdwords
+
+```{r}
+library(RAdwords)
+
+# auth
+adwords_auth <- doAuth()
+
+# create request
+query <- statement(
+  select = c('CampaignName',
+            'Date',
+            'Clicks'),
+  report = 'CAMPAIGN_PERFORMANCE_REPORT',
+  start  = '2021-06-01',
+  end    = '2021-06-30'
+)
+
+# data import
+data1 <- getData(
+  clientCustomerId = 'xxx-xxx-xxxx',
+  statement        = query, 
+  google_auth      = adwords_auth
+)
+
+```
+
+
+## Запрос отчёта по эффективности рекламных кампаний с помощью rgoogleads
+
+```{r}
+library(rgoogleads)
+
+# auth
+gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth(email = 'me@gmail.com')
+
+# data import
+data2 <- gads_get_report(
+  resource = 'campaign',
+  fields   = c('campaign.name',
+              'segments.date',
+              'metrics.clicks'),
+  date_from         = '2021-06-01',
+  date_to           = '2021-06-30',
+  customer_id       = 'xxx-xxx-xxxx',
+  login_customer_id = 'xxx-xxx-xxxx'
+)
+```
