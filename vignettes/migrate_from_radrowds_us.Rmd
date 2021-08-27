@@ -137,7 +137,7 @@ data1 <- getData(
 ```
 
 
-## Запрос отчёта по эффективности рекламных кампаний с помощью rgoogleads
+## The request of ad campaign performance report using rgoogleads
 
 ```{r}
 library(rgoogleads)
