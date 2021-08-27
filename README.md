@@ -170,6 +170,7 @@ If you encounter an error in the package, or you have suggestions for improving 
 This section contains links to articles dedicated to `rgoogleads`.
 
 * [Миграция с Google AdWords API на Google Ads API: подробный мануал](https://netpeak.net/ru/blog/migratsiya-s-google-adwords-api-na-google-ads-api-podrobnyy-manual/), *Alexey Seleznev*
+* [Migrating from AdWords API to Google Ads API. A Comprehensive Guideline](https://netpeak.net/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/), *Alexey Seleznev*
 
 If you have published an article about `rgoogleads` let me know about it in [telegram](https://t.me/AlexeySeleznev) or [email](mailto:selesnow@gmail.com) and I will add it to the list of links.
 
