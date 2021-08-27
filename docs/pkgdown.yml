@@ -2,6 +2,7 @@ pandoc: '2.12'
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  migrate_from_radrowds_us: migrate_from_radrowds_us.html
   migrate_from_radwords_ru: migrate_from_radwords_ru.html
-last_built: 2021-08-05T08:32Z
+last_built: 2021-08-27T13:32Z
 
