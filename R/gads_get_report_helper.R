@@ -188,6 +188,12 @@ gads_get_report_helper <- function(
 
   }
 
+  # convert metrics to numeric
+  if (verbose) cli_alert_info('Convert metrics to numeric type')
+  res <- mutate(res,
+                across(matches('metrics'), as.numeric)
+  )
+
   # renaming to snale case
   if (verbose) cli_alert_info('Rename columns to gads.column.name case')
   res <- rename_with(res, getOption('gads.column.name.case.fun')) %>%

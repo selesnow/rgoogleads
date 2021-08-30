@@ -33,7 +33,7 @@ group_report <- gads_get_report(
              "ad_group.name",
              "ad_group.status",
              "metrics.clicks",
-             "metrics.cost_micros"),
+             "metrics.cost_micros"),#during = 'LAST_30_DAYS',
   date_from   = "2021-06-02",
   date_to     = Sys.Date() - 1,
   where       = "ad_group.status = 'ENABLED'",
