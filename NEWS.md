@@ -1,4 +1,6 @@
-# rgoogleads (development version)
+# rgoogleads 0.3.0
+
+* Дата релиза: 2021-09-02
 
 ## Документация:
 * Добавлена виньетка "Миграция с RAdwords на rgoogleads" по переходу с пакета `RAdwords` на `rgoogleads`.
