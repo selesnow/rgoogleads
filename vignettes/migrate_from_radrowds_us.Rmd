@@ -4,7 +4,7 @@ output: rmarkdown::html_vignette
 author: "Alexey Seleznev"
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{migrate_from_radrowds_us}
+  %\VignetteIndexEntry{Migrate from RAdwords to rgoogleads}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
