@@ -7,7 +7,10 @@ install.packages('rgoogleads')
 library(rgoogleads)
 
 # авторизация
-gads_auth_configure(path = 'D:/ga_auth/app.json')
+gads_auth_configure(
+  path = 'D:/ga_auth/app.json',
+  developer_token = 'ваш токен разработчика'
+)
 
 
 gads_auth(email = 'alsey.netpeak@gmail.com')
@@ -69,7 +72,7 @@ gads_set_customer_id('6766427440')
 
 # load account hierarchy --------------------------------------------------
 # загрузка списка аккаунтов
-accounts_main <- gads_get_account_hierarchy(manager_customer_id = '175-410-7253')
+accounts_main <- gads_get_account_hierarchy('175-410-7253')
 client_acs <-  accounts_main$customer_client_id[accounts_main$customer_client_manager == FALSE]
 # load reports ------------------------------------------------------------
 # загрузка статистики
@@ -371,7 +374,7 @@ res %>%
 res$campaignForecasts[[1]]$campaignForecast$impressions
 
 
-
+campaings <- gads_
 
 ans <- POST(url = 'https://googleads.googleapis.com/v8/customers/1002457292/keywordPlans/313874210:generateHistoricalMetrics',
             add_headers(
