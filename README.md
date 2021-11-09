@@ -38,7 +38,7 @@ This section contains links to the package documentation, as well as other usefu
 
 ## Install
 
-You can instal `rgoogleads` from [CRAN](https://cran.r-project.org/package=rgoogleads) or [GitHub](https://github.com):
+You can install `rgoogleads` from [CRAN](https://cran.r-project.org/package=rgoogleads) or [GitHub](https://github.com):
 
 ```r
 # install from CRAN
@@ -58,7 +58,7 @@ library(rgoogleads)
 
 ## Main goal and capabilities of rgoogleads
 
-`rgoogleads` is R client for work with Google Ads API v8. Main goal of `rgoogleads` - load report data from Google Ads client account into R for analisys and visualizations.
+`rgoogleads` is R client for work with Google Ads API v8. Main goal of `rgoogleads` - load report data from Google Ads client account into R for analysis and visualizations.
 
 Capabilities of `rgoogleads`:
 
