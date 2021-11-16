@@ -105,7 +105,7 @@ options(gargle_oob_default = TRUE)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgoogleads</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -179,7 +179,7 @@ RStudio Workbench, and RStudio Cloud), you need a variant of this flow,
 known as out-of-band auth ("oob"). If this does not happen
 automatically, you can request it yourself with <code>use_oob = TRUE</code> or,
 more persistently, by setting an option via
-<code><a href='https://rdrr.io/r/base/options.html'>options(gargle_oob_default = TRUE)</a></code>.</p>
+<code>options(gargle_oob_default = TRUE)</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gads_auth</span><span class='op'>(</span>
@@ -256,34 +256,34 @@ Read more about gargle options, see <a href='https://gargle.r-lib.org/reference/
 <code><a href='gads_deauth.html'>gads_deauth</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'>## load/refresh existing credentials, if available</span>
-<span class='co'>## otherwise, go to browser for authentication and authorization</span>
-<span class='fu'>gads_auth</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'>## force use of a token associated with a specific email</span>
-<span class='fu'>gads_auth</span><span class='op'>(</span>email <span class='op'>=</span> <span class='st'>"yourname@example.com"</span><span class='op'>)</span>
-
-<span class='co'>## force a menu where you can choose from existing tokens or</span>
-<span class='co'>## choose to get a new one</span>
-<span class='fu'>gads_auth</span><span class='op'>(</span>email <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
-
-<span class='co'>## -----------------------</span>
-<span class='co'>## use own developer token</span>
-<span class='fu'>gads_auth</span><span class='op'>(</span>
-    email <span class='op'>=</span> <span class='st'>"yourname@example.com"</span>,
-    developer_token <span class='op'>=</span> <span class='st'>"your developer token"</span>
-<span class='op'>)</span>
-
-<span class='co'>## -----------------------</span>
-<span class='co'>## use own OAuth client app</span>
-<span class='fu'><a href='gads_auth_configure.html'>gads_auth_configure</a></span><span class='op'>(</span>
-    path <span class='op'>=</span> <span class='st'>"path/to/your/oauth_client.json"</span>
-<span class='op'>)</span>
-
-<span class='fu'>gads_auth</span><span class='op'>(</span>email <span class='op'>=</span> <span class='st'>"yourname@example.com"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'>## load/refresh existing credentials, if available</span></span>
+<span class='r-in'><span class='co'>## otherwise, go to browser for authentication and authorization</span></span>
+<span class='r-in'><span class='fu'>gads_auth</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## force use of a token associated with a specific email</span></span>
+<span class='r-in'><span class='fu'>gads_auth</span><span class='op'>(</span>email <span class='op'>=</span> <span class='st'>"yourname@example.com"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## force a menu where you can choose from existing tokens or</span></span>
+<span class='r-in'><span class='co'>## choose to get a new one</span></span>
+<span class='r-in'><span class='fu'>gads_auth</span><span class='op'>(</span>email <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## -----------------------</span></span>
+<span class='r-in'><span class='co'>## use own developer token</span></span>
+<span class='r-in'><span class='fu'>gads_auth</span><span class='op'>(</span></span>
+<span class='r-in'>    email <span class='op'>=</span> <span class='st'>"yourname@example.com"</span>,</span>
+<span class='r-in'>    developer_token <span class='op'>=</span> <span class='st'>"your developer token"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## -----------------------</span></span>
+<span class='r-in'><span class='co'>## use own OAuth client app</span></span>
+<span class='r-in'><span class='fu'><a href='gads_auth_configure.html'>gads_auth_configure</a></span><span class='op'>(</span></span>
+<span class='r-in'>    path <span class='op'>=</span> <span class='st'>"path/to/your/oauth_client.json"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>gads_auth</span><span class='op'>(</span>email <span class='op'>=</span> <span class='st'>"yourname@example.com"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

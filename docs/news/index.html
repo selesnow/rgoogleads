@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgoogleads</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -148,15 +148,21 @@
       <small>Source: <a href='https://github.com/selesnow/rgoogleads/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="rgoogleads-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#rgoogleads-development-version" class="anchor"></a>rgoogleads (development version)<small> Unreleased </small>
+    <div id="rgoogleads-040" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.0">
+<a href="#rgoogleads-040" class="anchor"></a>rgoogleads 0.4.0<small> Unreleased </small>
 </h1>
+<ul>
+<li>Дата релиза: 2021-11-16</li>
+</ul>
 <div id="прочее" class="section level2">
 <h2 class="hasAnchor">
 <a href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5" class="anchor"></a>Прочее</h2>
 <ul>
+<li>Пакет переведён на работу с Google Ads API v9.</li>
 <li>В пакет добавлена поддержка переменной среды GADS_EMAIL, которая устанавливает дефолтный email для работы с Google Ads API при подключении пакета.</li>
+<li>В основную функцию запроса данных <code>gads_get_report_helper()</code> добавлена проверка, можно ли запрашивать с указанным ресурсом поля даты, если нет, то функция аннулирует значения аргументов <code>date_from</code>, <code>date_to</code> и <code>during</code>.</li>
+<li>В зависимости <code>rgoogleads</code> добавлены следующие пакеты: <code>memoise</code>, <code>cachem</code>, <code>rappdirs</code>. Эти пакеты обеспечивают кеширование данных, получаемых функцией <code><a href="../reference/gads_get_fields.html">gads_get_fields()</a></code>, которая используется внутри <code>gads_get_report_helper()</code> для проверки совместимости запрашиваемого ресурса с полями даты.</li>
 </ul>
 </div>
 </div>
