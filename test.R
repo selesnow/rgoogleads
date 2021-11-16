@@ -52,7 +52,13 @@ GAds_Data <- gads_get_report(
   date_from   = "2021-02-22",
   date_to     = "2021-04-04")
 
-
+GAds_Data3 <- gads_get_report(
+  resource =   "ad_group_criterion",
+  fields   = c("ad_group_criterion.criterion_id",
+               "ad_group_criterion.custom_affinity.custom_affinity",
+               "ad_group_criterion.custom_audience.custom_audience"),
+  date_from   = "2021-02-22",
+  date_to     = "2021-04-04")
 
 gads_user()
 

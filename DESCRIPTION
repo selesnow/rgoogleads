@@ -30,7 +30,10 @@ Imports: gargle (>= 1.2.0),
          withr,
          rlist,
          rvest (>= 1.0.0),
-         magrittr
+         magrittr,
+         memoise,
+         cachem,
+         rappdirs
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
