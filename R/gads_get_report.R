@@ -119,6 +119,17 @@ gads_get_report <- function(
   verbose               = TRUE
 ) {
 
+  # test for selectble with date fields
+  selectable <- suppressMessages( gads_get_fields_cached(resource)$selectableWith )
+
+  # where block
+  if (! "segments.date" %in% selectable ) {
+    date_from <- NULL
+    date_to   <- NULL
+    during    <- NA
+    cli_alert_warning('fields values of date_from, date_to and during was unset automatically, because it is not selectable with {resource}')
+  }
+
   # check how many accounts
   if ( length(customer_id) == 1 ) {
 
