@@ -4,7 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Interface for loading data from Google Ads API, 
+    see &lt;https://developers.google.com/google-ads/api/docs/start&gt;. 
+    Package provide function for authorization and loading reports.">
 <title>Loading Data from Google Ads API • rgoogleads</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -12,12 +15,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Loading Data from Google Ads API">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Loading Data from Google Ads API">
 <meta property="og:description" content="Interface for loading data from Google Ads API, 
     see &lt;https://developers.google.com/google-ads/api/docs/start&gt;. 
     Package provide function for authorization and loading reports.">
@@ -34,81 +36,65 @@
   gtag('config', 'UA-114798296-1');
 </script>
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">rgoogleads</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">rgoogleads</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/migrate_from_radrowds_us.html">Migrate from RAdwords to rgoogleads</a>
-    </li>
-    <li>
-      <a href="articles/migrate_from_radwords_ru.html">Миграция с RAdwords на rgoogleads</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/selesnow/rgoogleads/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-</div>
-<!--/.nav-collapse -->
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/migrate_from_radrowds_us.html">Migrate from RAdwords to rgoogleads</a>
+    <a class="dropdown-item" href="articles/migrate_from_radwords_ru.html">Миграция с RAdwords на rgoogleads</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/selesnow/rgoogleads/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div id="rgoogleads-r-package-for-work-with-google-ads-api-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rgoogleads-r-package-for-work-with-google-ads-api-" class="anchor"></a>rgoogleads: R package for work with Google Ads API <a href="https://selesnow.github.io/rgoogleads/"><img src="reference/figures/rgoogleads.png" align="right" height="138.5"></a>
-</h1></div>
+    
+  </div>
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="rgoogleads-r-package-for-work-with-google-ads-api">rgoogleads: R package for work with Google Ads API<a class="anchor" aria-label="anchor" href="#rgoogleads-r-package-for-work-with-google-ads-api"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
-<div id="table-of-contents" class="section level2">
-<h2 class="hasAnchor">
-<a href="#table-of-contents" class="anchor"></a>Table of Contents</h2>
+<div class="section level2">
+<h2 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
+</h2>
 <ul>
 <li><a href="#links">Links</a></li>
 <li><a href="#install">Install</a></li>
@@ -131,36 +117,36 @@
 <li><a href="#author">Author</a></li>
 </ul>
 </div>
-<div id="links" class="section level2">
-<h2 class="hasAnchor">
-<a href="#links" class="anchor"></a>Links</h2>
+<div class="section level2">
+<h2 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
+</h2>
 <p>This section contains links to the package documentation, as well as other useful links that may be useful to the package users.</p>
 <ul>
-<li><a href="https://selesnow.github.io/rgoogleads/docs/">rgoogleads package documentation site</a></li>
-<li><a href="https://cran.r-project.org/package=rgoogleads">CRAN page</a></li>
-<li><a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API documentation</a></li>
+<li><a href="https://selesnow.github.io/rgoogleads/docs/" class="external-link">rgoogleads package documentation site</a></li>
+<li><a href="https://cran.r-project.org/package=rgoogleads" class="external-link">CRAN page</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/start" class="external-link">Google Ads API documentation</a></li>
 </ul>
 </div>
-<div id="install" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install" class="anchor"></a>Install</h2>
-<p>You can install <code>rgoogleads</code> from <a href="https://cran.r-project.org/package=rgoogleads">CRAN</a> or <a href="https://github.com">GitHub</a>:</p>
+<div class="section level2">
+<h2 id="install">Install<a class="anchor" aria-label="anchor" href="#install"></a>
+</h2>
+<p>You can install <code>rgoogleads</code> from <a href="https://cran.r-project.org/package=rgoogleads" class="external-link">CRAN</a> or <a href="https://github.com" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install from CRAN</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'rgoogleads'</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'rgoogleads'</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install from github</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">'selesnow/rgoogleads'</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'selesnow/rgoogleads'</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="attach-rgoogleads" class="section level2">
-<h2 class="hasAnchor">
-<a href="#attach-rgoogleads" class="anchor"></a>Attach rgoogleads</h2>
+<div class="section level2">
+<h2 id="attach-rgoogleads">Attach rgoogleads<a class="anchor" aria-label="anchor" href="#attach-rgoogleads"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://selesnow.github.io/rgoogleads/">rgoogleads</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://selesnow.github.io/rgoogleads/" class="external-link">rgoogleads</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="main-goal-and-capabilities-of-rgoogleads" class="section level2">
-<h2 class="hasAnchor">
-<a href="#main-goal-and-capabilities-of-rgoogleads" class="anchor"></a>Main goal and capabilities of rgoogleads</h2>
+<div class="section level2">
+<h2 id="main-goal-and-capabilities-of-rgoogleads">Main goal and capabilities of rgoogleads<a class="anchor" aria-label="anchor" href="#main-goal-and-capabilities-of-rgoogleads"></a>
+</h2>
 <p><code>rgoogleads</code> is R client for work with Google Ads API v8. Main goal of <code>rgoogleads</code> - load report data from Google Ads client account into R for analysis and visualizations.</p>
 <p>Capabilities of <code>rgoogleads</code>:</p>
 <ul>
@@ -173,41 +159,43 @@
 <li>Loading forecast and historical metrics from Keyword Planning.</li>
 </ul>
 </div>
-<div id="privacy-policy" class="section level2">
-<h2 class="hasAnchor">
-<a href="#privacy-policy" class="anchor"></a>Privacy Policy</h2>
-<p>The <code>rgoogleads</code> package for authorization uses the <a href="https://gargle.r-lib.org/">gargle</a> package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the <code><a href="reference/gads_auth_configure.html">gads_auth_cache_path()</a></code> function.</p>
-<p>For loading data from Google Ads Account <code>rgoogleads</code> needs <code>https://www.googleapis.com/auth/adwords</code> scope (Manage Your Google AdWords Campaigns), see <a href="https://developers.google.com/google-ads/api/docs/oauth/internals#scope">official Google Ads API documentation</a>.</p>
+<div class="section level2">
+<h2 id="privacy-policy">Privacy Policy<a class="anchor" aria-label="anchor" href="#privacy-policy"></a>
+</h2>
+<p>The <code>rgoogleads</code> package for authorization uses the <a href="https://gargle.r-lib.org/" class="external-link">gargle</a> package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the <code><a href="reference/gads_auth_configure.html">gads_auth_cache_path()</a></code> function.</p>
+<p>For loading data from Google Ads Account <code>rgoogleads</code> needs <code>https://www.googleapis.com/auth/adwords</code> scope (Manage Your Google AdWords Campaigns), see <a href="https://developers.google.com/google-ads/api/docs/oauth/internals#scope" class="external-link">official Google Ads API documentation</a>.</p>
 <p>The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.</p>
 <p>For more details, I recommend that you read the following articles from the official documentation of the gargle package:</p>
 <ul>
-<li><a href="https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/">Stewarding the cache of user tokens</a></li>
-<li><a href="https://cran.r-project.org/package=gargle/vignettes/auth-from-web.html">Auth when using R in the browser</a></li>
-<li><a href="https://cran.r-project.org/package=gargle/vignettes/how-gargle-gets-tokens.html">How gargle gets tokens</a></li>
+<li><a href="https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/" class="external-link">Stewarding the cache of user tokens</a></li>
+<li><a href="https://cran.r-project.org/package=gargle/vignettes/auth-from-web.html" class="external-link">Auth when using R in the browser</a></li>
+<li><a href="https://cran.r-project.org/package=gargle/vignettes/how-gargle-gets-tokens.html" class="external-link">How gargle gets tokens</a></li>
 </ul>
-<div id="authorization-process" class="section level3">
-<h3 class="hasAnchor">
-<a href="#authorization-process" class="anchor"></a>Authorization process</h3>
-<p>You run <code>gads_auth('me@gmail.com')</code> and start <a href="https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10">OAuth Dance</a> in the browser:</p>
-<p><img src="http://img.netpeak.ua/alsey/1OE9JZ2.png" alt="Typical OAuth dance in the browser, when initiated from within R"></p>
+<div class="section level3">
+<h3 id="authorization-process">Authorization process<a class="anchor" aria-label="anchor" href="#authorization-process"></a>
+</h3>
+<p>You run <code>gads_auth('me@gmail.com')</code> and start <a href="https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10" class="external-link">OAuth Dance</a> in the browser:</p>
+<div class="figure">
+<img src="http://img.netpeak.ua/alsey/1OE9JZ2.png" alt=""><p class="caption">Typical OAuth dance in the browser, when initiated from within R</p>
+</div>
 <p>Upon success, you see this message in the browser:</p>
 <p><code>Authentication complete. Please close this page and return to R.</code></p>
 <p>And you credentials cached locally on your PC in the form of RDS files.</p>
 </div>
-<div id="key-points" class="section level3">
-<h3 class="hasAnchor">
-<a href="#key-points" class="anchor"></a>Key points</h3>
+<div class="section level3">
+<h3 id="key-points">Key points<a class="anchor" aria-label="anchor" href="#key-points"></a>
+</h3>
 <ul>
 <li>By default, gargle caches user tokens centrally, at the user level, and their keys or labels also convey which Google identity is associated with each token.</li>
 <li>Token storage relies on serialized R objects. That is, tokens are stored locally on your PC in the form of RDS files.</li>
 </ul>
 </div>
-<div id="use-own-oauth-client" class="section level3">
-<h3 class="hasAnchor">
-<a href="#use-own-oauth-client" class="anchor"></a>Use own OAuth client</h3>
+<div class="section level3">
+<h3 id="use-own-oauth-client">Use own OAuth client<a class="anchor" aria-label="anchor" href="#use-own-oauth-client"></a>
+</h3>
 <p>You can use own OAuth app:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/oauth_app.html">oauth_app</a></span><span class="op">(</span>appname <span class="op">=</span> <span class="st">"app name"</span>, key <span class="op">=</span> <span class="st">"app id"</span>, secret <span class="op">=</span> <span class="st">"app secret"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/oauth_app.html" class="external-link">oauth_app</a></span><span class="op">(</span>appname <span class="op">=</span> <span class="st">"app name"</span>, key <span class="op">=</span> <span class="st">"app id"</span>, secret <span class="op">=</span> <span class="st">"app secret"</span><span class="op">)</span>
 <span class="fu"><a href="reference/gads_auth_configure.html">gads_auth_configure</a></span><span class="op">(</span>app <span class="op">=</span> <span class="va">app</span><span class="op">)</span>
 
 <span class="co"># or from json file </span>
@@ -217,20 +205,20 @@
 <span class="fu"><a href="reference/gads_auth.html">gads_auth</a></span><span class="op">(</span><span class="st">'me@gmail.com'</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="obtain-own-developer-token-and-create-own-oauth-client" class="section level2">
-<h2 class="hasAnchor">
-<a href="#obtain-own-developer-token-and-create-own-oauth-client" class="anchor"></a>Obtain Own Developer Token and create own OAuth client</h2>
+<div class="section level2">
+<h2 id="obtain-own-developer-token-and-create-own-oauth-client">Obtain Own Developer Token and create own OAuth client<a class="anchor" aria-label="anchor" href="#obtain-own-developer-token-and-create-own-oauth-client"></a>
+</h2>
 <p>For obtain own developer token and OAuth client read the following documentation:</p>
 <ul>
-<li><a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token">Obtain Your Developer Token</a></li>
-<li><a href="https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project">Configure a Google API Console Project for the Google Ads API</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token" class="external-link">Obtain Your Developer Token</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project" class="external-link">Configure a Google API Console Project for the Google Ads API</a></li>
 </ul>
 </div>
-<div id="example-of-use-rgoogleads" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-of-use-rgoogleads" class="anchor"></a>Example of use rgoogleads</h2>
+<div class="section level2">
+<h2 id="example-of-use-rgoogleads">Example of use rgoogleads<a class="anchor" aria-label="anchor" href="#example-of-use-rgoogleads"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://selesnow.github.io/rgoogleads/">rgoogleads</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://selesnow.github.io/rgoogleads/" class="external-link">rgoogleads</a></span><span class="op">)</span>
 
 <span class="co"># set own oauth app</span>
 <span class="fu"><a href="reference/gads_auth_configure.html">gads_auth_configure</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">'C:/auth/app.json'</span><span class="op">)</span>
@@ -249,7 +237,7 @@
 <span class="co"># load report data</span>
 <span class="va">ad_group_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gads_get_report.html">gads_get_report</a></span><span class="op">(</span>
   resource    <span class="op">=</span> <span class="st">"ad_group"</span>,
-  fields      <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ad_group.campaign"</span>,
+  fields      <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ad_group.campaign"</span>,
                   <span class="st">"ad_group.id"</span>,
                   <span class="st">"ad_group.name"</span>,
                   <span class="st">"ad_group.status"</span>,
@@ -258,118 +246,126 @@
   date_from   <span class="op">=</span> <span class="st">"2021-06-10"</span>,
   date_to     <span class="op">=</span> <span class="st">"2021-06-17"</span>,
   where       <span class="op">=</span> <span class="st">"ad_group.status = 'ENABLED'"</span>,
-  order_by    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"metrics.clicks DESC"</span>, <span class="st">"metrics.cost_micros"</span><span class="op">)</span>
+  order_by    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"metrics.clicks DESC"</span>, <span class="st">"metrics.cost_micros"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
-<div id="package-help" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-help" class="anchor"></a>Package help</h2>
+<div class="section level2">
+<h2 id="package-help">Package help<a class="anchor" aria-label="anchor" href="#package-help"></a>
+</h2>
 <p>For get help of <code>rgoogleads</code> use <code><a href="reference/rgoogleads-package.html">?rgoogleads</a></code> or <code><a href="reference/gads_get_report.html">?gads_get_report</a></code>.</p>
 </div>
-<div id="package-chage-log-news-and-updates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-chage-log-news-and-updates" class="anchor"></a>Package chage log, news and updates</h2>
-<p>You can follow the package updates at the <a href="https://github.com/selesnow/rgoogleads/blob/master/NEWS.md">link</a>.</p>
+<div class="section level2">
+<h2 id="package-chage-log-news-and-updates">Package chage log, news and updates<a class="anchor" aria-label="anchor" href="#package-chage-log-news-and-updates"></a>
+</h2>
+<p>You can follow the package updates at the <a href="https://github.com/selesnow/rgoogleads/blob/master/NEWS.md" class="external-link">link</a>.</p>
 </div>
-<div id="bug-report-and-support" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-report-and-support" class="anchor"></a>Bug report and support</h2>
-<p>If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a issue using the <a href="https://github.com/selesnow/rgoogleads/issues">link</a>.</p>
+<div class="section level2">
+<h2 id="bug-report-and-support">Bug report and support<a class="anchor" aria-label="anchor" href="#bug-report-and-support"></a>
+</h2>
+<p>If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a issue using the <a href="https://github.com/selesnow/rgoogleads/issues" class="external-link">link</a>.</p>
 </div>
-<div id="tutorials" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tutorials" class="anchor"></a>Tutorials</h2>
+<div class="section level2">
+<h2 id="tutorials">Tutorials<a class="anchor" aria-label="anchor" href="#tutorials"></a>
+</h2>
 <p>This section contains links to articles dedicated to <code>rgoogleads</code>.</p>
 <ul>
 <li>Русскоязычные материалы
 <ul>
 <li>
-<a href="https://netpeak.net/ru/blog/migratsiya-s-google-adwords-api-na-google-ads-api-podrobnyy-manual/">Миграция с Google AdWords API на Google Ads API: подробный мануал</a>, <em>Alexey Seleznev</em>
+<a href="https://netpeak.net/ru/blog/migratsiya-s-google-adwords-api-na-google-ads-api-podrobnyy-manual/" class="external-link">Миграция с Google AdWords API на Google Ads API: подробный мануал</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://netpeak.net/ru/blog/kak-vizualizirovat-pokazatel-kachestva-klyuchevyh-slov-retsept-skripta-na-yazyke-r/">Как визуализировать показатель качества ключевых слов — рецепт скрипта на языке R</a>, <em>Alexey Seleznev</em>
+<a href="https://netpeak.net/ru/blog/kak-vizualizirovat-pokazatel-kachestva-klyuchevyh-slov-retsept-skripta-na-yazyke-r/" class="external-link">Как визуализировать показатель качества ключевых слов — рецепт скрипта на языке R</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://netpeak.net/ru/blog/kak-otsenit-poteryannyi-dokhod-v-google-adwords-s-pomoshch-yu-yazyka-r/">Как оценить потерянный доход в Google Ads с помощью языка R</a>, <em>Alexey Seleznev</em>
+<a href="https://netpeak.net/ru/blog/kak-otsenit-poteryannyi-dokhod-v-google-adwords-s-pomoshch-yu-yazyka-r/" class="external-link">Как оценить потерянный доход в Google Ads с помощью языка R</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://youtu.be/wtXVwOBo518">Доклад: Зачем интернет маркетологу понимать что такое API. Разбираем устройство API Google Ads (Конференция 8P 2021)</a>, <em>Alexey Seleznev</em>
+<a href="https://youtu.be/wtXVwOBo518" class="external-link">Доклад: Зачем интернет маркетологу понимать что такое API. Разбираем устройство API Google Ads (Конференция 8P 2021)</a>, <em>Alexey Seleznev</em>
 </li>
 </ul>
 </li>
 <li>English
 <ul>
 <li>
-<a href="https://netpeak.net/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/">Migrating from AdWords API to Google Ads API. A Comprehensive Guideline</a>, <em>Alexey Seleznev</em>
+<a href="https://netpeak.net/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/" class="external-link">Migrating from AdWords API to Google Ads API. A Comprehensive Guideline</a>, <em>Alexey Seleznev</em>
 </li>
 </ul>
 </li>
 </ul>
-<p>If you have published an article about <code>rgoogleads</code> let me know about it in <a href="https://t.me/AlexeySeleznev">telegram</a> or <a href="mailto:selesnow@gmail.com">email</a> and I will add it to the list of links.</p>
+<p>If you have published an article about <code>rgoogleads</code> let me know about it in <a href="https://t.me/AlexeySeleznev" class="external-link">telegram</a> or <a href="mailto:selesnow@gmail.com">email</a> and I will add it to the list of links.</p>
 </div>
-<div id="author" class="section level2">
-<h2 class="hasAnchor">
-<a href="#author" class="anchor"></a>Author</h2>
-<p>Alexey Seleznev, Head of analytics dept. at <a href="https://netpeak.net">Netpeak</a> <br>Telegram Channel: <a href="https://t.me/R4marketing">R4marketing</a> <br>email: <a href="mailto:selesnow@gmail.com" class="email">selesnow@gmail.com</a> <br>facebook: <a href="https://www.facebook.com/selesnow">facebook.com/selesnow</a> <br>blog: <a href="https://alexeyseleznev.wordpress.com/">alexeyseleznev.wordpress.com</a></p>
+<div class="section level2">
+<h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a>
+</h2>
+<p>Alexey Seleznev, Head of analytics dept. at <a href="https://netpeak.net" class="external-link">Netpeak</a> <br>Telegram Channel: <a href="https://t.me/R4marketing" class="external-link">R4marketing</a> <br>email: <a href="mailto:selesnow@gmail.com" class="email">selesnow@gmail.com</a> <br>facebook: <a href="https://www.facebook.com/selesnow" class="external-link">facebook.com/selesnow</a> <br>blog: <a href="https://alexeyseleznev.wordpress.com/" class="external-link">alexeyseleznev.wordpress.com</a></p>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rgoogleads">https://​cloud.r-project.org/​package=rgoogleads</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/selesnow/rgoogleads/">https://​github.com/​selesnow/​rgoogleads/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/selesnow/rgoogleads/issues">https://​github.com/​selesnow/​rgoogleads/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=rgoogleads" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/selesnow/rgoogleads/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/selesnow/rgoogleads/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing rgoogleads</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Alexey Seleznev <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0410-7385" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li>Alexey Seleznev <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0410-7385" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=rgoogleads"><img src="https://cranlogs.r-pkg.org/badges/grand-total/rgoogleads"></a></li>
-<li><a href="https://cran.r-project.org/package=rgoogleads"><img src="https://cranlogs.r-pkg.org/badges/rgoogleads?color=lightgrey"></a></li>
-<li><a href="https://cran.r-project.org/package=rgoogleads"><img src="https://cranlogs.r-pkg.org/badges/last-week/rgoogleads?color=lightgrey"></a></li>
-<li><a href="https://CRAN.R-project.org/package=rgoogleads"><img src="https://www.r-pkg.org/badges/version-ago/rgoogleads" alt="CRAN status"></a></li>
-<li><a href="https://github.com/selesnow/rgoogleads/actions"><img src="https://github.com/selesnow/rgoogleads/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://cran.r-project.org/package=rgoogleads" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/rgoogleads"></a></li>
+<li><a href="https://cran.r-project.org/package=rgoogleads" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/rgoogleads?color=lightgrey"></a></li>
+<li><a href="https://cran.r-project.org/package=rgoogleads" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-week/rgoogleads?color=lightgrey"></a></li>
+<li><a href="https://CRAN.R-project.org/package=rgoogleads" class="external-link"><img src="https://www.r-pkg.org/badges/version-ago/rgoogleads" alt="CRAN status"></a></li>
+<li><a href="https://github.com/selesnow/rgoogleads/actions" class="external-link"><img src="https://github.com/selesnow/rgoogleads/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 </ul>
 </div>
-</div>
-</div>
 
-
-      <footer><div class="copyright">
-  <p>Developed by Alexey Seleznev.</p>
+  </aside>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Alexey Seleznev.</p>
 </div>
 
-      </footer>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
+</div>
+
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
