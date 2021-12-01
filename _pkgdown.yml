@@ -1,4 +1,5 @@
 template:
+  bootstrap: 5
   params:
     ganalytics: UA-114798296-1
   opengraph:
