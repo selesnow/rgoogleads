@@ -126,7 +126,7 @@ gads_get_report <- function(
   if (! "segments.date" %in% selectable ) {
     date_from <- NULL
     date_to   <- NULL
-    during    <- NA
+    during    <- NULL
     cli_alert_warning('fields values of date_from, date_to and during was unset automatically, because it is not selectable with {resource}')
   }
 
