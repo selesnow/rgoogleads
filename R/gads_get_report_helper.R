@@ -51,48 +51,22 @@ gads_get_report_helper <- function(
 
   # --------------
   # compose query
-  # select block
-  fields <- gsub("[\\s\\n\\t]", "",  fields, perl = TRUE) %>%
-            tolower() %>%
-            str_c(collapse = ', ')
-
-  if ( any(is.null(date_from), is.null(date_to)) & is.null(where) ) {
-    where_clause <- ""
-  } else if ( !is.na(during) ) {
-    where <- str_c(where, collapse = " AND ")
-    where_clause <- str_glue("WHERE segments.date DURING {during} AND {where}")
-  } else if ( any(is.null(date_from), is.null(date_to)) ) {
-    where <- str_c(where, collapse = " AND ")
-    where_clause <- str_glue("WHERE {where}")
-  } else {
-    sd <- format(as.Date(date_from), '%Y-%m-%d')
-    fd <- format(as.Date(date_to), '%Y-%m-%d')
-    where_clause <- ifelse( is.null(where), str_glue("WHERE segments.date BETWEEN '{sd}' AND '{fd}'"), str_glue("WHERE segments.date BETWEEN '{sd}' AND '{fd}' AND {where}") )
-  }
-
-  # params block
-  params_clause <- ifelse( is.null(parameters), '', str_glue('PARAMETERS {parameters}') )
-
-  # order by block
-  order_by_clause <- ifelse( is.null(order_by), '', str_glue('ORDER BY {str_c(order_by, collapse=", ")}'))
-
-  # limit block
-  limit_clause <- ifelse( is.null(limit), '', str_glue('LIMIT {limit}') )
+  gaql_query <- gads_make_query(
+                  resource,
+                  fields,
+                  where,
+                  order_by,
+                  limit,
+                  parameters,
+                  date_from,
+                  date_to,
+                  during
+  )
 
   # --------------
   # build GAQL Query
-  body <- list(query =
-                 str_glue('
-       SELECT {fields}
-
-       FROM {resource}
-
-       {where_clause}
-
-       {order_by_clause}
-       {limit_clause}
-       {params_clause}')) %>%
-    toJSON(auto_unbox = T, pretty = T)
+  body <- list(query = gaql_query) %>%
+          toJSON(auto_unbox = T, pretty = T)
 
   # --------------
   # info

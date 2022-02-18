@@ -60,6 +60,15 @@ GAds_Data3 <- gads_get_report(
   date_from   = "2021-02-22",
   date_to     = "2021-04-04")
 
+
+
+
+GAds_DataLab <- gads_get_report(
+  resource =   "label",
+  fields   = c('label.name', 'label.id'),
+  date_from   = "2021-02-22",
+  date_to     = "2021-04-04")
+
 gads_user()
 
 gads_developer_token()
