@@ -49,8 +49,7 @@ GAds_Data <- gads_get_report(
   fields   = c("segments.week",
                "campaign.name",
                "metrics.conversions_by_conversion_date"),
-  date_from   = "2021-02-22",
-  date_to     = "2021-04-04")
+  during = "THIS_MONTH")
 
 GAds_Data3 <- gads_get_report(
   resource =   "ad_group_criterion",

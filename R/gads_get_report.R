@@ -122,6 +122,22 @@ gads_get_report <- function(
   # test for selectble with date fields
   selectable <- suppressMessages( gads_get_fields_cached(resource)$selectableWith )
 
+  # query
+  # compose query
+  gaql_query <- gads_make_query(
+    resource,
+    fields,
+    where,
+    order_by,
+    limit,
+    parameters,
+    date_from,
+    date_to,
+    during
+  )
+
+  if ( getOption(gads.show_gaql_query) ) print(gaql_query)
+
   # where block
   if (! "segments.date" %in% selectable ) {
     date_from <- NULL

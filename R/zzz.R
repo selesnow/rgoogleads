@@ -65,7 +65,8 @@
                   gads.multi.account.verbos = FALSE,
                   gads.base.url             = 'https://googleads.googleapis.com/',
                   gads.column.name.case.fun = snakecase::to_snake_case,
-                  gargle_oauth_email        = gads_email)
+                  gargle_oauth_email        = gads_email,
+                  gads.show_gaql_query      = FALSE)
 
   toset <- !(names(op.gads) %in% names(op))
   if (any(toset)) options(op.gads[toset])
