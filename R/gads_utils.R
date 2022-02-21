@@ -61,17 +61,15 @@ gads_make_query <- function(
   }
 
   # fix last AND
-  where_clause <- gsub('(\nAND )$', '', where_clause)
-
+  where_clause    <- gsub('(\nAND )$', '', where_clause)
   # params block
-  params_clause <- ifelse( is.null(parameters), '', str_glue('PARAMETERS {parameters}') )
-
+  params_clause   <- ifelse( is.null(parameters), '', str_glue('PARAMETERS {parameters}') )
   # order by block
   order_by_clause <- ifelse( is.null(order_by), '', str_glue('ORDER BY {str_c(order_by, collapse=", ")}'))
-
   # limit block
-  limit_clause <- ifelse( is.null(limit), '', str_glue('LIMIT {limit}') )
+  limit_clause    <- ifelse( is.null(limit), '', str_glue('LIMIT {limit}') )
 
+  # make query
   gaql_query <- str_glue(
        'SELECT',
        '{fields}',
