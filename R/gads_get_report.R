@@ -151,15 +151,7 @@ gads_get_report <- function(
 
     # if only one account use gads_get_report
     res <- gads_get_report_helper(
-      resource              = resource,
-      fields                = fields,
-      where                 = where,
-      order_by              = order_by,
-      limit                 = limit,
-      parameters            = parameters,
-      date_from             = date_from,
-      date_to               = date_to,
-      during                = during,
+      gaql_query            = gaql_query,
       customer_id           = customer_id,
       login_customer_id     = login_customer_id,
       include_resource_name = include_resource_name,
@@ -196,14 +188,7 @@ gads_get_report <- function(
         safely(
           function(x) {
             gads_get_report_helper(
-              resource              = resource,
-              fields                = fields,
-              where                 = where,
-              order_by              = order_by,
-              limit                 = limit,
-              parameters            = parameters,
-              date_from             = date_from,
-              date_to               = date_to,
+              gaql_query            = gaql_query,
               customer_id           = x,
               login_customer_id     = login_customer_id,
               include_resource_name = include_resource_name,
@@ -223,14 +208,7 @@ gads_get_report <- function(
         safely(
           function(x) {
             gads_get_report_helper(
-              resource              = resource,
-              fields                = fields,
-              where                 = where,
-              order_by              = order_by,
-              limit                 = limit,
-              parameters            = parameters,
-              date_from             = date_from,
-              date_to               = date_to,
+              gaql_query            = gaql_query,
               customer_id           = x,
               login_customer_id     = login_customer_id,
               include_resource_name = include_resource_name,

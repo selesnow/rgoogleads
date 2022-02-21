@@ -1,26 +1,5 @@
 gads_get_report_helper <- function(
-  resource              = 'campaign',
-  fields                = c('campaign.id',
-                            'campaign.name',
-                            'customer.id',
-                            'customer.descriptive_name',
-                            'campaign.status',
-                            'segments.date',
-                            'metrics.all_conversions',
-                            'metrics.clicks',
-                            'metrics.cost_micros',
-                            'metrics.ctr',
-                            'metrics.impressions',
-                            'metrics.interaction_rate',
-                            'metrics.interactions',
-                            'metrics.invalid_clicks'),
-  where                 = NULL,
-  order_by              = NULL,
-  limit                 = NULL,
-  parameters            = NULL,
-  date_from             = Sys.Date() - 15,
-  date_to               = Sys.Date() - 1,
-  during                = c(NA, "TODAY", "YESTERDAY", "LAST_7_DAYS", "LAST_BUSINESS_WEEK", "THIS_MONTH", "LAST_MONTH", "LAST_14_DAYS", "LAST_30_DAYS", "THIS_WEEK_SUN_TODAY", "THIS_WEEK_MON_TODAY", "LAST_WEEK_SUN_SAT", "LAST_WEEK_MON_SUN"),
+  gaql_query,
   customer_id           = getOption('gads.customer.id'),
   login_customer_id     = getOption('gads.login.customer.id'),
   include_resource_name = FALSE,
@@ -35,9 +14,6 @@ gads_get_report_helper <- function(
   # manager_customer id
   login_customer_id <- ifelse(length(login_customer_id) == 0, customer_id, login_customer_id)
 
-  # check args
-  during <- match.arg(during)
-
   # check login and custimer ids
   if ( is.null(customer_id) ) {
     gads_abort('customer_id is require argument, please set it and retry your request.')
@@ -48,20 +24,6 @@ gads_get_report_helper <- function(
 
   # info
   if (verbose) cli_alert_info('Compose query')
-
-  # --------------
-  # compose query
-  gaql_query <- gads_make_query(
-                  resource,
-                  fields,
-                  where,
-                  order_by,
-                  limit,
-                  parameters,
-                  date_from,
-                  date_to,
-                  during
-  )
 
   # --------------
   # build GAQL Query

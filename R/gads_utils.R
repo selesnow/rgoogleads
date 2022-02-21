@@ -28,7 +28,7 @@ gads_make_query <- function(
 ) {
 
   # check args
-  during <- match.arg(during)
+  during <- match.arg(during, choices = c(NA, "TODAY", "YESTERDAY", "LAST_7_DAYS", "LAST_BUSINESS_WEEK", "THIS_MONTH", "LAST_MONTH", "LAST_14_DAYS", "LAST_30_DAYS", "THIS_WEEK_SUN_TODAY", "THIS_WEEK_MON_TODAY", "LAST_WEEK_SUN_SAT", "LAST_WEEK_MON_SUN"))
 
   # --------------
   # compose query
@@ -60,6 +60,9 @@ gads_make_query <- function(
     where_clause <- ifelse( is.null(where), str_glue("WHERE segments.date BETWEEN '{sd}' AND '{fd}'"), str_glue("WHERE segments.date BETWEEN '{sd}' AND '{fd}' \nAND {where}") )
   }
 
+  # fix last AND
+  where_clause <- gsub('(\nAND )$', '', where_clause)
+
   # params block
   params_clause <- ifelse( is.null(parameters), '', str_glue('PARAMETERS {parameters}') )
 
@@ -69,16 +72,16 @@ gads_make_query <- function(
   # limit block
   limit_clause <- ifelse( is.null(limit), '', str_glue('LIMIT {limit}') )
 
-  gaql_query <- str_glue('
-       SELECT\n
-       {fields}
-
-       FROM {resource}
-
-       {where_clause}
-       {order_by_clause}
-       {limit_clause}
-       {params_clause}')
+  gaql_query <- str_glue(
+       'SELECT',
+       '{fields}',
+       'FROM {resource}',
+       '{where_clause}',
+       '{order_by_clause}',
+       '{limit_clause}',
+       '{params_clause}',
+       .sep = '\n'
+       )
 
   return(gaql_query)
 
