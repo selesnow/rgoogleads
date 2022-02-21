@@ -37,6 +37,7 @@ gads_make_query <- function(
     tolower() %>%
     str_c('\t', .,collapse = ', \n')
 
+  # check of set any period fields
   if ( any(is.null(date_from), is.null(date_to)) & is.null(where) ) {
     where_clause <- ""
   } else if ( !is.na(during) ) {
@@ -53,6 +54,7 @@ gads_make_query <- function(
     where <- str_c(where, collapse = " \nAND ")
     where_clause <- str_glue("WHERE {where}")
   } else {
+    where <- str_c(where, collapse = " \nAND ")
     sd <- format(as.Date(date_from), '%Y-%m-%d')
     fd <- format(as.Date(date_to), '%Y-%m-%d')
     where_clause <- ifelse( is.null(where), str_glue("WHERE segments.date BETWEEN '{sd}' AND '{fd}'"), str_glue("WHERE segments.date BETWEEN '{sd}' AND '{fd}' \nAND {where}") )
