@@ -45,6 +45,7 @@ gads_make_query <- function(
     if ( where == "" ) {
       where_clause <- str_glue("WHERE segments.date DURING {during}")
     } else {
+      where <- str_c(where, collapse = " \nAND ")
       where_clause <- str_glue("WHERE segments.date DURING {during} \nAND {where}")
     }
 
@@ -67,7 +68,8 @@ gads_make_query <- function(
   limit_clause <- ifelse( is.null(limit), '', str_glue('LIMIT {limit}') )
 
   gaql_query <- str_glue('
-       SELECT {fields}
+       SELECT\n
+       {fields}
 
        FROM {resource}
 
