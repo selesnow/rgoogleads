@@ -136,7 +136,7 @@ gads_get_report <- function(
     during
   )
 
-  if ( getOption(gads.show_gaql_query) ) print(gaql_query)
+  if ( getOption('gads.show_gaql_query') ) cat("\n\nGAQL Query:\n\n", gaql_query)
 
   # where block
   if (! "segments.date" %in% selectable ) {
