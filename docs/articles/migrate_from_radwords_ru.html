@@ -40,7 +40,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rgoogleads</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,9 +87,10 @@
 <script src="migrate_from_radwords_ru_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Миграция с RAdwords на rgoogleads</h1>
-                        <h4 data-toc-skip class="author">Алексей Селезнёв</h4>
+                        <h4 data-toc-skip class="author">Алексей
+Селезнёв</h4>
             
-            <h4 data-toc-skip class="date">2021-12-01</h4>
+            <h4 data-toc-skip class="date">2022-02-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/selesnow/rgoogleads/blob/HEAD/vignettes/migrate_from_radwords_ru.Rmd" class="external-link"><code>vignettes/migrate_from_radwords_ru.Rmd</code></a></small>
       <div class="d-none name"><code>migrate_from_radwords_ru.Rmd</code></div>
@@ -97,8 +98,13 @@
 
     
     
-<p>Пакет <code>RAdwords</code> работает с Google AdWords API версии 201809. Данный API давно не обновляется и прекратит работу 27 апреля 2022 года.</p>
-<p>В этой виньетке мы подробно разберёмся с тем, как перейти с <code>RAdwords</code> на <code>rgoogleads</code>, для того, чтобы с апреля 2022 года ваши скрипты по прежнему корректно собирали необходимые данные из рекламных аккаунтов в Google Ads.</p>
+<p>Пакет <code>RAdwords</code> работает с Google AdWords API версии
+201809. Данный API давно не обновляется и прекратит работу 27 апреля
+2022 года.</p>
+<p>В этой виньетке мы подробно разберёмся с тем, как перейти с
+<code>RAdwords</code> на <code>rgoogleads</code>, для того, чтобы с
+апреля 2022 года ваши скрипты по прежнему корректно собирали необходимые
+данные из рекламных аккаунтов в Google Ads.</p>
 <div class="section level1">
 <h1 id="возможности-пакета-rgoogleads">Возможности пакета rgoogleads<a class="anchor" aria-label="anchor" href="#%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%B0-rgoogleads"></a>
 </h1>
@@ -106,56 +112,101 @@
 <li>авторизация в API Google Ads;</li>
 <li>загрузка списка аккаунтов верхнего уровня;</li>
 <li>загрузка всей иерархии аккаунтов из управляющих аккаунтов;</li>
-<li>загрузка объектов рекламного кабинета: кампании, группы объявлений, объявления и другое;</li>
+<li>загрузка объектов рекламного кабинета: кампании, группы объявлений,
+объявления и другое;</li>
 <li>загрузка статистических данных из рекламных аккаунтов;</li>
-<li>загрузка метаданных ресурсов, полей ресурсов, сегментов и метрик;</li>
-<li>загрузка прогноза и исторических данных из планировщика ключевых слов.</li>
+<li>загрузка метаданных ресурсов, полей ресурсов, сегментов и
+метрик;</li>
+<li>загрузка прогноза и исторических данных из планировщика ключевых
+слов.</li>
 </ul>
 </div>
 <div class="section level1">
 <h1 id="преимущества-пакета-rgoogleads">Преимущества пакета rgoogleads<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%B5%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%B0-rgoogleads"></a>
 </h1>
-<p>Сначала давайте разберёмся, какие преимущества дает переход на новый пакет <code>rgoogleads</code>:</p>
+<p>Сначала давайте разберёмся, какие преимущества дает переход на новый
+пакет <code>rgoogleads</code>:</p>
 <ul>
 <li>
-<code>rgoogleads</code> работает с Google Ads API v8 (релиз от 09.06.2021), <code>RAdwords</code> работает с Google AdWords API v201809. Google AdWords API прекратит работу 27.04.2022;</li>
-<li>для авторизации rgoogleads использует пакет gargle, что даёт гораздо больше гибкости по сравнению с тем, как устроен процесс авторизации в RAdwords;</li>
-<li>в <code>rgoogleads</code> есть вшитый токен разработчика Google Ads и OAuth клиент для авторизации. Это избавит большинство пользователей от необходимости запрашивать у поддержки Google базовый доступ к API Google Ads и тратить время на создание проекта и OAuth клиента в Google Cloud Console;</li>
-<li>у большинства функций rgoogleads аргумент cl, который позволяет осуществлять загрузку данных в многопоточном режиме;</li>
-<li>в отличие от <code>RAdwords</code>, у <code>rgoogleads</code> есть функции для загрузки списков и иерархии аккаунтов;</li>
-<li>у <code>rgoogleads</code> есть отдельные функции для загрузки основных объектов рекламных кабинетов, таких как рекламные кампании, группы объявлений, ключевые слова и объявления;</li>
-<li>за счёт того, что запрос данных не разделён на отдельные функции, синтаксис rgoogleads более понятный и лаконичный. В RAdwords вам необходимо было изначально создать запрос функцией statement(), после чего использовать его для запроса данных в функции getData();</li>
-<li>у <code>rgoogleads</code> нет проблем при загрузке названий, содержащих кириллицу;</li>
-<li>если запрос к API столкнулся со сбоем на сервере (статус ответа 429 или выше), пакет <code>rgoogleads</code> автоматически выждет паузу в 100 секунд и повторит попытку запросить данные. За счёт этого работа данного пакета более стабильна и устойчива к сбоям на сервере Google Ads API;</li>
+<code>rgoogleads</code> работает с Google Ads API v8 (релиз от
+09.06.2021), <code>RAdwords</code> работает с Google AdWords API
+v201809. Google AdWords API прекратит работу 27.04.2022;</li>
+<li>для авторизации rgoogleads использует пакет gargle, что даёт гораздо
+больше гибкости по сравнению с тем, как устроен процесс авторизации в
+RAdwords;</li>
+<li>в <code>rgoogleads</code> есть вшитый токен разработчика Google Ads
+и OAuth клиент для авторизации. Это избавит большинство пользователей от
+необходимости запрашивать у поддержки Google базовый доступ к API Google
+Ads и тратить время на создание проекта и OAuth клиента в Google Cloud
+Console;</li>
+<li>у большинства функций rgoogleads аргумент cl, который позволяет
+осуществлять загрузку данных в многопоточном режиме;</li>
+<li>в отличие от <code>RAdwords</code>, у <code>rgoogleads</code> есть
+функции для загрузки списков и иерархии аккаунтов;</li>
+<li>у <code>rgoogleads</code> есть отдельные функции для загрузки
+основных объектов рекламных кабинетов, таких как рекламные кампании,
+группы объявлений, ключевые слова и объявления;</li>
+<li>за счёт того, что запрос данных не разделён на отдельные функции,
+синтаксис rgoogleads более понятный и лаконичный. В RAdwords вам
+необходимо было изначально создать запрос функцией statement(), после
+чего использовать его для запроса данных в функции getData();</li>
+<li>у <code>rgoogleads</code> нет проблем при загрузке названий,
+содержащих кириллицу;</li>
+<li>если запрос к API столкнулся со сбоем на сервере (статус ответа 429
+или выше), пакет <code>rgoogleads</code> автоматически выждет паузу в
+100 секунд и повторит попытку запросить данные. За счёт этого работа
+данного пакета более стабильна и устойчива к сбоям на сервере Google Ads
+API;</li>
 <li>
-<code>rgoogleads</code> выводит подробное сообщение об ошибке. Для сравнения, если пользователь допустил ошибку в составлении запроса, <code>RAdwords</code> не выводит никакие сообщения;</li>
+<code>rgoogleads</code> выводит подробное сообщение об ошибке. Для
+сравнения, если пользователь допустил ошибку в составлении запроса,
+<code>RAdwords</code> не выводит никакие сообщения;</li>
 <li>
-<code>rgoogleads</code> позволяет запрашивать данные из планировщика ключевых слов.</li>
-<li>используя <code>rgoogleads</code> вы можете запрашивать статистику по объектам, которые появились в Google Ads после сентября 2018 года.</li>
+<code>rgoogleads</code> позволяет запрашивать данные из планировщика
+ключевых слов.</li>
+<li>используя <code>rgoogleads</code> вы можете запрашивать статистику
+по объектам, которые появились в Google Ads после сентября 2018
+года.</li>
 </ul>
 </div>
 <div class="section level1">
 <h1 id="основные-различия-между-google-adwords-api-и-google-adsapi">Основные различия между Google AdWords API и Google AdsAPI<a class="anchor" aria-label="anchor" href="#%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D1%80%D0%B0%D0%B7%D0%BB%D0%B8%D1%87%D0%B8%D1%8F-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-google-adwords-api-%D0%B8-google-adsapi"></a>
 </h1>
-<p>К счастью, ключевых различий между устаревшим и новым API не так много, и процесс миграции не должен вызвать у вас особых сложностей. Ниже я перечислю ключевые моменты миграции.</p>
+<p>К счастью, ключевых различий между устаревшим и новым API не так
+много, и процесс миграции не должен вызвать у вас особых сложностей.
+Ниже я перечислю ключевые моменты миграции.</p>
 <ul>
-<li>нет необходимости менять автоионизационные данные, токен разработчика, id и secret OAuth клиента будут работать также и с новым Google Ads API;</li>
-<li>в AdWords API отчёты были выделены в отдельную службу, в Google Ads API отчёты являются частью одного сервиса. Вам достаточно включить в отчёты необходимые поля с метриками, которые нужно получить;</li>
-<li>В AdWords API существовали типы отчётов, например, CAMPAINGN_PERFORMANCE_REPORT. В Google Ads API их нет, вместо типов отчётов представлен огромный набор ресурсов;</li>
+<li>нет необходимости менять автоионизационные данные, токен
+разработчика, id и secret OAuth клиента будут работать также и с новым
+Google Ads API;</li>
+<li>в AdWords API отчёты были выделены в отдельную службу, в Google Ads
+API отчёты являются частью одного сервиса. Вам достаточно включить в
+отчёты необходимые поля с метриками, которые нужно получить;</li>
+<li>В AdWords API существовали типы отчётов, например,
+CAMPAINGN_PERFORMANCE_REPORT. В Google Ads API их нет, вместо типов
+отчётов представлен огромный набор ресурсов;</li>
 <li>у AdWords API и Google Ads API разный формат ответа от API;</li>
-<li>в Google Ads API отсутствует параметр includeZeroImpressions, вместо него вы можете использовать фильтр metrics.impressions &gt; 0.</li>
+<li>в Google Ads API отсутствует параметр includeZeroImpressions, вместо
+него вы можете использовать фильтр metrics.impressions &gt; 0.</li>
 </ul>
 </div>
 <div class="section level1">
 <h1 id="миграция-с-radwords-на-rgoogleads">Миграция с RAdwords на rgoogleads<a class="anchor" aria-label="anchor" href="#%D0%BC%D0%B8%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%81-radwords-%D0%BD%D0%B0-rgoogleads"></a>
 </h1>
-<div id="htmlwidget-4fd59d7fa909bb154f6d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4fd59d7fa909bb154f6d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Авторизация","Запрос метаданных","Запрос отчётов"],["doAuth()","reports(), metrics()","statement() + getData()"],["gads_auth_configure() + gads_auth()","gads_get_metadata(), gads_get_fields()","gads_get_report()"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Операция<\/th>\n      <th>RAdwords<\/th>\n      <th>rgoogleads<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"tip","order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Бывшие в Google AdWords типы отчётов, в Google Ads стали ресурсами. Ниже — таблица сопоставления из <a href="https://developers.google.com/google-ads/api/docs/migration/mapping" class="external-link">официальной справки</a>:</p>
-<div id="htmlwidget-c8e46f2e8206812d9c11" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c8e46f2e8206812d9c11">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"],["ACCOUNT_PERFORMANCE_REPORT","AD_PERFORMANCE_REPORT","ADGROUP_PERFORMANCE_REPORT","AGE_RANGE_PERFORMANCE_REPORT","AUDIENCE_PERFORMANCE_REPORT","AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT","BID_GOAL_PERFORMANCE_REPORT","BUDGET_PERFORMANCE_REPORT","CALL_METRICS_CALL_DETAILS_REPORT","CAMPAIGN_AD_SCHEDULE_TARGET_REPORT","CAMPAIGN_CRITERIA_REPORT","CAMPAIGN_PERFORMANCE_REPORT","CAMPAIGN_SHARED_SET_REPORT","CAMPAIGN_LOCATION_TARGET_REPORT","CLICK_PERFORMANCE_REPORT","DISPLAY_KEYWORD_PERFORMANCE_REPORT","DISPLAY_TOPICS_PERFORMANCE_REPORT","GENDER_PERFORMANCE_REPORT","GEO_PERFORMANCE_REPORT","KEYWORDLESS_QUERY_REPORT","KEYWORDS_PERFORMANCE_REPORT","LABEL_REPORT","LANDING_PAGE_REPORT","PAID_ORGANIC_QUERY_REPORT","PARENTAL_STATUS_PERFORMANCE_REPORT","PLACEHOLDER_FEED_ITEM_REPORT","PLACEHOLDER_REPORT","PLACEMENT_PERFORMANCE_REPORT","PRODUCT_PARTITION_REPORT","SEARCH_QUERY_PERFORMANCE_REPORT","SHARED_SET_CRITERIA_REPORT","SHARED_SET_REPORT","SHOPPING_PERFORMANCE_REPORT","URL_PERFORMANCE_REPORT","USER_AD_DISTANCE_REPORT","VIDEO_PERFORMANCE_REPORT"],["customer","ad_group_ad","ad_group","age_range_view","campaign_audience_view,ad_group_audience_view","group_placement_view","bidding_strategy","campaign_budget","call_view","ad_schedule_view","campaign_criterion","campaign","campaign_shared_set","location_view","click_view","display_keyword_view","topic_view","gender_view","geographic_view,user_location_view","dynamic_search_ads_search_term_view","keyword_view","label","landing_page_view,expanded_landing_page_view","paid_organic_search_term_view","parental_status_view","feed_item,feed_item_target","feed_placeholder_view","managed_placement_view","product_group_view","search_term_view","shared_criterion","shared_set","shopping_performance_view","detail_placement_view","distance_view","video"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Тип отчёта в Google AdWords API<\/th>\n      <th>Ресурс в Google Ads API<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":20,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[10,20,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Соответствие полей «Отчёт» и полей ресурсов можно найти в <a href="https://developers.google.com/google-ads/api/docs/migration/mapping#field_mappings_for_reports" class="external-link">официальной справке</a>. Таблица очень большая, поэтому не вижу смысла дублировать её здесь.</p>
-<p>Ниже приведу пример запроса отчёта по эффективности рекламных кампаний с одним и тем же набором полей, с помощью пакета <code>RAdwords</code> и <code>rgoogleads</code>.</p>
+<div id="htmlwidget-8054a8b026944d7a9499" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8054a8b026944d7a9499">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Авторизация","Запрос метаданных","Запрос отчётов"],["doAuth()","reports(), metrics()","statement() + getData()"],["gads_auth_configure() + gads_auth()","gads_get_metadata(), gads_get_fields()","gads_get_report()"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Операция<\/th>\n      <th>RAdwords<\/th>\n      <th>rgoogleads<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"tip","order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Бывшие в Google AdWords типы отчётов, в Google Ads стали ресурсами.
+Ниже — таблица сопоставления из <a href="https://developers.google.com/google-ads/api/docs/migration/mapping" class="external-link">официальной
+справки</a>:</p>
+<div id="htmlwidget-0786dbc3b8a2db637ca7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0786dbc3b8a2db637ca7">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"],["ACCOUNT_PERFORMANCE_REPORT","AD_PERFORMANCE_REPORT","ADGROUP_PERFORMANCE_REPORT","AGE_RANGE_PERFORMANCE_REPORT","AUDIENCE_PERFORMANCE_REPORT","AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT","BID_GOAL_PERFORMANCE_REPORT","BUDGET_PERFORMANCE_REPORT","CALL_METRICS_CALL_DETAILS_REPORT","CAMPAIGN_AD_SCHEDULE_TARGET_REPORT","CAMPAIGN_CRITERIA_REPORT","CAMPAIGN_PERFORMANCE_REPORT","CAMPAIGN_SHARED_SET_REPORT","CAMPAIGN_LOCATION_TARGET_REPORT","CLICK_PERFORMANCE_REPORT","DISPLAY_KEYWORD_PERFORMANCE_REPORT","DISPLAY_TOPICS_PERFORMANCE_REPORT","GENDER_PERFORMANCE_REPORT","GEO_PERFORMANCE_REPORT","KEYWORDLESS_QUERY_REPORT","KEYWORDS_PERFORMANCE_REPORT","LABEL_REPORT","LANDING_PAGE_REPORT","PAID_ORGANIC_QUERY_REPORT","PARENTAL_STATUS_PERFORMANCE_REPORT","PLACEHOLDER_FEED_ITEM_REPORT","PLACEHOLDER_REPORT","PLACEMENT_PERFORMANCE_REPORT","PRODUCT_PARTITION_REPORT","SEARCH_QUERY_PERFORMANCE_REPORT","SHARED_SET_CRITERIA_REPORT","SHARED_SET_REPORT","SHOPPING_PERFORMANCE_REPORT","URL_PERFORMANCE_REPORT","USER_AD_DISTANCE_REPORT","VIDEO_PERFORMANCE_REPORT"],["customer","ad_group_ad","ad_group","age_range_view","campaign_audience_view,ad_group_audience_view","group_placement_view","bidding_strategy","campaign_budget","call_view","ad_schedule_view","campaign_criterion","campaign","campaign_shared_set","location_view","click_view","display_keyword_view","topic_view","gender_view","geographic_view,user_location_view","dynamic_search_ads_search_term_view","keyword_view","label","landing_page_view,expanded_landing_page_view","paid_organic_search_term_view","parental_status_view","feed_item,feed_item_target","feed_placeholder_view","managed_placement_view","product_group_view","search_term_view","shared_criterion","shared_set","shopping_performance_view","detail_placement_view","distance_view","video"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Тип отчёта в Google AdWords API<\/th>\n      <th>Ресурс в Google Ads API<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":20,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[10,20,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Соответствие полей «Отчёт» и полей ресурсов можно найти в <a href="https://developers.google.com/google-ads/api/docs/migration/mapping#field_mappings_for_reports" class="external-link">официальной
+справке</a>. Таблица очень большая, поэтому не вижу смысла дублировать
+её здесь.</p>
+<p>Ниже приведу пример запроса отчёта по эффективности рекламных
+кампаний с одним и тем же набором полей, с помощью пакета
+<code>RAdwords</code> и <code>rgoogleads</code>.</p>
 <div class="section level2">
-<h2 id="запрос-отчёта-по-эффективности-рекламных-кампаний-с-помощью-radwords">Запрос отчёта по эффективности рекламных кампаний с помощью RAdwords<a class="anchor" aria-label="anchor" href="#%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81-%D0%BE%D1%82%D1%87%D1%91%D1%82%D0%B0-%D0%BF%D0%BE-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%BD%D1%8B%D1%85-%D0%BA%D0%B0%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-radwords"></a>
+<h2 id="запрос-отчёта-по-эффективности-рекламных-кампаний-с-помощью-radwords">Запрос отчёта по эффективности рекламных кампаний с помощью
+RAdwords<a class="anchor" aria-label="anchor" href="#%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81-%D0%BE%D1%82%D1%87%D1%91%D1%82%D0%B0-%D0%BF%D0%BE-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%BD%D1%8B%D1%85-%D0%BA%D0%B0%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-radwords"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jburkhardt/RAdwords" class="external-link">RAdwords</a></span><span class="op">)</span>
@@ -181,7 +232,8 @@
 <span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="запрос-отчёта-по-эффективности-рекламных-кампаний-с-помощью-rgoogleads">Запрос отчёта по эффективности рекламных кампаний с помощью rgoogleads<a class="anchor" aria-label="anchor" href="#%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81-%D0%BE%D1%82%D1%87%D1%91%D1%82%D0%B0-%D0%BF%D0%BE-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%BD%D1%8B%D1%85-%D0%BA%D0%B0%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-rgoogleads"></a>
+<h2 id="запрос-отчёта-по-эффективности-рекламных-кампаний-с-помощью-rgoogleads">Запрос отчёта по эффективности рекламных кампаний с помощью
+rgoogleads<a class="anchor" aria-label="anchor" href="#%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81-%D0%BE%D1%82%D1%87%D1%91%D1%82%D0%B0-%D0%BF%D0%BE-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%BD%D1%8B%D1%85-%D0%BA%D0%B0%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-rgoogleads"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://selesnow.github.io/rgoogleads/" class="external-link">rgoogleads</a></span><span class="op">)</span>
@@ -216,7 +268,8 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.0.</p>
 </div>
 
     </footer>
