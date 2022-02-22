@@ -1,8 +1,8 @@
-pandoc: 2.14.0.3
+pandoc: 2.17.1.1
 pkgdown: 2.0.0
 pkgdown_sha: ~
 articles:
   migrate_from_radrowds_us: migrate_from_radrowds_us.html
   migrate_from_radwords_ru: migrate_from_radwords_ru.html
-last_built: 2021-12-01T15:32Z
+last_built: 2022-02-22T13:57Z
 
