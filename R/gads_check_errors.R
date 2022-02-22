@@ -68,11 +68,16 @@ gads_check_errors2 <- function(resp) {
   # check simple answer
   if ( !is.null(content$error) ) {
 
-    msg <- try(content$error$details[[1]]$errors[[1]]$message)
+    msg <- ifelse(
+      is.null(content$error$details[[1]]$errors[[1]]$message),
+      content$error$message,
+      content$error$details[[1]]$errors[[1]]$message
+      )
 
     if (verbose) cli_alert_danger(c("\n", client_id, ": ", msg))
     if (verbose) cli_alert_danger(c("\n", "Request ID: ", request_id))
     gads_abort(paste(client_id, msg))
+
   }
 
   # check multi answer
