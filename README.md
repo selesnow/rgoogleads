@@ -181,7 +181,7 @@ This section contains links to articles dedicated to `rgoogleads`.
 If you have published an article about `rgoogleads` let me know about it in [telegram](https://t.me/AlexeySeleznev) or [email](mailto:selesnow@gmail.com) and I will add it to the list of links.
 
 ## Author
-Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net)
+Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net/en/us/)
 <Br>Telegram Channel: [R4marketing](https://t.me/R4marketing)
 <Br>email: selesnow@gmail.com
 <Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
