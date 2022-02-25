@@ -1,4 +1,4 @@
-# rgoogleads (development version)
+# rgoogleads 0.5.0
 
 ## Исправление ошибок
 * Исправлено переопределение даты по ресурсам, которые нельзя фильтровать по времени, [тикет #9](https://github.com/selesnow/rgoogleads/issues/9).
