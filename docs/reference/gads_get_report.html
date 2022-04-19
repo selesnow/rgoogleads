@@ -16,14 +16,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">rgoogleads</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
@@ -83,6 +83,7 @@
   customer_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"gads.customer.id"</span><span class="op">)</span>,
   login_customer_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"gads.login.customer.id"</span><span class="op">)</span>,
   include_resource_name <span class="op">=</span> <span class="cn">FALSE</span>,
+  gaql_query <span class="op">=</span> <span class="cn">NULL</span>,
   cl <span class="op">=</span> <span class="cn">NULL</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
@@ -114,6 +115,8 @@
 <dd><p>Google Ads manager customer id</p></dd>
 <dt>include_resource_name</dt>
 <dd><p>Get resource names fields in report</p></dd>
+<dt>gaql_query</dt>
+<dd><p>GAQL Query, you can make it in <code><a href="gads_get_metadata.html">gads_get_metadata</a></code>. For more information see <a href="https://developers.google.com/google-ads/api/fields/v10/overview_query_builder" class="external-link">Query Builder</a>. If you use gaql_query, you don't need set other query parameters like resource, fields, where, dates etc.</p></dd>
 <dt>cl</dt>
 <dd><p>A cluster object created by <code><a href="https://rdrr.io/r/parallel/makeCluster.html" class="external-link">makeCluster</a></code>, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).</p></dd>
 <dt>verbose</dt>
@@ -210,7 +213,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.0.</p>
+2.0.2.</p>
 </div>
 
     </footer></div>

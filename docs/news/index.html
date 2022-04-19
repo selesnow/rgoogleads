@@ -16,14 +16,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">rgoogleads</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
@@ -58,9 +58,21 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="rgoogleads-development-version">rgoogleads (development version)<a class="anchor" aria-label="anchor" href="#rgoogleads-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.6.0" id="rgoogleads-060">rgoogleads 0.6.0<a class="anchor" aria-label="anchor" href="#rgoogleads-060"></a></h2>
+<ul><li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент
+gaql_query, который позволяет передать функции готовый текст запроса,
+скопированный из <a href="https://developers.google.com/google-ads/api/fields/v10/overview_query_builder" class="external-link">QueryBuilder</a>.</li>
+<li>Новая функция <code><a href="../reference/gads_get_keywords.html">gads_get_keywords()</a></code> для запроса списка
+ключевых слов.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.1" id="rgoogleads-051">rgoogleads 0.5.1<a class="anchor" aria-label="anchor" href="#rgoogleads-051"></a></h2><p class="text-muted">CRAN release: 2022-02-25</p>
+<ul><li>Исправление некоторых ссылок для публикации в CRAN</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.0" id="rgoogleads-050">rgoogleads 0.5.0<a class="anchor" aria-label="anchor" href="#rgoogleads-050"></a></h2>
 <div class="section level3">
-<h3 id="исправление-ошибок-development-version">Исправление ошибок<a class="anchor" aria-label="anchor" href="#%D0%B8%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA-development-version"></a></h3>
+<h3 id="исправление-ошибок-0-5-0">Исправление ошибок<a class="anchor" aria-label="anchor" href="#%D0%B8%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA-0-5-0"></a></h3>
 <ul><li>Исправлено переопределение даты по ресурсам, которые нельзя
 фильтровать по времени, <a href="https://github.com/selesnow/rgoogleads/issues/9" class="external-link">тикет
 </a><a href="https://github.com/selesnow/rgoogleads/issues/9" class="external-link">#9</a>.</li>
@@ -70,7 +82,7 @@
 полученных от Google Ads API.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="прочее-development-version">Прочее<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5-development-version"></a></h3>
+<h3 id="прочее-0-5-0">Прочее<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5-0-5-0"></a></h3>
 <ul><li>Процесс формирования GAQL запроса выделен в отдельную функцию
 <code>gads_make_query()</code>, и теперь является частью блока
 gads_utils.R.</li>
@@ -231,7 +243,7 @@ Netpeak</p></li>
 
 <div class="pkgdown-footer-right">
   <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.0.</p>
+2.0.2.</p>
 </div>
 
     </footer></div>
