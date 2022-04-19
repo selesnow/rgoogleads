@@ -23,6 +23,7 @@ gads_get_report(
   customer_id = getOption("gads.customer.id"),
   login_customer_id = getOption("gads.login.customer.id"),
   include_resource_name = FALSE,
+  gaql_query = NULL,
   cl = NULL,
   verbose = TRUE
 )
@@ -51,6 +52,8 @@ gads_get_report(
 \item{login_customer_id}{Google Ads manager customer id}
 
 \item{include_resource_name}{Get resource names fields in report}
+
+\item{gaql_query}{GAQL Query, you can make it in \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v10/overview_query_builder}{Query Builder}. If you use gaql_query, you don't need set other query parameters like resource, fields, where, dates etc.}
 
 \item{cl}{A cluster object created by \code{\link{makeCluster}}, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).}
 

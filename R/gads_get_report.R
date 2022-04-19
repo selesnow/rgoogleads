@@ -12,6 +12,7 @@
 #' @param customer_id Google Ads client customer id, supports a single account id: "xxx-xxx-xxxx" or a vector of ids from the same Google Ads MCC: c("xxx-xxx-xxxx", "xxx-xxx-xxxx")
 #' @param login_customer_id Google Ads manager customer id
 #' @param include_resource_name Get resource names fields in report
+#' @param gaql_query GAQL Query, you can make it in \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v10/overview_query_builder}{Query Builder}. If you use gaql_query, you don't need set other query parameters like resource, fields, where, dates etc.
 #' @param verbose Console log output
 #' @param cl A cluster object created by \code{\link{makeCluster}}, or an integer to indicate number of child-processes (integer values are ignored on Windows) for parallel evaluations (see Details on performance).
 #'
@@ -115,6 +116,7 @@ gads_get_report <- function(
   customer_id           = getOption('gads.customer.id'),
   login_customer_id     = getOption('gads.login.customer.id'),
   include_resource_name = FALSE,
+  gaql_query            = NULL,
   cl                    = NULL,
   verbose               = TRUE
 ) {
@@ -123,18 +125,20 @@ gads_get_report <- function(
   selectable <- suppressMessages( gads_get_fields_cached(resource)$selectableWith )
 
   # query
-  # compose query
-  gaql_query <- gads_make_query(
-    resource,
-    fields,
-    where,
-    order_by,
-    limit,
-    parameters,
-    date_from,
-    date_to,
-    during
-  )
+  # compose query if needed
+  if ( is.null(gaql_query) ) {
+    gaql_query <- gads_make_query(
+      resource,
+      fields,
+      where,
+      order_by,
+      limit,
+      parameters,
+      date_from,
+      date_to,
+      during
+    )
+  }
 
   if ( getOption('gads.show_gaql_query') ) cat("\n\nGAQL Query:\n\n", gaql_query)
 
