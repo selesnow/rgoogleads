@@ -100,6 +100,7 @@ rgoogleadsWelcomeMessage <- function(){
          "Type ?rgoogleads for the main documentation.\n",
          "The github page is: https://github.com/selesnow/rgoogleads/\n",
          "Package site: https://selesnow.github.io/rgoogleads/docs\n",
+         "Package lessons playlist: https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi\n",
          "\n",
          "Suggestions and bug-reports can be submitted at: https://github.com/selesnow/rgoogleads/issues\n",
          "Or contact: <selesnow@gmail.com>\n",
