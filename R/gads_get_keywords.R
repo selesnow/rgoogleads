@@ -41,7 +41,7 @@ gads_get_keywords <- function(
 
   # user gads_get_report
   res <- gads_get_report(
-    resource          = 'ad_group_criterion',
+    resource          = 'keyword_view',
     fields            = fields,
     where             = where,
     order_by          = order_by,
