@@ -5,10 +5,9 @@
 ^R/test\.R$
 ^test\.R$
 ^README\.md$
-docs
 README\.md
 README.md
-
 inst/doc
+docs
 /doc/
 /Meta/
