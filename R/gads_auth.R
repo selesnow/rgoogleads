@@ -404,5 +404,5 @@ gads_set_customer_id <- function(customer_id) {
   options(gads.customer.id = customer_id)
   # info
   out_msg_id <- gsub("(\\d{3})(\\d{3})(\\d{4})", "\\1-\\2-\\3", customer_id)
-  cli_alert_info(str_glue('You set customer_id: {out_msg_id}'))
+  cli_alert_info(str_glue('You set customer_id: {str_c(out_msg_id, collapse = ", ")}'))
 }
