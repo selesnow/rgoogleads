@@ -1,4 +1,4 @@
-# rgoogleads (development version)
+# rgoogleads 0.6.0
 * В функцию `gads_get_report()` добавлен аргумент gaql_query, который позволяет передать функции готовый текст запроса, скопированный из [QueryBuilder](https://developers.google.com/google-ads/api/fields/v10/overview_query_builder).
 * Новая функция `gads_get_keywords()` для запроса списка ключевых слов.
 
