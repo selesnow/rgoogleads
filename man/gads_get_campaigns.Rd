@@ -12,7 +12,8 @@ gads_get_campaigns(
     "campaign.bidding_strategy",
     "campaign.app_campaign_setting.bidding_strategy_goal_type",
     "campaign.campaign_budget", "campaign.bidding_strategy_type",
-    "campaign.dynamic_search_ads_setting.language_code",      "campaign.start_date",
+    "campaign.dynamic_search_ads_setting.language_code", 
+     "campaign.start_date",
     "campaign.end_date", "campaign.status", "campaign.manual_cpm", "campaign.manual_cpv",
     "campaign.maximize_conversion_value.target_roas",
     "campaign.maximize_conversions.target_cpa",
@@ -21,7 +22,8 @@ gads_get_campaigns(
     "campaign.network_settings.target_partner_search_network",
     "campaign.network_settings.target_search_network",
     "campaign.optimization_goal_setting.optimization_goal_types",
-    "campaign.optimization_score",      "campaign.payment_mode",
+    "campaign.optimization_score", 
+     "campaign.payment_mode",
     "campaign.serving_status", "campaign.shopping_setting.campaign_priority",
     "campaign.shopping_setting.sales_country", "campaign.target_roas.target_roas",
     "campaign.tracking_url_template", "customer.descriptive_name", "customer.id"),
@@ -37,7 +39,7 @@ gads_get_campaigns(
 )
 }
 \arguments{
-\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v8/campaign}{see field list of campaigns report}.}
+\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v10/campaign}{see field list of campaigns report}.}
 
 \item{where}{Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.}
 
@@ -79,5 +81,5 @@ camps <- gads_get_campaigns(
 }
 }
 \seealso{
-\href{https://developers.google.com/google-ads/api/fields/v8/campaign_query_builder}{Google Ads Query Builder}
+\href{https://developers.google.com/google-ads/api/fields/v10/campaign_query_builder}{Google Ads Query Builder}
 }

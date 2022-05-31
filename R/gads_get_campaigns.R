@@ -2,9 +2,9 @@
 #'
 #' @inheritParams gads_get_report
 #'
-#' @param fields character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v8/campaign}{see field list of campaigns report}.
+#' @param fields character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v10/campaign}{see field list of campaigns report}.
 #'
-#' @seealso \href{https://developers.google.com/google-ads/api/fields/v8/campaign_query_builder}{Google Ads Query Builder}
+#' @seealso \href{https://developers.google.com/google-ads/api/fields/v10/campaign_query_builder}{Google Ads Query Builder}
 #'
 #' @return tibble with campaings dicrionary
 #' @export

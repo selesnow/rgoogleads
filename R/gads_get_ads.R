@@ -1,9 +1,9 @@
 #' Get Ads Dictionary From Google Ads Client Account
 #'
 #' @inheritParams gads_get_report
-#' @param fields character vector, list pf report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_ad}{see field list of ads report}.
+#' @param fields character vector, list pf report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v10/ad_group_ad}{see field list of ads report}.
 #'
-#' @seealso \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_ad_query_builder}{Google Ads Query Builder}
+#' @seealso \href{https://developers.google.com/google-ads/api/fields/v10/ad_group_ad_query_builder}{Google Ads Query Builder}
 #' @return tibble with ads dicrionary
 #' @export
 #' @examples

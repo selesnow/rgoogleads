@@ -1,7 +1,7 @@
 #' Get data from Google Ads API
 #'
-#' @param resource Report type, you can get list of all acessible resource using \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v8/overview#list-of-all-resources}{link with list of all resources}
-#' @param fields character vector, list of report fields, all report has own fields list. You can get list of accesible resource fields using \code{\link{gads_get_fields}} for example \href{https://developers.google.com/google-ads/api/fields/v8/campaign}{see field list of campaign report}.
+#' @param resource Report type, you can get list of all acessible resource using \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v10/overview#list-of-all-resources}{link with list of all resources}
+#' @param fields character vector, list of report fields, all report has own fields list. You can get list of accesible resource fields using \code{\link{gads_get_fields}} for example \href{https://developers.google.com/google-ads/api/fields/v10/campaign}{see field list of campaign report}.
 #' @param where Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.
 #' @param order_by Sorting, character vectors of fields and sorting directions, for example \code{order_by = c("campaign.name DESC", "metrics.clicks")}.
 #' @param limit Maximun rows in report
@@ -19,8 +19,8 @@
 #' @return tibble with the Google Ads Data.
 #' @seealso
 #' \itemize{
-#'   \item \href{https://developers.google.com/google-ads/api/fields/v8/overview}{Oficial Google Ads API Reports documantation}
-#'   \item \href{https://developers.google.com/google-ads/api/fields/v8/overview_query_builder}{Google Ads Query Builder}
+#'   \item \href{https://developers.google.com/google-ads/api/fields/v10/overview}{Oficial Google Ads API Reports documantation}
+#'   \item \href{https://developers.google.com/google-ads/api/fields/v10/overview_query_builder}{Google Ads Query Builder}
 #' }
 #' @export
 #'

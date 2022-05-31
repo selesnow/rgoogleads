@@ -29,9 +29,9 @@ gads_get_report(
 )
 }
 \arguments{
-\item{resource}{Report type, you can get list of all acessible resource using \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v8/overview#list-of-all-resources}{link with list of all resources}}
+\item{resource}{Report type, you can get list of all acessible resource using \code{\link{gads_get_metadata}}. For more information see \href{https://developers.google.com/google-ads/api/fields/v10/overview#list-of-all-resources}{link with list of all resources}}
 
-\item{fields}{character vector, list of report fields, all report has own fields list. You can get list of accesible resource fields using \code{\link{gads_get_fields}} for example \href{https://developers.google.com/google-ads/api/fields/v8/campaign}{see field list of campaign report}.}
+\item{fields}{character vector, list of report fields, all report has own fields list. You can get list of accesible resource fields using \code{\link{gads_get_fields}} for example \href{https://developers.google.com/google-ads/api/fields/v10/campaign}{see field list of campaign report}.}
 
 \item{where}{Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.}
 
@@ -134,7 +134,7 @@ stopCluster(cl)
 }
 \seealso{
 \itemize{
-\item \href{https://developers.google.com/google-ads/api/fields/v8/overview}{Oficial Google Ads API Reports documantation}
-\item \href{https://developers.google.com/google-ads/api/fields/v8/overview_query_builder}{Google Ads Query Builder}
+\item \href{https://developers.google.com/google-ads/api/fields/v10/overview}{Oficial Google Ads API Reports documantation}
+\item \href{https://developers.google.com/google-ads/api/fields/v10/overview_query_builder}{Google Ads Query Builder}
 }
 }

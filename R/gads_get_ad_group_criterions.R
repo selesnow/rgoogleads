@@ -2,9 +2,9 @@
 #'
 #' @inheritParams gads_get_report
 #'
-#' @param fields character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v8/ad_group}{see field list of ad group report}.
+#' @param fields character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v10/ad_group}{see field list of ad group report}.
 #'
-#' @seealso \href{https://developers.google.com/google-ads/api/fields/v8/ad_group_criterion_query_builder}{Google Ads Query Builder}
+#' @seealso \href{https://developers.google.com/google-ads/api/fields/v10/ad_group_criterion_query_builder}{Google Ads Query Builder}
 #'
 #' @return tibble with ad group criterions dicrionary
 #' @export

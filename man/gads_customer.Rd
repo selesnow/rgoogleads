@@ -18,5 +18,5 @@ Google Ads customer data
 Get all information about Google Ads Customer
 }
 \seealso{
-\href{https://developers.google.com/google-ads/api/rest/reference/rest/v8/customers/get}{Method: customers.get documentation}
+\href{https://developers.google.com/google-ads/api/rest/common/search}{Method: SearchStream documentation}
 }

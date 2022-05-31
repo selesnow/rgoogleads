@@ -56,7 +56,7 @@
 #' \itemize{
 #'   \item \href{https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi}{YouTube lessons playlist}
 #'   \item \href{https://developers.google.com/google-ads/api/docs/start}{Oficial Google Ads API documantation}
-#'   \item \href{https://developers.google.com/google-ads/api/fields/v8/overview_query_builder}{Google Ads Query Builder}
+#'   \item \href{https://developers.google.com/google-ads/api/fields/v10/overview_query_builder}{Google Ads Query Builder}
 #'   \item \href{https://selesnow.github.io/rgoogleads/docs/}{rgoogleads home page}
 #' }
 #'
