@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rgoogleads</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,12 +76,16 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.7.0" id="rgoogleads-070">rgoogleads 0.7.0<a class="anchor" aria-label="anchor" href="#rgoogleads-070"></a></h2>
+<ul><li>Пакет переведён на работу с Google Ads API v10.</li>
+<li>В блок <code>gads_utils.R</code> добавлена функция <code>gads_make_request()</code>, теперь это основная функция генерации HTTP запроса, она используется в остальных функциях для отправки запросов.</li>
+<li>Исправил логическую ошибку в функции <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code>, ранее функция формировала запрос, и только потом осуществляла проверку, может ли указанный ресурс запрашиваться с сегментами времени.</li>
+<li>Полностью переписана функция <code><a href="../reference/gads_customer.html">gads_customer()</a></code>, ранее она была написана на основе метода get, <a href="https://developers.google.com/google-ads/api/docs/release-notes#all_services" class="external-link">который в 10 версии API был упразднён</a>, теперь функция использует метод <code>SearchStream</code>. Это обновление так же затронуло функцию <code><a href="../reference/gads_get_accessible_customers.html">gads_get_accessible_customers()</a></code>, т.к. в неё использовалась <code><a href="../reference/gads_customer.html">gads_customer()</a></code>.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.0" id="rgoogleads-060">rgoogleads 0.6.0<a class="anchor" aria-label="anchor" href="#rgoogleads-060"></a></h2><p class="text-muted">CRAN release: 2022-04-19</p>
-<ul><li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент
-gaql_query, который позволяет передать функции готовый текст запроса,
-скопированный из <a href="https://developers.google.com/google-ads/api/fields/v10/overview_query_builder" class="external-link">QueryBuilder</a>.</li>
-<li>Новая функция <code><a href="../reference/gads_get_keywords.html">gads_get_keywords()</a></code> для запроса списка
-ключевых слов.</li>
+<ul><li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент gaql_query, который позволяет передать функции готовый текст запроса, скопированный из <a href="https://developers.google.com/google-ads/api/fields/v10/overview_query_builder" class="external-link">QueryBuilder</a>.</li>
+<li>Новая функция <code><a href="../reference/gads_get_keywords.html">gads_get_keywords()</a></code> для запроса списка ключевых слов.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.1" id="rgoogleads-051">rgoogleads 0.5.1<a class="anchor" aria-label="anchor" href="#rgoogleads-051"></a></h2><p class="text-muted">CRAN release: 2022-02-25</p>
@@ -91,35 +95,21 @@ gaql_query, который позволяет передать функции г
 <h2 class="pkg-version" data-toc-text="0.5.0" id="rgoogleads-050">rgoogleads 0.5.0<a class="anchor" aria-label="anchor" href="#rgoogleads-050"></a></h2>
 <div class="section level3">
 <h3 id="исправление-ошибок-0-5-0">Исправление ошибок<a class="anchor" aria-label="anchor" href="#%D0%B8%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA-0-5-0"></a></h3>
-<ul><li>Исправлено переопределение даты по ресурсам, которые нельзя
-фильтровать по времени, <a href="https://github.com/selesnow/rgoogleads/issues/9" class="external-link">тикет
-</a><a href="https://github.com/selesnow/rgoogleads/issues/9" class="external-link">#9</a>.</li>
-<li>Исправлена ошибка работы аргумента <code>during</code> в функции
-<code>gads_get_report_helper()</code>.</li>
-<li>Исправлена ошибка в парсинге обработки сообщений об ошибках
-полученных от Google Ads API.</li>
+<ul><li>Исправлено переопределение даты по ресурсам, которые нельзя фильтровать по времени, <a href="https://github.com/selesnow/rgoogleads/issues/9" class="external-link">тикет </a><a href="https://github.com/selesnow/rgoogleads/issues/9" class="external-link">#9</a>.</li>
+<li>Исправлена ошибка работы аргумента <code>during</code> в функции <code>gads_get_report_helper()</code>.</li>
+<li>Исправлена ошибка в парсинге обработки сообщений об ошибках полученных от Google Ads API.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="прочее-0-5-0">Прочее<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5-0-5-0"></a></h3>
-<ul><li>Процесс формирования GAQL запроса выделен в отдельную функцию
-<code>gads_make_query()</code>, и теперь является частью блока
-gads_utils.R.</li>
-<li>Добавил опцию <code>gads.show_gaql_query</code>, которая позволяет
-вывести GAQL запрос.</li>
+<ul><li>Процесс формирования GAQL запроса выделен в отдельную функцию <code>gads_make_query()</code>, и теперь является частью блока gads_utils.R.</li>
+<li>Добавил опцию <code>gads.show_gaql_query</code>, которая позволяет вывести GAQL запрос.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="rgoogleads-041">rgoogleads 0.4.1<a class="anchor" aria-label="anchor" href="#rgoogleads-041"></a></h2><p class="text-muted">CRAN release: 2021-11-24</p>
 <ul><li><p>Дата релиза: 2021-11-24</p></li>
-<li><p>Процесс проверки совместимости запрашиваемого ресурса с
-сегментами даты вынесен на более высокий уровень, из функции
-gads_get_report_helper() в функцию gads_get_report().</p></li>
-<li><p>Кеш функции <code>gads_get_fields_cached()</code> теперь
-сохраняется в памяти, а не на жестком диске. И действует только в ходе
-текщей R сессии. Связано с тем, что присохранении на диск, после
-установки из CRAN пакет не мог получить доступ к кешу. Т.е. связано с
-ошибкой
-<code>Attempted to use cache which has been destroyed</code>.</p></li>
+<li><p>Процесс проверки совместимости запрашиваемого ресурса с сегментами даты вынесен на более высокий уровень, из функции gads_get_report_helper() в функцию gads_get_report().</p></li>
+<li><p>Кеш функции <code>gads_get_fields_cached()</code> теперь сохраняется в памяти, а не на жестком диске. И действует только в ходе текщей R сессии. Связано с тем, что присохранении на диск, после установки из CRAN пакет не мог получить доступ к кешу. Т.е. связано с ошибкой <code>Attempted to use cache which has been destroyed</code>.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="rgoogleads-040">rgoogleads 0.4.0<a class="anchor" aria-label="anchor" href="#rgoogleads-040"></a></h2><p class="text-muted">CRAN release: 2021-11-16</p>
@@ -127,20 +117,9 @@ gads_get_report_helper() в функцию gads_get_report().</p></li>
 </ul><div class="section level3">
 <h3 id="прочее-0-4-0">Прочее<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5-0-4-0"></a></h3>
 <ul><li>Пакет переведён на работу с Google Ads API v9.</li>
-<li>В пакет добавлена поддержка переменной среды GADS_EMAIL, которая
-устанавливает дефолтный email для работы с Google Ads API при
-подключении пакета.</li>
-<li>В основную функцию запроса данных
-<code>gads_get_report_helper()</code> добавлена проверка, можно ли
-запрашивать с указанным ресурсом поля даты, если нет, то функция
-аннулирует значения аргументов <code>date_from</code>,
-<code>date_to</code> и <code>during</code>.</li>
-<li>В зависимости <code>rgoogleads</code> добавлены следующие пакеты:
-<code>memoise</code>, <code>cachem</code>, <code>rappdirs</code>. Эти
-пакеты обеспечивают кеширование данных, получаемых функцией
-<code><a href="../reference/gads_get_fields.html">gads_get_fields()</a></code>, которая используется внутри
-<code>gads_get_report_helper()</code> для проверки совместимости
-запрашиваемого ресурса с полями даты.</li>
+<li>В пакет добавлена поддержка переменной среды GADS_EMAIL, которая устанавливает дефолтный email для работы с Google Ads API при подключении пакета.</li>
+<li>В основную функцию запроса данных <code>gads_get_report_helper()</code> добавлена проверка, можно ли запрашивать с указанным ресурсом поля даты, если нет, то функция аннулирует значения аргументов <code>date_from</code>, <code>date_to</code> и <code>during</code>.</li>
+<li>В зависимости <code>rgoogleads</code> добавлены следующие пакеты: <code>memoise</code>, <code>cachem</code>, <code>rappdirs</code>. Эти пакеты обеспечивают кеширование данных, получаемых функцией <code><a href="../reference/gads_get_fields.html">gads_get_fields()</a></code>, которая используется внутри <code>gads_get_report_helper()</code> для проверки совместимости запрашиваемого ресурса с полями даты.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -148,24 +127,18 @@ gads_get_report_helper() в функцию gads_get_report().</p></li>
 <ul><li>Дата релиза: 2021-09-02</li>
 </ul><div class="section level3">
 <h3 id="документация-0-3-0">Документация:<a class="anchor" aria-label="anchor" href="#%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-0-3-0"></a></h3>
-<ul><li>Добавлена виньетка “Миграция с RAdwords на rgoogleads” по переходу с
-пакета <code>RAdwords</code> на <code>rgoogleads</code>.</li>
-<li>Добавлена англоязычная виньетка “Migrate from RAdwords to
-rgoogleads” по переходу с пакета <code>RAdwords</code> на
-<code>rgoogleads</code>.</li>
+<ul><li>Добавлена виньетка “Миграция с RAdwords на rgoogleads” по переходу с пакета <code>RAdwords</code> на <code>rgoogleads</code>.</li>
+<li>Добавлена англоязычная виньетка “Migrate from RAdwords to rgoogleads” по переходу с пакета <code>RAdwords</code> на <code>rgoogleads</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="исправление-ошибок-0-3-0">Исправление ошибок<a class="anchor" aria-label="anchor" href="#%D0%B8%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA-0-3-0"></a></h3>
-<ul><li>Исправил работу аргумента during в функции
-<code>gads_report_helper()</code>.</li>
+<ul><li>Исправил работу аргумента during в функции <code>gads_report_helper()</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="прочее-0-3-0">Прочее<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5-0-3-0"></a></h3>
 <ul><li>Актуализировал раздел статей сайта.</li>
-<li>Добавил список ссылок на статиь о пакета на главную страницу
-сайта.</li>
-<li>В функции <code>gads_report_helper()</code> добавлена конвертация
-метрик в числовой тип данных.</li>
+<li>Добавил список ссылок на статиь о пакета на главную страницу сайта.</li>
+<li>В функции <code>gads_report_helper()</code> добавлена конвертация метрик в числовой тип данных.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -173,26 +146,13 @@ rgoogleads” по переходу с пакета <code>RAdwords</code> на
 <ul><li>Дата релиза: 2021-08-02</li>
 </ul><div class="section level3">
 <h3 id="новые-функции-0-2-0">Новые функции:<a class="anchor" aria-label="anchor" href="#%D0%BD%D0%BE%D0%B2%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8-0-2-0"></a></h3>
-<ul><li>Добавлена функция <code><a href="../reference/gads_get_fields.html">gads_get_fields()</a></code>, которая позволяет
-получить подробную информацию по любому ресурсу, полю ресурса, сегмету
-или метрике.</li>
-<li>Добавлена функция <code><a href="../reference/gads_get_geo_targets.html">gads_get_geo_targets()</a></code>, которая
-загружает наиболее актуальный справочник гео таргетинга из <a href="https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en" class="external-link uri">https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en</a>.</li>
-<li>Добавлена функция <code><a href="../reference/gads_get_metadata.html">gads_get_metadata()</a></code>, которая
-позволяет получить список всех объектов вместе с их метаданными, т.е.
-ресурсов, сегментов, метрик и атриутов.</li>
-<li>Добавлена функция
-<code><a href="../reference/gads_keyword_plan_historical_metrics.html">gads_keyword_plan_historical_metrics()</a></code>, с помощью которой
-вы можете запрашивать данные по сохраннным планам ключевых слов.</li>
-<li>Добавлена функция
-<code><a href="../reference/gads_keyword_plan_forecast_timeseries.html">gads_keyword_plan_forecast_timeseries()</a></code>, которая позволяет
-запросить прогноз в виде временного ряда для плана ключевых слов на
-следующие 52 недели.</li>
-<li>Добавлена функция <code><a href="../reference/gads_keyword_plan_forecast_metrics.html">gads_keyword_plan_forecast_metrics()</a></code>,
-которая возвращает запрошенные прогнозы плана ключевых слов.</li>
-<li>Добавлена функция <code><a href="../reference/gads_auth_configure.html">gads_open_auth_cache_folder()</a></code>, с
-помощью которой можно открыть папаку, в которой хранятся учётные
-данные.</li>
+<ul><li>Добавлена функция <code><a href="../reference/gads_get_fields.html">gads_get_fields()</a></code>, которая позволяет получить подробную информацию по любому ресурсу, полю ресурса, сегмету или метрике.</li>
+<li>Добавлена функция <code><a href="../reference/gads_get_geo_targets.html">gads_get_geo_targets()</a></code>, которая загружает наиболее актуальный справочник гео таргетинга из <a href="https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en" class="external-link uri">https://developers.google.com/google-ads/api/reference/data/geotargets?hl=en</a>.</li>
+<li>Добавлена функция <code><a href="../reference/gads_get_metadata.html">gads_get_metadata()</a></code>, которая позволяет получить список всех объектов вместе с их метаданными, т.е. ресурсов, сегментов, метрик и атриутов.</li>
+<li>Добавлена функция <code><a href="../reference/gads_keyword_plan_historical_metrics.html">gads_keyword_plan_historical_metrics()</a></code>, с помощью которой вы можете запрашивать данные по сохраннным планам ключевых слов.</li>
+<li>Добавлена функция <code><a href="../reference/gads_keyword_plan_forecast_timeseries.html">gads_keyword_plan_forecast_timeseries()</a></code>, которая позволяет запросить прогноз в виде временного ряда для плана ключевых слов на следующие 52 недели.</li>
+<li>Добавлена функция <code><a href="../reference/gads_keyword_plan_forecast_metrics.html">gads_keyword_plan_forecast_metrics()</a></code>, которая возвращает запрошенные прогнозы плана ключевых слов.</li>
+<li>Добавлена функция <code><a href="../reference/gads_auth_configure.html">gads_open_auth_cache_folder()</a></code>, с помощью которой можно открыть папаку, в которой хранятся учётные данные.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="документация-0-2-0">Документация:<a class="anchor" aria-label="anchor" href="#%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-0-2-0"></a></h3>
@@ -201,55 +161,34 @@ rgoogleads” по переходу с пакета <code>RAdwords</code> на
 </li>
 <li>Расширена документация функции <code><a href="../reference/gads_auth.html">gads_auth()</a></code>
 </li>
-<li>В документацию к функциям загрузки объектов добавлены примеры кода:
-<code><a href="../reference/gads_get_ad_group_criterions.html">gads_get_ad_group_criterions()</a></code>,
-<code><a href="../reference/gads_get_ad_groups.html">gads_get_ad_groups()</a></code>, <code><a href="../reference/gads_get_ads.html">gads_get_ads()</a></code>,
-<code><a href="../reference/gads_get_campaigns.html">gads_get_campaigns()</a></code>.</li>
+<li>В документацию к функциям загрузки объектов добавлены примеры кода: <code><a href="../reference/gads_get_ad_group_criterions.html">gads_get_ad_group_criterions()</a></code>, <code><a href="../reference/gads_get_ad_groups.html">gads_get_ad_groups()</a></code>, <code><a href="../reference/gads_get_ads.html">gads_get_ads()</a></code>, <code><a href="../reference/gads_get_campaigns.html">gads_get_campaigns()</a></code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="прочие-доработки-0-2-0">Прочие доработки:<a class="anchor" aria-label="anchor" href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D0%B5-%D0%B4%D0%BE%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8-0-2-0"></a></h3>
-<ul><li>OAuth клиент вшитый в пакет прошел верификацию Google, теперь любой
-пользователь пакета может использовать вшитый в <code>rgoogleads</code>
-OAuth клиент для авторизации.</li>
-<li>Вшитый в пакет токен разработчика получил стандартный уровень
-доступа к API.</li>
-<li>Добавлена опция <code>gads.column.name.case.fun</code>, с помощью
-которой можно передать любую функцию для приведения названий столбцов в
-полученном от API результате в указанный регистр, по умолчанию
-передаётся функция <code>to_snake_case()</code> из пакета
-<code>snakecase</code>.</li>
+<ul><li>OAuth клиент вшитый в пакет прошел верификацию Google, теперь любой пользователь пакета может использовать вшитый в <code>rgoogleads</code> OAuth клиент для авторизации.</li>
+<li>Вшитый в пакет токен разработчика получил стандартный уровень доступа к API.</li>
+<li>Добавлена опция <code>gads.column.name.case.fun</code>, с помощью которой можно передать любую функцию для приведения названий столбцов в полученном от API результате в указанный регистр, по умолчанию передаётся функция <code>to_snake_case()</code> из пакета <code>snakecase</code>.</li>
 <li>Доработана функция проверки ответа от API на ошибки.</li>
-<li>В функцию <code><a href="../reference/gads_auth_configure.html">gads_auth_configure()</a></code> добавлен аргумент
-developer_token.</li>
+<li>В функцию <code><a href="../reference/gads_auth_configure.html">gads_auth_configure()</a></code> добавлен аргумент developer_token.</li>
 <li>В DESCRIPTION изменил версии некоторых пакетов.</li>
-<li>Все функций пакета, отправляющие POST и GET запросы к API переведены
-с глаголов из <code>httr</code> на глаголы <code>gargle</code>:
-<code>request_build()</code>, <code>request_retry()</code>,
-<code>response_process()</code>. В качестве эксперемента пока, что
-переведена вспомогательная функция <code>gads_customer_id()</code>.</li>
+<li>Все функций пакета, отправляющие POST и GET запросы к API переведены с глаголов из <code>httr</code> на глаголы <code>gargle</code>: <code>request_build()</code>, <code>request_retry()</code>, <code>response_process()</code>. В качестве эксперемента пока, что переведена вспомогательная функция <code>gads_customer_id()</code>.</li>
 <li>Новый логотип пакета.</li>
-<li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент during,
-который позволяет задавать относительный период отчёта, например
-‘LAST_BUSINESS_WEEK’.</li>
-<li>Исправил ошибку в функции <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code>, когда поле
-в названии которого содержится date нельзя перевести в дату.</li>
-<li>Создал сайт пакета с помощью <code>pkgdown</code>, сайт доступен по
-<a href="https://selesnow.github.io/rgoogleads/docs/" class="external-link">ссылке</a>.</li>
+<li>В функцию <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code> добавлен аргумент during, который позволяет задавать относительный период отчёта, например ‘LAST_BUSINESS_WEEK’.</li>
+<li>Исправил ошибку в функции <code><a href="../reference/gads_get_report.html">gads_get_report()</a></code>, когда поле в названии которого содержится date нельзя перевести в дату.</li>
+<li>Создал сайт пакета с помощью <code>pkgdown</code>, сайт доступен по <a href="https://selesnow.github.io/rgoogleads/docs/" class="external-link">ссылке</a>.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="rgoogleads-011">rgoogleads 0.1.1<a class="anchor" aria-label="anchor" href="#rgoogleads-011"></a></h2><p class="text-muted">CRAN release: 2021-07-02</p>
 <ul><li><p>Дата релиза: 2021-07-02</p></li>
 <li><p>Доработал README</p></li>
-<li><p>Исправил поле авторства в DESCRIPTION, правильно вписав
-Netpeak</p></li>
+<li><p>Исправил поле авторства в DESCRIPTION, правильно вписав Netpeak</p></li>
 <li><p>Пакет опубликован на CRAN</p></li>
 </ul><hr></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="rgoogleads-010">rgoogleads 0.1.0<a class="anchor" aria-label="anchor" href="#rgoogleads-010"></a></h2>
 <ul><li>Первый релиз.</li>
-<li>Добавлен <code>NEWS.md</code> для отслеживания изменений внесённых в
-пакет.</li>
+<li>Добавлен <code>NEWS.md</code> для отслеживания изменений внесённых в пакет.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -260,8 +199,7 @@ Netpeak</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>
