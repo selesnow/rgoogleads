@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="index.html">rgoogleads</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,8 +117,7 @@
 <li><a href="#links">Links</a></li>
 <li><a href="#install">Install</a></li>
 <li><a href="#attach-rgoogleads">Attach rgoogleads</a></li>
-<li><a href="#main-goal-and-capabilities-of-rgoogleads">Main goal and
-capabilities of rgoogleads</a></li>
+<li><a href="#main-goal-and-capabilities-of-rgoogleads">Main goal and capabilities of rgoogleads</a></li>
 <li>
 <a href="#privacy-policy">Privacy Policy</a>
 <ul>
@@ -127,13 +126,10 @@ capabilities of rgoogleads</a></li>
 <li><a href="#use-own-oauth-client">Use own OAuth client</a></li>
 </ul>
 </li>
-<li><a href="#obtain-own-developer-token-and-create-own-oauth-client">Obtain
-Own Developer Token and create own OAuth client</a></li>
-<li><a href="#example-of-use-rgoogleads">Example of use
-rgoogleads</a></li>
+<li><a href="#obtain-own-developer-token-and-create-own-oauth-client">Obtain Own Developer Token and create own OAuth client</a></li>
+<li><a href="#example-of-use-rgoogleads">Example of use rgoogleads</a></li>
 <li><a href="#package-help">Package help</a></li>
-<li><a href="#package-chage-log-news-and-updates">Package chage log,
-news and updates</a></li>
+<li><a href="#package-chage-log-news-and-updates">Package chage log, news and updates</a></li>
 <li><a href="#bug-report-and-support">Bug report and support</a></li>
 <li><a href="#tutorials">Tutorials</a></li>
 <li><a href="#author">Author</a></li>
@@ -142,17 +138,12 @@ news and updates</a></li>
 <div class="section level2">
 <h2 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
 </h2>
-<p>This section contains links to the package documentation, as well as
-other useful links that may be useful to the package users.</p>
+<p>This section contains links to the package documentation, as well as other useful links that may be useful to the package users.</p>
 <ul>
-<li><a href="https://selesnow.github.io/rgoogleads/docs/" class="external-link">rgoogleads
-package documentation site</a></li>
-<li><a href="https://cran.r-project.org/package=rgoogleads" class="external-link">CRAN
-page</a></li>
-<li><a href="https://developers.google.com/google-ads/api/docs/start" class="external-link">Google
-Ads API documentation</a></li>
-<li><a href="https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi" class="external-link">Официальный
-плейлист с видео уроками по работе с rgoogleads</a></li>
+<li><a href="https://selesnow.github.io/rgoogleads/docs/" class="external-link">rgoogleads package documentation site</a></li>
+<li><a href="https://cran.r-project.org/package=rgoogleads" class="external-link">CRAN page</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/start" class="external-link">Google Ads API documentation</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi" class="external-link">Официальный плейлист с видео уроками по работе с rgoogleads</a></li>
 </ul>
 </div>
 <div class="section level2">
@@ -175,71 +166,47 @@ Ads API documentation</a></li>
 <div class="section level2">
 <h2 id="main-goal-and-capabilities-of-rgoogleads">Main goal and capabilities of rgoogleads<a class="anchor" aria-label="anchor" href="#main-goal-and-capabilities-of-rgoogleads"></a>
 </h2>
-<p><code>rgoogleads</code> is R client for work with Google Ads API v8.
-Main goal of <code>rgoogleads</code> - load report data from Google Ads
-client account into R for analysis and visualizations.</p>
+<p><code>rgoogleads</code> is R client for work with Google Ads API v8. Main goal of <code>rgoogleads</code> - load report data from Google Ads client account into R for analysis and visualizations.</p>
 <p>Capabilities of <code>rgoogleads</code>:</p>
 <ul>
 <li>Authorization in the Google Ads API</li>
 <li>Loading a list of top-level accounts</li>
 <li>Loading the entire hierarchy of accounts from manager accounts</li>
-<li>Loading list of Google Ads client account objects: campaigns, ad
-groups, ads, etc.</li>
+<li>Loading list of Google Ads client account objects: campaigns, ad groups, ads, etc.</li>
 <li>Loading statistics from Google Ads client account</li>
-<li>Loading resource metadata, resource fields, segments and
-metrics</li>
+<li>Loading resource metadata, resource fields, segments and metrics</li>
 <li>Loading forecast and historical metrics from Keyword Planning.</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="privacy-policy">Privacy Policy<a class="anchor" aria-label="anchor" href="#privacy-policy"></a>
 </h2>
-<p>The <code>rgoogleads</code> package for authorization uses the <a href="https://gargle.r-lib.org/" class="external-link">gargle</a> package, the credentials
-obtained during authorization are stored exclusively on your local PC,
-you can find out the folder into which the credentials are cached using
-the <code><a href="reference/gads_auth_configure.html">gads_auth_cache_path()</a></code> function.</p>
-<p>For loading data from Google Ads Account <code>rgoogleads</code>
-needs <code>https://www.googleapis.com/auth/adwords</code> scope (Manage
-Your Google AdWords Campaigns), see <a href="https://developers.google.com/google-ads/api/docs/oauth/internals#scope" class="external-link">official
-Google Ads API documentation</a>.</p>
-<p>The package does not transfer your credentials or data obtained from
-your advertising accounts to third parties, however, the responsibility
-for information leakage remains on the side of the package user. The
-author does not bear any responsibility for their safety, be careful
-when transferring cached credentials to third parties.</p>
-<p>For more details, I recommend that you read the following articles
-from the official documentation of the gargle package:</p>
+<p>The <code>rgoogleads</code> package for authorization uses the <a href="https://gargle.r-lib.org/" class="external-link">gargle</a> package, the credentials obtained during authorization are stored exclusively on your local PC, you can find out the folder into which the credentials are cached using the <code><a href="reference/gads_auth_configure.html">gads_auth_cache_path()</a></code> function.</p>
+<p>For loading data from Google Ads Account <code>rgoogleads</code> needs <code>https://www.googleapis.com/auth/adwords</code> scope (Manage Your Google AdWords Campaigns), see <a href="https://developers.google.com/google-ads/api/docs/oauth/internals#scope" class="external-link">official Google Ads API documentation</a>.</p>
+<p>The package does not transfer your credentials or data obtained from your advertising accounts to third parties, however, the responsibility for information leakage remains on the side of the package user. The author does not bear any responsibility for their safety, be careful when transferring cached credentials to third parties.</p>
+<p>For more details, I recommend that you read the following articles from the official documentation of the gargle package:</p>
 <ul>
-<li><a href="https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/" class="external-link">Stewarding
-the cache of user tokens</a></li>
-<li><a href="https://cran.r-project.org/package=gargle/vignettes/auth-from-web.html" class="external-link">Auth
-when using R in the browser</a></li>
-<li><a href="https://cran.r-project.org/package=gargle/vignettes/how-gargle-gets-tokens.html" class="external-link">How
-gargle gets tokens</a></li>
+<li><a href="https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/" class="external-link">Stewarding the cache of user tokens</a></li>
+<li><a href="https://cran.r-project.org/package=gargle/vignettes/auth-from-web.html" class="external-link">Auth when using R in the browser</a></li>
+<li><a href="https://cran.r-project.org/package=gargle/vignettes/how-gargle-gets-tokens.html" class="external-link">How gargle gets tokens</a></li>
 </ul>
 <div class="section level3">
 <h3 id="authorization-process">Authorization process<a class="anchor" aria-label="anchor" href="#authorization-process"></a>
 </h3>
-<p>You run <code>gads_auth('me@gmail.com')</code> and start <a href="https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10" class="external-link">OAuth
-Dance</a> in the browser:</p>
+<p>You run <code>gads_auth('me@gmail.com')</code> and start <a href="https://medium.com/typeforms-engineering-blog/the-beginners-guide-to-oauth-dancing-4b8f3666de10" class="external-link">OAuth Dance</a> in the browser:</p>
 <div class="figure">
-<img src="http://img.netpeak.ua/alsey/1OE9JZ2.png" alt=""><p class="caption">Typical OAuth dance in the browser, when initiated
-from within R</p>
+<img src="http://img.netpeak.ua/alsey/1OE9JZ2.png" alt=""><p class="caption">Typical OAuth dance in the browser, when initiated from within R</p>
 </div>
 <p>Upon success, you see this message in the browser:</p>
 <p><code>Authentication complete. Please close this page and return to R.</code></p>
-<p>And you credentials cached locally on your PC in the form of RDS
-files.</p>
+<p>And you credentials cached locally on your PC in the form of RDS files.</p>
 </div>
 <div class="section level3">
 <h3 id="key-points">Key points<a class="anchor" aria-label="anchor" href="#key-points"></a>
 </h3>
 <ul>
-<li>By default, gargle caches user tokens centrally, at the user level,
-and their keys or labels also convey which Google identity is associated
-with each token.</li>
-<li>Token storage relies on serialized R objects. That is, tokens are
-stored locally on your PC in the form of RDS files.</li>
+<li>By default, gargle caches user tokens centrally, at the user level, and their keys or labels also convey which Google identity is associated with each token.</li>
+<li>Token storage relies on serialized R objects. That is, tokens are stored locally on your PC in the form of RDS files.</li>
 </ul>
 </div>
 <div class="section level3">
@@ -260,13 +227,10 @@ stored locally on your PC in the form of RDS files.</li>
 <div class="section level2">
 <h2 id="obtain-own-developer-token-and-create-own-oauth-client">Obtain Own Developer Token and create own OAuth client<a class="anchor" aria-label="anchor" href="#obtain-own-developer-token-and-create-own-oauth-client"></a>
 </h2>
-<p>For obtain own developer token and OAuth client read the following
-documentation:</p>
+<p>For obtain own developer token and OAuth client read the following documentation:</p>
 <ul>
-<li><a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token" class="external-link">Obtain
-Your Developer Token</a></li>
-<li><a href="https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project" class="external-link">Configure
-a Google API Console Project for the Google Ads API</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token" class="external-link">Obtain Your Developer Token</a></li>
+<li><a href="https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project" class="external-link">Configure a Google API Console Project for the Google Ads API</a></li>
 </ul>
 </div>
 <div class="section level2">
@@ -307,8 +271,7 @@ a Google API Console Project for the Google Ads API</a></li>
 <div class="section level2">
 <h2 id="package-help">Package help<a class="anchor" aria-label="anchor" href="#package-help"></a>
 </h2>
-<p>For get help of <code>rgoogleads</code> use <code><a href="reference/rgoogleads-package.html">?rgoogleads</a></code>
-or <code><a href="reference/gads_get_report.html">?gads_get_report</a></code>.</p>
+<p>For get help of <code>rgoogleads</code> use <code><a href="reference/rgoogleads-package.html">?rgoogleads</a></code> or <code><a href="reference/gads_get_report.html">?gads_get_report</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="package-chage-log-news-and-updates">Package chage log, news and updates<a class="anchor" aria-label="anchor" href="#package-chage-log-news-and-updates"></a>
@@ -318,75 +281,54 @@ or <code><a href="reference/gads_get_report.html">?gads_get_report</a></code>.</
 <div class="section level2">
 <h2 id="bug-report-and-support">Bug report and support<a class="anchor" aria-label="anchor" href="#bug-report-and-support"></a>
 </h2>
-<p>If you encounter an error in the package, or you have suggestions for
-improving its functionality, you can create a issue using the <a href="https://github.com/selesnow/rgoogleads/issues" class="external-link">link</a>.</p>
+<p>If you encounter an error in the package, or you have suggestions for improving its functionality, you can create a issue using the <a href="https://github.com/selesnow/rgoogleads/issues" class="external-link">link</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="tutorials">Tutorials<a class="anchor" aria-label="anchor" href="#tutorials"></a>
 </h2>
-<p>This section contains links to articles dedicated to
-<code>rgoogleads</code>.</p>
+<p>This section contains links to articles dedicated to <code>rgoogleads</code>.</p>
 <ul>
 <li>Русскоязычные материалы
 <ul>
 <li>
-<a href="https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi" class="external-link">Официальный
-плейлист с видео уроками</a>
+<a href="https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi" class="external-link">Официальный плейлист с видео уроками</a>
 <ul>
 <li>
-<a href="https://www.youtube.com/watch?v=nYak5sVj07k&amp;list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi&amp;index=1" class="external-link">Авторизация
-в Google Ads API и запрос иерархии аккаунтов</a>, <em>Alexey
-Seleznev</em>
+<a href="https://www.youtube.com/watch?v=nYak5sVj07k&amp;list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi&amp;index=1" class="external-link">Авторизация в Google Ads API и запрос иерархии аккаунтов</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://www.youtube.com/watch?v=np67MNj2-JU" class="external-link">Запрос отчётов
-из Google Ads API</a>, <em>Alexey Seleznev</em>
+<a href="https://www.youtube.com/watch?v=np67MNj2-JU" class="external-link">Запрос отчётов из Google Ads API</a>, <em>Alexey Seleznev</em>
 </li>
 </ul>
 </li>
 <li>
-<a href="https://netpeak.net/ru/blog/migratsiya-s-google-adwords-api-na-google-ads-api-podrobnyy-manual/" class="external-link">Миграция
-с Google AdWords API на Google Ads API: подробный мануал</a>, <em>Alexey
-Seleznev</em>
+<a href="https://netpeak.net/ru/blog/migratsiya-s-google-adwords-api-na-google-ads-api-podrobnyy-manual/" class="external-link">Миграция с Google AdWords API на Google Ads API: подробный мануал</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://netpeak.net/ru/blog/kak-vizualizirovat-pokazatel-kachestva-klyuchevyh-slov-retsept-skripta-na-yazyke-r/" class="external-link">Как
-визуализировать показатель качества ключевых слов — рецепт скрипта на
-языке R</a>, <em>Alexey Seleznev</em>
+<a href="https://netpeak.net/ru/blog/kak-vizualizirovat-pokazatel-kachestva-klyuchevyh-slov-retsept-skripta-na-yazyke-r/" class="external-link">Как визуализировать показатель качества ключевых слов — рецепт скрипта на языке R</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://netpeak.net/ru/blog/kak-otsenit-poteryannyi-dokhod-v-google-adwords-s-pomoshch-yu-yazyka-r/" class="external-link">Как
-оценить потерянный доход в Google Ads с помощью языка R</a>, <em>Alexey
-Seleznev</em>
+<a href="https://netpeak.net/ru/blog/kak-otsenit-poteryannyi-dokhod-v-google-adwords-s-pomoshch-yu-yazyka-r/" class="external-link">Как оценить потерянный доход в Google Ads с помощью языка R</a>, <em>Alexey Seleznev</em>
 </li>
 <li>
-<a href="https://youtu.be/wtXVwOBo518" class="external-link">Доклад: Зачем интернет
-маркетологу понимать что такое API. Разбираем устройство API Google Ads
-(Конференция 8P 2021)</a>, <em>Alexey Seleznev</em>
+<a href="https://youtu.be/wtXVwOBo518" class="external-link">Доклад: Зачем интернет маркетологу понимать что такое API. Разбираем устройство API Google Ads (Конференция 8P 2021)</a>, <em>Alexey Seleznev</em>
 </li>
 </ul>
 </li>
 <li>English
 <ul>
 <li>
-<a href="https://netpeak.net/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/" class="external-link">Migrating
-from AdWords API to Google Ads API. A Comprehensive Guideline</a>,
-<em>Alexey Seleznev</em>
+<a href="https://netpeak.net/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/" class="external-link">Migrating from AdWords API to Google Ads API. A Comprehensive Guideline</a>, <em>Alexey Seleznev</em>
 </li>
 </ul>
 </li>
 </ul>
-<p>If you have published an article about <code>rgoogleads</code> let me
-know about it in <a href="https://t.me/AlexeySeleznev" class="external-link">telegram</a> or
-<a href="mailto:selesnow@gmail.com">email</a> and I will add it to the
-list of links.</p>
+<p>If you have published an article about <code>rgoogleads</code> let me know about it in <a href="https://t.me/AlexeySeleznev" class="external-link">telegram</a> or <a href="mailto:selesnow@gmail.com">email</a> and I will add it to the list of links.</p>
 </div>
 <div class="section level2">
 <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a>
 </h2>
-<p>Alexey Seleznev, Head of analytics dept. at <a href="https://netpeak.net/en/us/" class="external-link">Netpeak</a> <br>Telegram Channel: <a href="https://t.me/R4marketing" class="external-link">R4marketing</a> <br>email: <a href="mailto:selesnow@gmail.com" class="email">selesnow@gmail.com</a>
-<br>facebook: <a href="https://www.facebook.com/selesnow" class="external-link">facebook.com/selesnow</a>
-<br>blog: <a href="https://alexeyseleznev.wordpress.com/" class="external-link">alexeyseleznev.wordpress.com</a></p>
+<p>Alexey Seleznev, Head of analytics dept. at <a href="https://netpeak.net/en/us/" class="external-link">Netpeak</a> <br>Telegram Channel: <a href="https://t.me/R4marketing" class="external-link">R4marketing</a> <br>email: <a href="mailto:selesnow@gmail.com" class="email">selesnow@gmail.com</a> <br>facebook: <a href="https://www.facebook.com/selesnow" class="external-link">facebook.com/selesnow</a> <br>blog: <a href="https://alexeyseleznev.wordpress.com/" class="external-link">alexeyseleznev.wordpress.com</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -445,8 +387,7 @@ list of links.</p>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer>
