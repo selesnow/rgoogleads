@@ -7,6 +7,26 @@ template:
       src: man/figures/rgoogleads.png
       alt: "Loading data from Google Ads"
 
+navbar:
+  structure:
+    left: [intro, reference, articles, tutorials, api_docs, news]
+    right: [telegram, youtube, github]
+  components:
+    tutorials:
+      text: Video Tutorials
+      href: https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi
+    api_docs:
+      text: Google Ads API
+      href: https://developers.google.com/google-ads/api/docs/start
+    youtube:
+      icon: fa-youtube
+      href: https://www.youtube.com/R4marketing/?sub_confirmation=1
+      aria-label: YouTube
+    telegram:
+      icon: fa-telegram
+      href: https://t.me/R4marketing
+      aria-label: Telegram
+
 reference:
   - title: Main page
     desc: >

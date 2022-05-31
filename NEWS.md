@@ -1,3 +1,9 @@
+# rgoogleads 0.7.0
+* Пакет переведён на работу с Google Ads API v10.
+* В блок `gads_utils.R` добавлена функция `gads_make_request()`, теперь это основная функция генерации HTTP запроса, она используется в остальных функциях для отправки запросов.
+* Исправил логическую ошибку в функции `gads_get_report()`, ранее функция формировала запрос, и только потом осуществляла проверку, может ли указанный ресурс запрашиваться с сегментами времени.
+* Полностью переписана функция `gads_customer()`, ранее она была написана на основе метода get, [который в 10 версии API был упразднён](https://developers.google.com/google-ads/api/docs/release-notes#all_services), теперь функция использует метод `SearchStream `. Это обновление так же затронуло функцию `gads_get_accessible_customers()`, т.к. в неё использовалась `gads_customer()`.
+
 # rgoogleads 0.6.0
 * В функцию `gads_get_report()` добавлен аргумент gaql_query, который позволяет передать функции готовый текст запроса, скопированный из [QueryBuilder](https://developers.google.com/google-ads/api/fields/v10/overview_query_builder).
 * Новая функция `gads_get_keywords()` для запроса списка ключевых слов.

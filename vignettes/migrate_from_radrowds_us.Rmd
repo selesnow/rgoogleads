@@ -81,7 +81,7 @@ The former report types in Google AdWords have become resources in Google Ads. S
 
 
 ```{r, eval = TRUE, results = "asis", echo=FALSE}
-library(magrittr)
+library(dplyr)
 library(rvest)
 # reports_table <- data.frame(
 #   adwords = c("ACCOUNT_PERFORMANCE_REPORT", "AD_PERFORMANCE_REPORT", "ADGROUP_PERFORMANCE_REPORT", "AGE_RANGE_PERFORMANCE_REPORT",

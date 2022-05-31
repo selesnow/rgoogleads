@@ -16,32 +16,23 @@ gads_customer <- function(
   verbose = TRUE
 ) {
 
-  # delete - in customer id
-  customer_id <- str_replace_all(customer_id, '-', '')
-
-  # to env
-  gads_customer_id_to_env(customer_id)
-
-  # build query
-  out <- request_build(
-    method = "GET",
-    path   = str_glue('{options("gads.api.version")}/customers/{customer_id}/'),
-    token = gads_token(),
-    base_url = getOption('gads.base.url')
+  # pars result
+  data <- gads_get_report(
+    resource          = "customer",
+    fields            = c("customer.id",
+                          "customer.descriptive_name",
+                          "customer.manager",
+                          "customer.currency_code",
+                          "customer.time_zone",
+                          "customer.auto_tagging_enabled",
+                          "customer.has_partners_badge",
+                          "customer.test_account"),
+    customer_id       = customer_id,
+    login_customer_id = customer_id,
+    verbose           = verbose
   )
 
-  # send request
-  ans <- request_retry(
-    out,
-    add_headers(`developer-token`= gads_developer_token())
-    )
-
-  # request id
-  rq_ids <- headers(ans)$`request-id`
-  rgoogleads$last_request_id <- rq_ids
-
-  # pars result
-  data <- response_process(ans, error_message = gads_check_errors2)
+  data <- rename_with(data, gads_fix_names_regexp, everything(), regexp = 'customer\\_')
 
   # return the data
   return(data)

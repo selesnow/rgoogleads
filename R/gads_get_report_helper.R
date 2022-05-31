@@ -34,42 +34,13 @@ gads_get_report_helper <- function(
   # info
   if (verbose) cli_alert_info('Send request')
 
-  # send query
-  out <- request_build(
-    method   = "POST",
-    body     = body,
-    path     = str_glue('{options("gads.api.version")}/customers/{customer_id}/googleAds:searchStream'),
-    token    = gads_token(),
-    base_url = getOption('gads.base.url')
-  )
-
-  # send request
-  ans <- request_retry(
-    out,
-    encode = 'json',
-    add_headers(`developer-token`= gads_developer_token(),
-                `login-customer-id` = login_customer_id)
-  )
-
-  # --------------
-  # get answer
-  if (verbose) cli_alert_info('Get answer query')
-  out <- response_process(ans, error_message = gads_check_errors2)
-
-  # requests_ids
-  if ( !is.null(ans$headers$`request-id`) ) {
-
-    rq_ids <- unique(ans$headers$`request-id`)
-    rgoogleads$last_request_id <- rq_ids
-    if (verbose) cli_alert_info(c("Your request ids: ", rq_ids))
-
-  } else {
-
-    rgoogleads$last_request_id <- unique(sapply(out, function(x) x$requestId))
-    rq_ids <- str_c(rgoogleads$last_request_id, collapse = ', ')
-    if (verbose) cli_alert_info(c("Your request ids: ", rq_ids))
-
-  }
+  out <- gads_make_request(
+    body              = body,
+    api_method        = str_glue("customers/{customer_id}/googleAds:searchStream"),
+    customer_id       = customer_id,
+    login_customer_id = login_customer_id,
+    verbose           = verbose
+    )
 
   # check for errors
   #gads_check_errors(out, customer_id, verbose, rq_ids)

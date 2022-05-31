@@ -124,6 +124,16 @@ gads_get_report <- function(
   # test for selectble with date fields
   selectable <- suppressMessages( gads_get_fields_cached(resource)$selectableWith )
 
+  if ( getOption('gads.show_gaql_query') ) cat("\n\nGAQL Query:\n\n", gaql_query)
+
+  # where block
+  if (! "segments.date" %in% selectable ) {
+    date_from <- NULL
+    date_to   <- NULL
+    during    <- NULL
+    cli_alert_warning('fields values of date_from, date_to and during was unset automatically, because it is not selectable with {resource}')
+  }
+
   # query
   # compose query if needed
   if ( is.null(gaql_query) ) {
@@ -138,16 +148,6 @@ gads_get_report <- function(
       date_to,
       during
     )
-  }
-
-  if ( getOption('gads.show_gaql_query') ) cat("\n\nGAQL Query:\n\n", gaql_query)
-
-  # where block
-  if (! "segments.date" %in% selectable ) {
-    date_from <- NULL
-    date_to   <- NULL
-    during    <- NULL
-    cli_alert_warning('fields values of date_from, date_to and during was unset automatically, because it is not selectable with {resource}')
   }
 
   # check how many accounts

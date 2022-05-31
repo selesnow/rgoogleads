@@ -37,6 +37,8 @@ import(purrr)
 import(gargle)
 import(snakecase)
 import(memoise)
+import(cachem)
+import(rappdirs)
 
 # import from
 importFrom(rlang,"%||%")

@@ -1,6 +1,6 @@
 Package: rgoogleads
 Title: Loading Data from 'Google Ads API'
-Version: 0.6.0
+Version: 0.7.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -30,7 +30,6 @@ Imports: gargle (>= 1.2.0),
          withr,
          rlist,
          rvest (>= 1.0.0),
-         magrittr,
          memoise,
          cachem,
          rappdirs

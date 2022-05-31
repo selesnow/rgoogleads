@@ -20,70 +20,47 @@ gads_get_account_hierarchy <- function(
   login_customer_id   = getOption('gads.login.customer.id')
 ) {
 
-  # check token
-  gargle::token_tokeninfo(gads_token())
-
   # remove - from manager_customer id
   manager_customer_id <- str_replace_all(manager_customer_id, '-', '')
 
-  # drafts
-  drafts <- ifelse(include_drafts, 'PARAMETERS include_drafts=true', '')
-
   # build GAQL Query
-  body <- list(query =
-  str_glue('
-       SELECT
-          customer_client.applied_labels,
-          customer_client.client_customer,
-          customer_client.currency_code,
-          customer_client.descriptive_name,
-          customer_client.hidden,
-          customer_client.id,
-          customer_client.level,
-          customer_client.manager,
-          customer_client.test_account,
-          customer_client.time_zone,
-          customer.currency_code,
-          customer.descriptive_name,
-          customer.final_url_suffix,
-          customer.has_partners_badge,
-          customer.id,
-          customer.manager,
-          customer.optimization_score,
-          customer.optimization_score_weight,
-          customer.pay_per_conversion_eligibility_failure_reasons,
-          customer.test_account,
-          customer.time_zone,
-          customer.tracking_url_template
-
-       FROM customer_client
-
-       {drafts}')) %>%
-    toJSON(auto_unbox = T, pretty = T)
-
-  # send query
-  # send query
-  out <- request_build(
-    method   = "POST",
-    body     = body,
-    path     = str_glue('{options("gads.api.version")}/customers/{manager_customer_id}/googleAds:searchStream'),
-    token    = gads_token(),
-    base_url = getOption('gads.base.url')
+  gaql_query <- gads_make_query(
+    resource = 'customer_client',
+    fields = c( 'customer_client.applied_labels',
+                'customer_client.client_customer',
+                'customer_client.currency_code',
+                'customer_client.descriptive_name',
+                'customer_client.hidden',
+                'customer_client.id',
+                'customer_client.level',
+                'customer_client.manager',
+                'customer_client.test_account',
+                'customer_client.time_zone',
+                'customer.currency_code',
+                'customer.descriptive_name',
+                'customer.final_url_suffix',
+                'customer.has_partners_badge',
+                'customer.id',
+                'customer.manager',
+                'customer.optimization_score',
+                'customer.optimization_score_weight',
+                'customer.pay_per_conversion_eligibility_failure_reasons',
+                'customer.test_account',
+                'customer.time_zone',
+                'customer.tracking_url_template'
+      ),date_from = NULL, date_to = NULL, during = NULL,
+    parameters = ifelse(include_drafts, 'include_drafts=true', 'include_drafts=false')
   )
 
-  # send request
-  ans <- request_retry(
-    out,
-    encode = 'json',
-    add_headers(`developer-token`= gads_developer_token(),
-                `login-customer-id` = login_customer_id)
+  body <- list(query = gaql_query) %>%
+          toJSON(auto_unbox = T, pretty = T)
+
+  # send query
+  out <- gads_make_request(
+    http_method = "POST",
+    body = body,
+    api_method = str_glue('customers/{manager_customer_id}/googleAds:searchStream')
   )
-
-  # read answer
-  out <- response_process(ans, error_message = gads_check_errors2)
-
-  # check for error
-  gads_check_errors(out,request_id =  headers(ans)$`request-id`)
 
   # parse answer
   tibble(data = out) %>%

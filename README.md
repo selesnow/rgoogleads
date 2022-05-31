@@ -36,6 +36,7 @@ This section contains links to the package documentation, as well as other usefu
 * [rgoogleads package documentation site](https://selesnow.github.io/rgoogleads/docs/)
 * [CRAN page](https://cran.r-project.org/package=rgoogleads)
 * [Google Ads API documentation](https://developers.google.com/google-ads/api/docs/start)
+* [Официальный плейлист с видео уроками по работе с rgoogleads](https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi)
 
 ## Install
 
@@ -173,6 +174,7 @@ This section contains links to articles dedicated to `rgoogleads`.
 * Русскоязычные материалы
     * [Официальный плейлист с видео уроками](https://www.youtube.com/playlist?list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi)
         * [Авторизация в Google Ads API и запрос иерархии аккаунтов](https://www.youtube.com/watch?v=nYak5sVj07k&list=PLD2LDq8edf4qprTxRcflDwV9IvStiChHi&index=1), *Alexey Seleznev*
+        * [Запрос отчётов из Google Ads API](https://www.youtube.com/watch?v=np67MNj2-JU), *Alexey Seleznev*
     * [Миграция с Google AdWords API на Google Ads API: подробный мануал](https://netpeak.net/ru/blog/migratsiya-s-google-adwords-api-na-google-ads-api-podrobnyy-manual/), *Alexey Seleznev*
     * [Как визуализировать показатель качества ключевых слов — рецепт скрипта на языке R](https://netpeak.net/ru/blog/kak-vizualizirovat-pokazatel-kachestva-klyuchevyh-slov-retsept-skripta-na-yazyke-r/), *Alexey Seleznev*
     * [Как оценить потерянный доход в Google Ads с помощью языка R](https://netpeak.net/ru/blog/kak-otsenit-poteryannyi-dokhod-v-google-adwords-s-pomoshch-yu-yazyka-r/), *Alexey Seleznev*

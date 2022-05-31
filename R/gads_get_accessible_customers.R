@@ -12,31 +12,11 @@
 gads_get_accessible_customers <- function()
   {
 
-  # check token
-  gargle::token_tokeninfo(gads_token())
-
   # send query
-  out <- request_build(
-    method   = "GET",
-    path     = str_glue('{options("gads.api.version")}/customers:listAccessibleCustomers'),
-    token    = gads_token(),
-    base_url = getOption('gads.base.url')
-  )
-
-  # send request
-  ans <- request_retry(
-    out,
-    add_headers(`developer-token`= gads_developer_token())
-  )
-
-  # get result
-  rawres <- response_process(ans, error_message = gads_check_errors2)
-
-  rq_ids <- unique(ans$headers$`request-id`)
-  rgoogleads$last_request_id <- rq_ids
-
-  # check for error
-  gads_check_errors(out = rawres, request_id = rq_ids)
+  rawres <- gads_make_request(
+    http_method = "GET",
+    api_method  = "customers:listAccessibleCustomers"
+    )
 
   # processing result
   unlist(rawres$resourceNames) %>%
@@ -68,7 +48,6 @@ gads_get_accessible_customers <- function()
   res <- tibble(data = list.filter(res$result, length(.) > 1)) %>%
          unnest_wider('data') %>%
          select(!where(is.list)) %>%
-         select(-"resourceName") %>%
          rename_with(getOption('gads.column.name.case.fun'))
 
   # success msg

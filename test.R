@@ -26,7 +26,7 @@ pt <- gads_auth_cache_path()
 gads_set_login_customer_id('1754107253')
 
 # установка клиентского логина
-gads_set_customer_id('6766427440')
+gads_set_customer_id('4660700907')
 
 # запрос статистики
 group_report <- gads_get_report(
@@ -55,9 +55,8 @@ GAds_Data3 <- gads_get_report(
   resource =   "ad_group_criterion",
   fields   = c("ad_group_criterion.criterion_id",
                "ad_group_criterion.custom_affinity.custom_affinity",
-               "ad_group_criterion.custom_audience.custom_audience"),
-  date_from   = "2021-02-22",
-  date_to     = "2021-04-04")
+               "ad_group_criterion.custom_audience.custom_audience")
+  )
 
 
 
