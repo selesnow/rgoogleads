@@ -1,3 +1,7 @@
+# rgoogleads 0.8.0
+* Пакет переведён на работу с [Google Ads API 11.0](https://developers.google.com/google-ads/api/docs/release-notes#v11)
+* В связи с тем, что HTML документация в R 4.2.0 переведена на использование HTML5 по требованиям CRAN была заново сгенерирована вся документация пакета.
+
 # rgoogleads 0.7.1
 * Исправил ссылки на документацию к Google Ads API, с v8 на v10.
 

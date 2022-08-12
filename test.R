@@ -450,3 +450,22 @@ historical_data <- historical_plan_data$historical_data
 
 pl2 <- gads_keyword_plan_forecast_timeseries(pid)
 pl3 <- gads_keyword_plan_forecast_metrics(pid)
+
+
+
+
+
+
+
+gapp <- httr::oauth_app('gapp', '321452169616-30etfc54n8is879a5b8tom800llsbuq7.apps.googleusercontent.com', 'aAu6O0XN9tzOYPS27c8h_q-Z')
+gads_auth_configure(gapp, developer_token = '3gTgJr6Xi3Uqdt-hiDNaIg')
+retry::retry(gads_auth(email = 'alsey.netpeak@gmail.com'), when = "Can't get Google credentials", interval = 60, max_tries = 5)
+
+
+
+
+# ???????? ?????????
+top_accounts <- gads_get_accessible_customers() %>%
+  filter(manager == TRUE)
+
+hierarchy <- map_df(top_accounts$id, ~ gads_get_account_hierarchy(manager_customer_id = .x, login_customer_id = .x))

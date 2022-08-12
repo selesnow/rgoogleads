@@ -1,6 +1,6 @@
 Package: rgoogleads
 Title: Loading Data from 'Google Ads API'
-Version: 0.7.1
+Version: 0.8.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -35,7 +35,7 @@ Imports: gargle (>= 1.2.0),
          rappdirs
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Suggests: 
     rmarkdown,
     knitr,
