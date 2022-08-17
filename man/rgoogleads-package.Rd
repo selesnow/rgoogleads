@@ -6,7 +6,7 @@
 \alias{rgoogleads}
 \title{Loading Data From 'Google Ads API'}
 \description{
-\if{html}{\figure{rgoogleads.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{rgoogleads.png}{options: style='float: right' alt='logo' width='120'}}
 Interface for loading data from 'Google Ads API',
 see \url{https://developers.google.com/google-ads/api/docs/start}.
 Package provide function for authorization and loading reports.
