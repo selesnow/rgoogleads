@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 0 note
 
-* rebuld documents.
+* Remove failed links from vignettes.
