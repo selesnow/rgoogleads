@@ -16,7 +16,7 @@ gads_get_campaigns(
      "campaign.start_date",
     "campaign.end_date", "campaign.status", "campaign.manual_cpm", "campaign.manual_cpv",
     "campaign.maximize_conversion_value.target_roas",
-    "campaign.maximize_conversions.target_cpa",
+    "campaign.maximize_conversions.target_cpa_micros",
     "campaign.network_settings.target_content_network",
     "campaign.network_settings.target_google_search",
     "campaign.network_settings.target_partner_search_network",
