@@ -13,7 +13,7 @@ gads_auth_configure(
 )
 
 
-gads_auth(email = 'alsey.netpeak@gmail.com')
+gads_auth(email = 'alsey.netpeak@gmail.com', cache = F)
 
 gads_auth(email = 'alsey.netpeak@gmail.com' )
 
@@ -214,7 +214,7 @@ myacs <- gads_get_accessible_customers()
 # campaigns ---------------------------------------------------------------
 mycamp <- gads_get_campaigns(customer_id = acs)
 cam <- gads_get_campaigns(
-  customer_id = acs[3],
+  customer_id = acs[4],
   where = "campaign.status = 'ENABLED'")
 
 
@@ -225,7 +225,7 @@ myadgroups <- gads_get_ad_groups(customer_id = acs[1], where = 'ad_group.status 
 
 # ads ---------------------------------------------------------------------
 myads <- gads_get_ads(
-  customer_id = acs[6],
+  customer_id = acs[1],
   fields = c("ad_group_ad.ad.id",
              "customer.descriptive_name",
              "ad_group_ad.ad.call_ad.description1",

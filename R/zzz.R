@@ -59,7 +59,7 @@
   # options
   op <- options()
   op.gads <- list(gads.developer.token      = developer_token,
-                  gads.api.version          = "v11",
+                  gads.api.version          = "v13",
                   gads.login.customer.id    = login_customer_id,
                   gads.customer.id          = customer_id,
                   gads.multi.account.verbos = FALSE,
@@ -96,6 +96,8 @@ rgoogleadsWelcomeMessage <- function(){
          "Blog:             https://alexeyseleznev.wordpress.com \n",
          "Facebook:         https://facebook.com/selesnown \n",
          "Linkedin:         https://www.linkedin.com/in/selesnow \n",
+         "\n",
+         "Using Googla Ads API version: ", getOption('gads.api.version'), "\n",
          "\n",
          "Type ?rgoogleads for the main documentation.\n",
          "The github page is: https://github.com/selesnow/rgoogleads/\n",

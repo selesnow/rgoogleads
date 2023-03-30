@@ -66,6 +66,7 @@ reference:
       - gads_get_campaigns
       - gads_get_ad_groups
       - gads_get_ads
+      - gads_get_keywords
       - gads_get_ad_group_criterions
   - title: Reporting
     desc: >

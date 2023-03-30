@@ -60,7 +60,6 @@ gads_get_ad_group_criterions <- function(
                             'ad_group_criterion.listing_group.case_value.hotel_class.value',
                             'ad_group_criterion.listing_group.case_value.hotel_id.value',
                             'ad_group_criterion.listing_group.case_value.hotel_state.state_criterion',
-                            'ad_group_criterion.listing_group.case_value.product_bidding_category.country_code',
                             'ad_group_criterion.listing_group.case_value.product_bidding_category.id',
                             'ad_group_criterion.listing_group.case_value.product_bidding_category.level',
                             'ad_group_criterion.listing_group.case_value.product_brand.value',

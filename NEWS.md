@@ -1,3 +1,6 @@
+# rgoogleads 0.9.0
+* Пакет переведён на работу с Google Ads API v13.
+
 # rgoogleads 0.8.1
 * Из виньеток удалены битые ссылки на устаревший раздел документации по миграции с Google AdWords API на Google Ads API.
 
