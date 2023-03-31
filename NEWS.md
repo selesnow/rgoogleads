@@ -1,3 +1,6 @@
+# rgoogleads 0.9.1
+* Исправленна ссылка в документации функции `gads_get_accessible_customers()`.
+
 # rgoogleads 0.9.0
 * Пакет переведён на работу с Google Ads API v13.
 

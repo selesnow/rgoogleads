@@ -1,6 +1,6 @@
 Package: rgoogleads
 Title: Loading Data from 'Google Ads API'
-Version: 0.9.0
+Version: 0.9.1
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
