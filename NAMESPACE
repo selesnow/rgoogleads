@@ -39,6 +39,7 @@ import(snakecase)
 import(memoise)
 import(cachem)
 import(rappdirs)
+import(utils)
 
 # import from
 importFrom(rlang,"%||%")

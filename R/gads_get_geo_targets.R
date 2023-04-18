@@ -26,9 +26,20 @@ gads_get_geo_targets <- function(
 
   }
 
+  # download zip
+  zip_file <- tempfile(fileext = '.zip')
+  download.file(file_link, zip_file)
+
+  # unzip csv file
+  file_name <- unzip(zipfile = zip_file, list = T)
+  unzip(zipfile = zip_file)
+
   # read file
-  data <- read.csv(file_link) %>%
+  data <- read.csv(file_name$Name) %>%
           rename_with(getOption('gads.column.name.case.fun'))
+
+  # remove temp file
+  file.remove(c(zip_file, file_name$Name))
 
   # success msg
   cli_alert_success('Success! Loaded {nrow(data)} rows!')
