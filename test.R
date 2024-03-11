@@ -15,7 +15,7 @@ gads_auth_configure(
 
 gads_auth(email = 'alsey.netpeak@gmail.com', cache = F)
 
-gads_auth(email = 'alsey.netpeak@gmail.com' )
+gads_auth(email = 'a.seleznev@netpeak.group' )
 
 
 
@@ -85,7 +85,7 @@ gads_set_customer_id('6766427440')
 
 # load account hierarchy --------------------------------------------------
 # загрузка списка аккаунтов
-accounts_main <- gads_get_account_hierarchy('175-410-7253')
+accounts_main <- gads_get_account_hierarchy()
 client_acs <-  accounts_main$customer_client_id[accounts_main$customer_client_manager == FALSE]
 # load reports ------------------------------------------------------------
 # загрузка статистики
@@ -96,13 +96,13 @@ camp_stat <- gads_get_report()
 camp_stat_2 <- gads_get_report(
   date_from = as.Date('2021-06-10'),
   date_to = as.Date('2021-06-17'),
-  customer_id = '473-251-9773'
+  customer_id = '7907111282'
 )
 
 # меняем ресурс и поля
 gads_set_customer_id('4732519773')
 adstat <- gads_get_report(
-  customer_id = 4732519773,
+  customer_id = 7907111282,
   resource = 'ad_group_ad',
   fields = c("ad_group_ad.ad.id", "ad_group_ad.ad.name", "ad_group_ad.status", "metrics.clicks"),
   date_from = '2021-06-10',
@@ -127,7 +127,7 @@ group_report <- gads_get_report(
 )
 
 # загрузка данных сразу из 4ёх аккаунтов
-acs <- c(	1507592784, 8183215956, 6983359454, 9382181697, 5720644438, 7708567525, 7701918735, 9936483356 )
+acs <- c(	1507592784, 8183215956, 6983359454, 7907111282, 5720644438, 7708567525, 7701918735, 9936483356 )
 
 multi_rep <- gads_get_report(
   customer_id = acs,

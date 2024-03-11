@@ -59,7 +59,7 @@
   # options
   op <- options()
   op.gads <- list(gads.developer.token      = developer_token,
-                  gads.api.version          = "v13",
+                  gads.api.version          = "v15",
                   gads.login.customer.id    = login_customer_id,
                   gads.customer.id          = customer_id,
                   gads.multi.account.verbos = FALSE,

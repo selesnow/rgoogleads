@@ -120,8 +120,8 @@ gads_auth('me@gmail.com')
 
 For obtain own developer token and OAuth client read the following documentation:
 
-* [Obtain Your Developer Token](https://developers.google.com/google-ads/api/docs/first-call/dev-token)
-* [Configure a Google API Console Project for the Google Ads API](https://developers.google.com/google-ads/api/docs/first-call/oauth-cloud-project)
+* [Obtain Your Developer Token](https://developers.google.com/google-ads/api/docs/get-started/dev-token)
+* [Configure a Google API Console Project for the Google Ads API](https://developers.google.com/google-ads/api/docs/get-started/oauth-cloud-project)
 
 ## Example of use rgoogleads
 
@@ -185,7 +185,7 @@ This section contains links to articles dedicated to `rgoogleads`.
 If you have published an article about `rgoogleads` let me know about it in [telegram](https://t.me/AlexeySeleznev) or [email](mailto:selesnow@gmail.com) and I will add it to the list of links.
 
 ## Author
-Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.net/en/us/)
+Alexey Seleznev, Head of analytics dept. at [Netpeak](https://netpeak.us/)
 <Br>Telegram Channel: [R4marketing](https://t.me/R4marketing)
 <Br>email: selesnow@gmail.com
 <Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
