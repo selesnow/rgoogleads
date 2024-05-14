@@ -1,5 +1,5 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 1 note
 
-* Change Google Ads API versions.
+* Migrate to Google Ads API v.16.

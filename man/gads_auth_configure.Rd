@@ -9,7 +9,13 @@
 \alias{gads_oauth_app}
 \title{Edit and view auth configuration}
 \usage{
-gads_auth_configure(app, path, api_key, developer_token)
+gads_auth_configure(
+  client,
+  path,
+  api_key,
+  developer_token,
+  app = lifecycle::deprecated()
+)
 
 gads_auth_cache_path()
 
@@ -22,22 +28,26 @@ gads_developer_token()
 gads_oauth_app()
 }
 \arguments{
-\item{app}{OAuth app, in the sense of \code{\link[httr:oauth_app]{httr::oauth_app()}}.}
+\item{client}{A Google OAuth client, presumably constructed via
+\code{\link[gargle:gargle_oauth_client_from_json]{gargle::gargle_oauth_client_from_json()}}. Note, however, that it is
+preferred to specify the client with JSON, using the \code{path} argument.}
 
-\item{path}{JSON downloaded from Google Cloud Platform Console, containing a
-client id (aka key) and secret, in one of the forms supported for the \code{txt}
-argument of \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} (typically, a file path or JSON string).}
+\item{path}{JSON downloaded from \href{https://console.cloud.google.com}{Google Cloud Console}, containing a client id and
+secret, in one of the forms supported for the \code{txt} argument of
+\code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} (typically, a file path or JSON string).}
 
 \item{api_key}{API key.}
 
 \item{developer_token}{Your Google Ads Developer Token.}
+
+\item{app}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Replaced by the \code{client}
+argument.}
 }
 \value{
 \itemize{
 \item \code{gads_auth_configure()}: An object of R6 class
 \link[gargle:AuthState-class]{gargle::AuthState}, invisibly.
-\item \code{gads_oauth_app()}: the current user-configured
-\code{\link[httr:oauth_app]{httr::oauth_app()}}.
+\item \code{gads_oauth_client()}: the current user-configured OAuth client.
 \item \code{gads_api_key()}: the current user-configured API key.
 }
 }
@@ -46,17 +56,18 @@ These functions give more control over and visibility into the auth
 configuration than \code{\link[=gads_auth]{gads_auth()}} does. \code{gads_auth_configure()}
 lets the user specify their own:
 \itemize{
-\item OAuth app, which is used when obtaining a user token.
+\item OAuth client, which is used when obtaining a user token.
 \item API key. If rgoogleads is de-authorized via \code{\link[=gads_deauth]{gads_deauth()}}, all
 requests are sent with an API key in lieu of a token.
-See the vignette
-\href{https://gargle.r-lib.org/articles/get-api-credentials.html}{How to get your own API credentials}
+}
+
+See the \code{vignette("get-api-credentials", package = "gargle")}
 for more.
 If the user does not configure these settings, internal defaults
 are used.
-\code{gads_oauth_app()} and \code{gads_api_key()} retrieve the
-currently configured OAuth app and API key, respectively.
-}
+
+\code{gads_oauth_client()} and \code{gads_api_key()} retrieve the
+currently configured OAuth client and API key, respectively.
 }
 \examples{
 \dontrun{

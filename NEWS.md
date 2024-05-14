@@ -1,4 +1,5 @@
-# rgoogleads (development version)
+# rgoogleads 0.11.0
+* Пакет переведён на работу с Google Ads API v16.
 
 # rgoogleads 0.10.0
 * Пакет переведён на работу с Google Ads API v14.

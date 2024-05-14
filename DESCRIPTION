@@ -1,6 +1,6 @@
 Package: rgoogleads
 Title: Loading Data from 'Google Ads API'
-Version: 0.10.0.9000
+Version: 0.11.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -16,27 +16,29 @@ License: MIT + file LICENSE
 BugReports: https://github.com/selesnow/rgoogleads/issues
 URL: https://selesnow.github.io/rgoogleads/, https://selesnow.github.io/rgoogleads/docs/, https://github.com/selesnow/rgoogleads
 Encoding: UTF-8
-Imports: gargle (>= 1.2.0), 
-         httr, 
-         stringr, 
-         rlang,
-         dplyr (>= 1.0.0),
-         tidyr (>= 1.0.0),
-         jsonlite,
-         snakecase,
-         cli (>= 3.0.0),
-         pbapply,
-         purrr,
-         withr,
-         rlist,
-         rvest (>= 1.0.0),
-         memoise,
-         cachem,
-         rappdirs,
-         utils
+Imports: 
+    gargle (>= 1.2.0),
+    httr,
+    stringr,
+    rlang,
+    dplyr (>= 1.0.0),
+    tidyr (>= 1.0.0),
+    jsonlite,
+    snakecase,
+    cli (>= 3.0.0),
+    pbapply,
+    purrr,
+    withr,
+    rlist,
+    rvest (>= 1.0.0),
+    memoise,
+    cachem,
+    rappdirs,
+    utils,
+    lifecycle
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
     rmarkdown,
     knitr,

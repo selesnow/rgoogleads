@@ -53,7 +53,6 @@ gads_get_campaigns <- function(
                             'campaign.payment_mode',
                             'campaign.serving_status',
                             'campaign.shopping_setting.campaign_priority',
-                            'campaign.shopping_setting.sales_country',
                             'campaign.target_roas.target_roas',
                             'campaign.tracking_url_template',
                             'customer.descriptive_name',

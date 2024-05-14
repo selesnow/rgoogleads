@@ -18,5 +18,5 @@ accounts <- gads_get_accessible_customers()
 }
 }
 \seealso{
-\href{https://developers.google.com/google-ads/api/rest/reference/rest/v13/customers/listAccessibleCustomers}{Method: customers.listAccessibleCustomers documentation}
+\href{https://developers.google.com/google-ads/api/rest/reference/rest/v16/customers/listAccessibleCustomers}{Method: customers.listAccessibleCustomers documentation}
 }

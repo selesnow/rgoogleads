@@ -3,7 +3,7 @@
 #' @return List of your accessible accounts from top level
 #' @export
 #'
-#' @seealso \href{https://developers.google.com/google-ads/api/rest/reference/rest/v13/customers/listAccessibleCustomers}{Method: customers.listAccessibleCustomers documentation}
+#' @seealso \href{https://developers.google.com/google-ads/api/rest/reference/rest/v16/customers/listAccessibleCustomers}{Method: customers.listAccessibleCustomers documentation}
 #'
 #' @examples
 #' \dontrun{

@@ -3,6 +3,7 @@
 
 # initialization happens in .onLoad
 .auth <- NULL
+app <- NULL
 
 ## The roxygen comments for these functions are mostly generated from data
 ## in this list and template text maintained in gargle.
@@ -189,20 +190,26 @@ gads_has_token <- function() {
 #' gs4_auth_configure(app = original_app, api_key = original_api_key)
 #' }
 #' @export
-gads_auth_configure <- function(app, path, api_key, developer_token) {
-  if (!missing(app) && !missing(path)) {
-    gads_abort("Must supply exactly one of {.arg app} or {.arg path}, not both")
+gads_auth_configure <- function(client, path, api_key, developer_token, app = lifecycle::deprecated()) {
+
+  if (lifecycle::is_present(app)) {
+    gads_auth_configure(client = app, path = path, api_key = api_key)
   }
+
+  if (!missing(client) && !missing(path)) {
+    gads_abort("Must supply exactly one of {.arg client} or {.arg path}, not both")
+  }
+
   stopifnot(missing(api_key) || is.null(api_key) || is_string(api_key))
 
   if (!missing(path)) {
     stopifnot(is_string(path))
-    app <- gargle::oauth_app_from_json(path)
+    client <- gargle::oauth_app_from_json(path)
   }
-  stopifnot(missing(app) || is.null(app) || inherits(app, "oauth_app"))
+  stopifnot(missing(client) || is.null(client) || inherits(client, "oauth_app"))
 
-  if (!missing(app) || !missing(path)) {
-    .auth$set_app(app)
+  if (!missing(client) || !missing(path)) {
+    .auth$set_app(client)
   }
 
   if (!missing(api_key)) {

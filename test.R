@@ -80,7 +80,7 @@ accounts <- gads_get_accessible_customers()
 gads_set_login_customer_id('1754107253')
 
 # установка клиентского логина
-gads_set_customer_id('6766427440')
+gads_set_customer_id('3449310772')
 
 
 # load account hierarchy --------------------------------------------------
@@ -214,7 +214,7 @@ myacs <- gads_get_accessible_customers()
 # campaigns ---------------------------------------------------------------
 mycamp <- gads_get_campaigns(customer_id = acs)
 cam <- gads_get_campaigns(
-  customer_id = acs[4],
+  customer_id = sample(client_acs, 70),
   where = "campaign.status = 'ENABLED'")
 
 
@@ -283,10 +283,10 @@ resources[5,]$metrics %>% unlist
 gads_set_customer_id()
 gads_set_login_customer_id()
 
-gads_get_campaigns()
-gads_get_ad_groups()
-gads_get_ads()
-gads_get_ad_group_criterions()
+camps <- gads_get_campaigns()
+adgr <- gads_get_ad_groups(customer_id = 1507592784)
+gads <- gads_get_ads(customer_id = 1507592784)
+cri <- gads_get_ad_group_criterions(customer_id = 1507592784)
 
 
 library(rgoogleads)

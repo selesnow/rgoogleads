@@ -119,7 +119,13 @@ gads_make_request <- function(
   # --------------
   # get answer
   if (verbose) cli_alert_info('Get answer query')
-  out <- response_process(ans, error_message = gads_check_errors2)
+  tryCatch(
+  {out <- response_process(ans, error_message = gads_check_errors2)},
+  error = function(e)  {
+    gads_check_errors2(ans)
+    stop()
+    }
+  )
 
   # requests_ids
   if ( !is.null(ans$headers$`request-id`) ) {
