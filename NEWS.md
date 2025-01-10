@@ -1,3 +1,6 @@
+# rgoogleads 0.12.0
+# Пакет переведён на работу с Google Ads API v18.
+
 # rgoogleads 0.11.0
 * Пакет переведён на работу с Google Ads API v16.
 
