@@ -8,7 +8,7 @@
 #' @return stop the function when api request faild
 #'
 gads_check_errors <- function(out, client_id = NULL, verbose = FALSE, request_id) {
-
+   return("ERROR!!")
   # check for empty data
   if ( length(out) == 0 ) {
     msg <- 'empty request, please check client_id, date_from, date_to and where arguments, fox and repeate query'
@@ -21,7 +21,7 @@ gads_check_errors <- function(out, client_id = NULL, verbose = FALSE, request_id
     msg <- try(out$error$details[[1]]$errors[[1]]$message)
     cli_alert_danger(c(client_id, ": ", msg))
     cli_alert_danger(c("Request ID: ", request_id))
-    gads_abort(paste(client_id, msg))
+    return(paste(client_id, msg))
   }
 
   # check multi answer
@@ -35,10 +35,12 @@ gads_check_errors <- function(out, client_id = NULL, verbose = FALSE, request_id
       cli_alert_danger(c(client_id, ": ", msg))
       cli_alert_danger(c("Request ID: ", request_id))
       cli_alert_danger("You can use gads_last_request_ids() for get last request id, if you want send ticket to google ads api support.")
-      gads_abort(paste(client_id, msg))
+      return(paste(client_id, msg))
      }
 
   }
+
+  unlist(out)
 
 }
 
@@ -46,10 +48,10 @@ gads_check_errors <- function(out, client_id = NULL, verbose = FALSE, request_id
 
 # новая версия ------------------------------------------------------------
 
-gads_check_errors2 <- function(resp) {
+gads_check_errors2 <- function(resp, call = caller_env()) {
 
   # response
-  content <- response_as_json(resp)
+  content <- response_as_json(resp, call = call)
 
   # variables
   client_id  <- gads_customer_id_from_env()
@@ -62,7 +64,7 @@ gads_check_errors2 <- function(resp) {
   if ( length(content) == 0 ) {
     msg <- 'empty request, please check client_id, date_from, date_to and where arguments, fox and repeate query'
     if (verbose) cli_alert_warning(c(client_id, ": ", msg, ". Request ID: ", request_id))
-    return(NULL)
+    return(msg)
   }
 
   # check simple answer
@@ -76,7 +78,7 @@ gads_check_errors2 <- function(resp) {
 
     if (verbose) cli_alert_danger(c("\n", client_id, ": ", msg))
     if (verbose) cli_alert_danger(c("\n", "Request ID: ", request_id))
-    gads_abort(paste(client_id, msg))
+    return(paste(client_id, msg))
 
   }
 
@@ -92,9 +94,11 @@ gads_check_errors2 <- function(resp) {
       if (verbose) cli_alert_danger(c(client_id, ": ", msg))
       if (verbose) cli_alert_danger(c("\nRequest ID: ", request_id))
       if (verbose) cli_alert_danger("\nYou can use gads_last_request_ids() for get last request id, if you want send ticket to google ads api support.")
-      gads_abort(paste(client_id, msg))
+      return(paste(client_id, msg))
     }
 
   }
+
+  return('Unknown error')
 
 }
