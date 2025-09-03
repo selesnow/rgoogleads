@@ -80,7 +80,7 @@ accounts <- gads_get_accessible_customers()
 gads_set_login_customer_id('1754107253')
 
 # установка клиентского логина
-gads_set_customer_id('3449310772')
+gads_set_customer_id("6348012423")
 
 
 # load account hierarchy --------------------------------------------------
@@ -96,13 +96,13 @@ camp_stat <- gads_get_report()
 camp_stat_2 <- gads_get_report(
   date_from = as.Date('2021-06-10'),
   date_to = as.Date('2021-06-17'),
-  customer_id = '7907111282'
+  customer_id = '625-358-0744'
 )
 
 # меняем ресурс и поля
 gads_set_customer_id('4732519773')
 adstat <- gads_get_report(
-  customer_id = 7907111282,
+  #customer_id = 7907111282,
   resource = 'ad_group_ad',
   fields = c("ad_group_ad.ad.id", "ad_group_ad.ad.name", "ad_group_ad.status", "metrics.clicks"),
   date_from = '2021-06-10',
@@ -111,7 +111,7 @@ adstat <- gads_get_report(
 
 # теперь запрашиваем по группе объявлений
 group_report <- gads_get_report(
-  customer_id = 4732519773,
+  customer_id = 7907111282,
   resource    = "ad_group",
   fields = c("ad_group.campaign",
              "ad_group.id",

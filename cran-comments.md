@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Migrate to Google Ads API v21.
+* Remove wrong link and update Rmd files.

@@ -17,6 +17,3 @@ Get all data of customers directly accessible by the user authenticating the cal
 accounts <- gads_get_accessible_customers()
 }
 }
-\seealso{
-\href{https://developers.google.com/google-ads/api/rest/reference/rest/v16/customers/listAccessibleCustomers}{Method: customers.listAccessibleCustomers documentation}
-}
