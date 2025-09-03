@@ -1,0 +1,26 @@
+{
+    "id": "FF027590",
+    "path": "~/R packages/rgoogleads/R/gads_get_ads.R",
+    "project_path": "R/gads_get_ads.R",
+    "type": "r_source",
+    "hash": "3700724661",
+    "contents": "",
+    "dirty": false,
+    "created": 1710933211926.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "141,2",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1710933776,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1710933777020,
+    "read_only": false,
+    "read_only_alternatives": []
+}

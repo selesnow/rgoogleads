@@ -1,0 +1,26 @@
+{
+    "id": "1BA8AA65",
+    "path": "~/R packages/rgoogleads/R/gads_auth.R",
+    "project_path": "R/gads_auth.R",
+    "type": "r_source",
+    "hash": "195432724",
+    "contents": "",
+    "dirty": false,
+    "created": 1712588673441.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "5,11",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1712590129,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1712590129597,
+    "read_only": false,
+    "read_only_alternatives": []
+}

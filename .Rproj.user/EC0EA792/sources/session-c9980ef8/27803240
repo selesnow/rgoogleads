@@ -1,0 +1,26 @@
+{
+    "id": "27803240",
+    "path": "~/R packages/rgoogleads/R/gads_get_accessible_customers.R",
+    "project_path": "R/gads_get_accessible_customers.R",
+    "type": "r_source",
+    "hash": "869259029",
+    "contents": "",
+    "dirty": false,
+    "created": 1715682443413.0,
+    "source_on_save": false,
+    "relative_order": 14,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "5,86",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1715682452,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1715682452530,
+    "read_only": false,
+    "read_only_alternatives": []
+}

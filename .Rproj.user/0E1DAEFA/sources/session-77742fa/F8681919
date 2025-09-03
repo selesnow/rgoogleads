@@ -1,0 +1,26 @@
+{
+    "id": "F8681919",
+    "path": "~/R packages/rgoogleads/NAMESPACE",
+    "project_path": "NAMESPACE",
+    "type": "r_namespace",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1756818201500.0,
+    "source_on_save": false,
+    "relative_order": 10,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "44,36",
+        "scrollLine": "23"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1756818213,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1756818213637,
+    "read_only": false,
+    "read_only_alternatives": []
+}

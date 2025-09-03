@@ -1,0 +1,17 @@
+{
+    "dialog-state": {
+        "query": "https://developers.google.com/google-ads/api/rest/reference/rest/v16/customers/listAccessibleCustomers",
+        "path": "",
+        "regex": false,
+        "caseSensitive": false,
+        "wholeWord": false,
+        "filePatterns": [],
+        "useGitGrep": true,
+        "excludeGitIgnore": true,
+        "excludeFilePatterns": [],
+        "resultsCount": 1,
+        "errorCount": 0,
+        "replaceErrors": "",
+        "projectRelative": true
+    }
+}

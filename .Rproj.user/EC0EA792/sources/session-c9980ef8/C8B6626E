@@ -1,0 +1,26 @@
+{
+    "id": "C8B6626E",
+    "path": "~/R packages/rgoogleads/R/gads_get_report.R",
+    "project_path": "R/gads_get_report.R",
+    "type": "r_source",
+    "hash": "3210312428",
+    "contents": "",
+    "dirty": false,
+    "created": 1710861758368.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "124,65",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1674025811,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1674025811,
+    "read_only": false,
+    "read_only_alternatives": []
+}

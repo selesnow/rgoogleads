@@ -1,0 +1,37 @@
+library(rfacebookstat)
+library(rgoogleads)
+library(dplyr)
+library(stringr)
+
+# locale
+Sys.setlocale("LC_CTYPE", "russian")
+
+# auth
+fbSetTokenPath('C:/my_develop_workshop/ppc_digest/token_facebook')
+fbSetUsername('selesnow_2')
+
+# g auth
+
+gads_auth('alsey.netpeak@gmail.com')
+
+# g account
+gads_set_customer_id('316-566-4576')
+
+# g ads
+g_ads <- gads_get_ads(fields = c("ad_group_ad.ad.id", 'fsdf',
+                                 "ad_group.id", 
+                                 "campaign.id", 
+                                 "customer.id",
+                                 "ad_group_ad.ad.name", 
+                                 "ad_group.name", 
+                                 "campaign.name", 
+                                 "customer.descriptive_name")) %>% 
+  rename(
+    account_id   = customer_id,
+    adset_id     = ad_group_id,
+    id           = ad_id,
+    account_name = customer_descriptive_name
+  ) %>% 
+  select(id, adset_id, campaign_id, account_id, ad_group_name, campaign_name, account_name) %>% 
+  mutate(source = "google", 
+         name = id)

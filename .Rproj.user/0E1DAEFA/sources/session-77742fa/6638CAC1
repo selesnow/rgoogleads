@@ -1,0 +1,26 @@
+{
+    "id": "6638CAC1",
+    "path": "~/R packages/rgoogleads/R/gads_check_errors.R",
+    "project_path": "R/gads_check_errors.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1756814882169.0,
+    "source_on_save": false,
+    "relative_order": 8,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "50,54",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1756818136,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1756818136593,
+    "read_only": false,
+    "read_only_alternatives": []
+}

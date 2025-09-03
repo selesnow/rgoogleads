@@ -1,0 +1,26 @@
+{
+    "id": "A7C95617",
+    "path": "~/R packages/rgoogleads/R/zzz.R",
+    "project_path": "R/zzz.R",
+    "type": "r_source",
+    "hash": "465100318",
+    "contents": "",
+    "dirty": false,
+    "created": 1707231245299.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "61,50",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1710861190,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1710861190937,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,26 @@
+{
+    "id": "BD414ABC",
+    "path": "~/R packages/rgoogleads/R/gads_get_report_helper.R",
+    "project_path": "R/gads_get_report_helper.R",
+    "type": "r_source",
+    "hash": "1247199989",
+    "contents": "",
+    "dirty": false,
+    "created": 1710861901641.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "38,14",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1674025811,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1674025811,
+    "read_only": false,
+    "read_only_alternatives": []
+}
