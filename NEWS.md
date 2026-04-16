@@ -1,3 +1,9 @@
+# rgoogleads 0.14.0
+* Пакет переведён на работу с Google Ads API v23.
+* В функции `gads_get_campaigns()` поля `campaign.start_date` и `campaign.end_date` заменены на `campaign.start_date_time` и `campaign.end_date_time` в соответствии с изменениями в API.
+* Из функции `gads_get_ads()` удалены поля `ad_group_ad.ad.call_ad.*`, так как поддержка этого типа объявлений прекращена в v23.
+* Обновлены все ссылки на документацию Google Ads API во всём пакете до актуальной версии v23.
+
 # rgoogleads 0.13.3
 * Перерендерил документацию, для отправки пакета в CRAN.
 

@@ -1,12 +1,12 @@
 #' Get Keyword Dictionary From Google Ads Client Account
 #'
 #' @inheritParams gads_get_report
-#' @param fields character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v10/keyword_view_query_builder}{see field list of keyword report}.
+#' @param fields character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v23/keyword_view_query_builder}{see field list of keyword report}.
 #'
 #' @return tibble with Keyword criterions dicrionary
 #' @export
 #'
-#' @seealso \href{https://developers.google.com/google-ads/api/fields/v10/keyword_view_query_builder}{Google Ads Query Builder}
+#' @seealso \href{https://developers.google.com/google-ads/api/fields/v23/keyword_view_query_builder}{Google Ads Query Builder}
 gads_get_keywords <- function(
     customer_id = getOption('gads.customer.id'),
     fields      = c('ad_group_criterion.criterion_id',

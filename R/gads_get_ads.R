@@ -1,9 +1,9 @@
 #' Get Ads Dictionary From Google Ads Client Account
 #'
 #' @inheritParams gads_get_report
-#' @param fields character vector, list pf report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v10/ad_group_ad}{see field list of ads report}.
+#' @param fields character vector, list pf report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v23/ad_group_ad}{see field list of ads report}.
 #'
-#' @seealso \href{https://developers.google.com/google-ads/api/fields/v10/ad_group_ad_query_builder}{Google Ads Query Builder}
+#' @seealso \href{https://developers.google.com/google-ads/api/fields/v23/ad_group_ad_query_builder}{Google Ads Query Builder}
 #' @return tibble with ads dicrionary
 #' @export
 #' @examples
@@ -17,9 +17,7 @@
 #' # load ads list
 #' myads <- gads_get_ads(
 #'    fields = c("ad_group_ad.ad.id",
-#'               "customer.descriptive_name",
-#'               "ad_group_ad.ad.call_ad.description1",
-#'               "ad_group_ad.ad.call_ad.description2"),
+#'               "customer.descriptive_name"),
 #'    where = 'ad_group_ad.status = "ENABLED"'
 #' )
 #'
@@ -33,21 +31,7 @@ gads_get_ads <- function(
                             'ad_group_ad.ad.app_ad.html5_media_bundles',
                             'ad_group_ad.ad.app_ad.images',
                             'ad_group_ad.ad.app_ad.mandatory_ad_text',
-                            'ad_group_ad.ad.call_ad.business_name',
-                            'ad_group_ad.ad.call_ad.call_tracked',
-                            'ad_group_ad.ad.call_ad.conversion_action',
                             'ad_group_ad.ad.app_engagement_ad.videos',
-                            'ad_group_ad.ad.call_ad.conversion_reporting_state',
-                            'ad_group_ad.ad.call_ad.country_code',
-                            'ad_group_ad.ad.call_ad.description1',
-                            'ad_group_ad.ad.call_ad.description2',
-                            'ad_group_ad.ad.call_ad.disable_call_conversion',
-                            'ad_group_ad.ad.call_ad.headline1',
-                            'ad_group_ad.ad.call_ad.headline2',
-                            'ad_group_ad.ad.call_ad.path1',
-                            'ad_group_ad.ad.call_ad.path2',
-                            'ad_group_ad.ad.call_ad.phone_number',
-                            'ad_group_ad.ad.call_ad.phone_number_verification_url',
                             'ad_group_ad.ad.device_preference',
                             'ad_group_ad.ad.display_upload_ad.display_upload_product_type',
                             'ad_group_ad.ad.display_upload_ad.media_bundle',
