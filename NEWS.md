@@ -1,3 +1,6 @@
+# rgoogleads 0.14.1
+* Исправление ссылок в README.md для публикации на CRAN.
+
 # rgoogleads 0.14.0
 * Пакет переведён на работу с Google Ads API v23.
 * В функции `gads_get_campaigns()` поля `campaign.start_date` и `campaign.end_date` заменены на `campaign.start_date_time` и `campaign.end_date_time` в соответствии с изменениями в API.

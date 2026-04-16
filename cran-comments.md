@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Migrate to Google Ads API v23
+* Fix links on README.md

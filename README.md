@@ -82,7 +82,7 @@ The package does not transfer your credentials or data obtained from your advert
 
 For more details, I recommend that you read the following articles from the official documentation of the gargle package:
 
-* [Stewarding the cache of user tokens](https://www.tidyverse.org/blog/2021/07/gargle-1-2-0/)
+* [Stewarding the cache of user tokens](https://tidyverse.org/blog/2021/07/gargle-1-2-0/)
 * [Auth when using R in the browser](https://cran.r-project.org/package=gargle/vignettes/auth-from-web.html)
 * [How gargle gets tokens](https://cran.r-project.org/package=gargle/vignettes/how-gargle-gets-tokens.html)
 
@@ -180,7 +180,7 @@ This section contains links to articles dedicated to `rgoogleads`.
     * [Как оценить потерянный доход в Google Ads с помощью языка R](https://netpeak.net/ru/blog/kak-otsenit-poteryannyi-dokhod-v-google-adwords-s-pomoshch-yu-yazyka-r/), *Alexey Seleznev*
     * [Доклад: Зачем интернет маркетологу понимать что такое API. Разбираем устройство API Google Ads (Конференция 8P 2021)](https://youtu.be/wtXVwOBo518), *Alexey Seleznev*
 * English
-    * [Migrating from AdWords API to Google Ads API. A Comprehensive Guideline](https://netpeak.net/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/), *Alexey Seleznev*
+    * [Migrating from AdWords API to Google Ads API. A Comprehensive Guideline](https://netpeak.us/blog/migrating-from-adwords-api-to-google-ads-api-a-comprehensive-guideline/), *Alexey Seleznev*
 
 If you have published an article about `rgoogleads` let me know about it in [telegram](https://t.me/AlexeySeleznev) or [email](mailto:selesnow@gmail.com) and I will add it to the list of links.
 
