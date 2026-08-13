@@ -40,7 +40,7 @@ gads_get_campaigns(
 )
 }
 \arguments{
-\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v23/campaign}{see field list of campaigns report}.}
+\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v25/campaign}{see field list of campaigns report}.}
 
 \item{where}{Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.}
 
@@ -82,5 +82,5 @@ camps <- gads_get_campaigns(
 }
 }
 \seealso{
-\href{https://developers.google.com/google-ads/api/fields/v23/campaign_query_builder}{Google Ads Query Builder}
+\href{https://developers.google.com/google-ads/api/fields/v25/campaign_query_builder}{Google Ads Query Builder}
 }

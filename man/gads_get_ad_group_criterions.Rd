@@ -91,7 +91,7 @@ gads_get_ad_group_criterions(
 \arguments{
 \item{customer_id}{Google Ads client customer id, supports a single account id: "xxx-xxx-xxxx" or a vector of ids from the same Google Ads MCC: c("xxx-xxx-xxxx", "xxx-xxx-xxxx")}
 
-\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v23/ad_group}{see field list of ad group report}.}
+\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v25/ad_group}{see field list of ad group report}.}
 
 \item{where}{Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.}
 
@@ -129,5 +129,5 @@ kw <- gads_get_ad_group_criterions()
 }
 }
 \seealso{
-\href{https://developers.google.com/google-ads/api/fields/v23/ad_group_criterion_query_builder}{Google Ads Query Builder}
+\href{https://developers.google.com/google-ads/api/fields/v25/ad_group_criterion_query_builder}{Google Ads Query Builder}
 }

@@ -29,7 +29,7 @@ gads_get_keywords(
 \arguments{
 \item{customer_id}{Google Ads client customer id, supports a single account id: "xxx-xxx-xxxx" or a vector of ids from the same Google Ads MCC: c("xxx-xxx-xxxx", "xxx-xxx-xxxx")}
 
-\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v23/keyword_view_query_builder}{see field list of keyword report}.}
+\item{fields}{character vector, list of report fields, all report has own fields list, for example \href{https://developers.google.com/google-ads/api/fields/v25/keyword_view_query_builder}{see field list of keyword report}.}
 
 \item{where}{Filter, for example you can filter campaigns by status \code{where = "campaign.status = 'ENABLED'"}.}
 
@@ -54,5 +54,5 @@ tibble with Keyword criterions dicrionary
 Get Keyword Dictionary From Google Ads Client Account
 }
 \seealso{
-\href{https://developers.google.com/google-ads/api/fields/v23/keyword_view_query_builder}{Google Ads Query Builder}
+\href{https://developers.google.com/google-ads/api/fields/v25/keyword_view_query_builder}{Google Ads Query Builder}
 }
