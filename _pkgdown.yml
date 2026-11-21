@@ -3,6 +3,18 @@ template:
   bootstrap: 5
   params:
     ganalytics: UA-114798296-1
+  includes:
+    in_header: |
+      <!-- canonical: pkgdown сам его не добавляет -->
+      <script>
+      (function () {
+        if (document.querySelector('link[rel="canonical"]')) return;
+        var l = document.createElement('link');
+        l.rel = 'canonical';
+        l.href = 'https://alexey-seleznev.pro' + location.pathname.replace(/index\.html$/, '');
+        document.head.appendChild(l);
+      })();
+      </script>
   opengraph:
     image:
       src: man/figures/rgoogleads.png
